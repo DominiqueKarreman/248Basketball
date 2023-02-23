@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VeldController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/velden', function () {
+    
+    return view('velden');
+    
+});
+Route::resource('velden', VeldController::class);
+
+Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
+Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
+Route::get('/velden/{veld}', [VeldController::class, 'show'])->name('velden.show');
+Route::get('/velden/{veld}/edit', [VeldController::class, 'edit'])->name('velden.edit');
+Route::post('/velden', [VeldController::class, 'store'])->name('velden.store');
+Route::put('/velden/{veld}', [VeldController::class, 'update'])->name('velden.update');
+Route::delete('/velden/{veld}', [VeldController::class, 'destroy'])->name('velden.destroy');
 
 Route::middleware([
     'auth:sanctum',

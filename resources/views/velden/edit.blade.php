@@ -223,7 +223,7 @@
                         <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
                             <iframe class="map"
                             src="https://maps.google.com/maps?q={{ $veld->longitude }},{{ $veld->latitude }}&z=15&output=embed"
-                            width="20%"  style="border:0;" allowfullscreen="" loading="lazy"
+                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </tr>
                         <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
@@ -263,7 +263,7 @@
         .map {
             width: 100%;
             margin: 0;
-            height: 15vh;
+            height: 30vh;
         }
     </style>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">

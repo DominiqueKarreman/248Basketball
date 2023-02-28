@@ -7,8 +7,8 @@
         </div>
     </x-slot>
 
-    <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6 p-5">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 m-5">
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">  
             {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                 Posts
                 @can('create', App\Models\Post::class)

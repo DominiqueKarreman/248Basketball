@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
 
 /*
@@ -32,6 +33,14 @@ Route::get('/velden/{veld}/edit', [VeldController::class, 'edit'])->name('velden
 Route::post('/velden', [VeldController::class, 'store'])->name('velden.store');
 Route::put('/velden/{veld}', [VeldController::class, 'update'])->name('velden.update');
 Route::delete('/velden/{veld}', [VeldController::class, 'destroy'])->name('velden.destroy');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/users/{veld}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{veld}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::put('/users/{veld}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{veld}', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::middleware([
     'auth:sanctum',

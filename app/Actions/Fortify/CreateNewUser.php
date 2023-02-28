@@ -13,7 +13,11 @@ use Laravel\Jetstream\Jetstream;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
-
+    public function AssignRole($user, $role)
+    {
+        
+        $user->assignRole($role);
+    }
     /**
      * Create a newly registered user.
      *
@@ -35,6 +39,7 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);
+                $this->AssignRole($user, 'user');
             });
         });
     }

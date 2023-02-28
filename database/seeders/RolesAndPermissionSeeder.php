@@ -26,6 +26,20 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'edit velden']);
         $permission = Permission::create(['name' => 'delete velden']);
         
+        //users permissions
+
+        $permission = Permission::create(['name' => 'create users']);
+        $permission = Permission::create(['name' => 'view users']);
+        $permission = Permission::create(['name' => 'edit users']);
+        $permission = Permission::create(['name' => 'delete users']);
+
+        //roles permissions
+
+        $permission = Permission::create(['name' => 'create roles']);
+        $permission = Permission::create(['name' => 'view roles']);
+        $permission = Permission::create(['name' => 'edit roles']);
+        $permission = Permission::create(['name' => 'delete roles']);
+        
         $role->givePermissionTo(Permission::all());
        
 

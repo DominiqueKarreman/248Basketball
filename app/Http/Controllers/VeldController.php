@@ -27,6 +27,7 @@ class VeldController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -34,7 +35,9 @@ class VeldController extends Controller
      */
     public function store(Request $request)
     {
+     
         //
+        return redirect()->route('velden.index')->banner('Veld updated successfully');
     }
 
     /**
@@ -85,7 +88,7 @@ class VeldController extends Controller
         
     
         // Redirect back to the index page
-        return redirect()->route('velden.index');
+        return redirect()->route('velden.index')->banner('Veld updated successfully.');
     }
     /**
      * Remove the specified resource from storage.

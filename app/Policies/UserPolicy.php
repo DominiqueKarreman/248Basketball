@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Veld;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
-class VeldPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
     /**
@@ -15,7 +15,7 @@ class VeldPolicy
     public function viewAny(User $user): bool
     {
         //
-        return $user->hasPermissionTo('view velden');
+        return $user->hasPermissionTo('view users');
     }
 
     /**

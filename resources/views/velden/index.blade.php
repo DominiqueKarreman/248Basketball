@@ -8,15 +8,15 @@
     </x-slot>
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">  
-            {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                Posts
-                @can('create', App\Models\Post::class)
-                    <a href="{{ route('posts.create') }}"
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Velden
+                @can('create', App\Models\Veld::class)
+                    <a href="{{ route('velden.create') }}"
                         class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-            </caption> --}}
+            </caption>
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
@@ -51,7 +51,7 @@
             <tbody>
                 @foreach ($velden as $veld)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                       
+
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $veld->naam }}
@@ -96,8 +96,9 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
-                            <a href="{{ route('velden.edit', $veld->id) }}">Edit</a>
+                            @can('update', $veld)
+                                <a href="{{ route('velden.edit', $veld->id) }}">Edit</a>
+                            @endcan
 
                         </th>
 

@@ -13,120 +13,146 @@
 
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto mt-6 ">
-
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                Posts
-                @can('create', App\Models\Post::class)
+        <form action="{{ route('velden.update', $veld->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                    Posts
+                    @can('create', App\Models\Post::class)
                     <a href="{{ route('posts.create') }}"
-                        class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                @endcan
-                <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-            </caption> --}}
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
+                    class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                    @endcan
+                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+                </caption> --}}
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
 
-                    <th scope="col" class="py-3 px-6">
-                        Naam
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Adres
-                    </th>
+                        <th scope="col" class="py-3 px-6">
+                            Naam
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Adres
+                        </th>
 
-                    <th scope="col" class="py-3 px-6">
-                        Plaats
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Competitie
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Tijden
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Veld leider
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Aantal bezoekers
-                    </th>
-                    <th scope="col" class="py-3 px-6">
-                        Conditie
-                    </th>
+                        <th scope="col" class="py-3 px-6">
+                            Plaats
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Competitie
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Tijden
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Veld leider
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Aantal bezoekers
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Conditie
+                        </th>
 
-                </tr>
-            </thead>
-            <tbody>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $veld->naam }}
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $veld->adres }}
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <input type="text" name="naam" id="naam" value="{{ $veld->naam }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <input type="text" name="adres" id="adres" value="{{ $veld->adres }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        {{ $veld->plaats }}
+                            <input type="text" name="plaats" id="plaats" value="{{ $veld->plaats }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <input {{ $veld->competitie ? 'checked' : '' }} id="checked-checkbox" type="checkbox"
-                            value=""
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <input name="competitie" {{ $veld->competitie ? 'checked' : '' }} id="checked-checkbox" type="checkbox"
+                                value="1"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        {{ $veld->openingstijden }} {{ $veld->sluitingstijden }}
+                            <input type="time" name="openingstijden" id="openingstijden" value="{{ $veld->openingstijden }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <input type="time" name="sluitingstijden" id="sluitingstijden" value="{{ $veld->sluitingstijden }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        {{ $veld->veld_leider }}
+                            <input type="text" name="veld_leider" id="veld_leider" value="{{ $veld->veld_leider }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        {{ $veld->aantal_bezoekers }}
+                            <input type="text" name="aantal_bezoekers" id="aantal_bezoekers"
+                                value="{{ $veld->aantal_bezoekers }}"
+                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                    </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        {{ $veld->conditie }}
+                            <select name="conditie" id="conditie"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option {{ $veld->conditie == 'Slecht' ? 'selected' : '' }} value="Slecht">Slecht
+                                </option>
+                                <option {{ $veld->conditie == 'Voldoende' ? 'selected' : '' }} value="Voldoende">
+                                    Voldoende</option>
+                                <option {{ $veld->conditie == 'Goed' ? 'selected' : '' }} value="Goed">Goed</option>
+                            </select>
 
-                    </th>
+                        </th>
 
 
 
-                    {{-- <td class="py-4 px-6 text-right">
+                        {{-- <td class="py-4 px-6 text-right">
                             @can('update', $post)
-                                <a href="{{ route('posts.edit', $post->id) }}"
-                                    class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            @endcan
-
-                            @can('delete', $post)
+                            <a href="{{ route('posts.edit', $post->id) }}"
+                                class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                @endcan
+                                
+                                @can('delete', $post)
                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                                    class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
                                 </form>
-                            @endcan
-                        </td> --}}
-                </tr>
+                                @endcan
+                            </td> --}}
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6 ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
             {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                Posts
-                @can('create', App\Models\Post::class)
-                    <a href="{{ route('posts.create') }}"
+                        Posts
+                        @can('create', App\Models\Post::class)
+                        <a href="{{ route('posts.create') }}"
                         class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                @endcan
-                <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-            </caption> --}}
+                        @endcan
+                        <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+                    </caption> --}}
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
@@ -187,44 +213,44 @@
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <input {{ $veld->verlichting ? 'checked' : '' }} id="checked-checkbox" type="checkbox"
-                            value=""
+                            value="1" name="verlichting"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
 
 
 
                     {{-- <td class="py-4 px-6 text-right">
-                            @can('update', $post)
+                                @can('update', $post)
                                 <a href="{{ route('posts.edit', $post->id) }}"
                                     class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            @endcan
-
-                            @can('delete', $post)
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
+                                    @endcan
+                                    
+                                    @can('delete', $post)
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
                                         class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                </form>
-                            @endcan
-                        </td> --}}
+                                    </form>
+                                    @endcan
+                                </td> --}}
                 </tr>
                 <table class="text-sm text-left w-full text-gray-500 dark:text-gray-400 ">
                     {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                        Posts
-                        @can('create', App\Models\Post::class)
-                            <a href="{{ route('posts.create') }}"
-                                class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                        @endcan
-                        <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                    </caption> --}}
+                                    Posts
+                                    @can('create', App\Models\Post::class)
+                                    <a href="{{ route('posts.create') }}"
+                                    class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                                    @endcan
+                                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+                                </caption> --}}
 
                     <tbody>
                         <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
                             <iframe class="map"
-                            src="https://maps.google.com/maps?q={{ $veld->longitude }},{{ $veld->latitude }}&z=15&output=embed"
-                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                src="https://maps.google.com/maps?q={{ $veld->longitude }},{{ $veld->latitude }}&z=15&output=embed"
+                                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </tr>
                         <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
 
@@ -235,6 +261,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </form>
 
     </div>
     <style>

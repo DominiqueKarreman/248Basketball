@@ -61,11 +61,32 @@ class VeldController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Veld $veld)
+    public function update(Request $request, $veld)
     {
-        //
+        // Update the Veld model with the new data from the request
+        $veld = Veld::find($veld);
+        $veld->naam = $request->input('naam');
+        $veld->adres = $request->input('adres');
+        $veld->postcode = $request->input('postcode');
+        $veld->plaats = $request->input('plaats');
+        $veld->capaciteit = $request->input('capaciteit');
+        $veld->aantal_baskets = $request->input('aantal_baskets');
+        $veld->verlichting = $request->input('verlichting');
+        $veld->competitie = $request->input('competitie');
+        $veld->openingstijden = $request->input('openingstijden');
+        $veld->sluitingstijden = $request->input('sluitingstijden');
+        $veld->veld_leider = $request->input('veld_leider');
+        $veld->aantal_bezoekers = $request->input('aantal_bezoekers');
+        $veld->conditie = $request->input('conditie');
+        $veld->longitude = $request->input('longitude');
+        $veld->latitude = $request->input('latitude');
+        $veld->save();
+        // ...
+        
+    
+        // Redirect back to the index page
+        return redirect()->route('velden.index');
     }
-
     /**
      * Remove the specified resource from storage.
      */

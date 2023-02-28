@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,14 @@ Route::get('/users/{veld}/edit', [UserController::class, 'edit'])->name('users.e
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{veld}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{veld}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
+Route::get('/permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
+Route::get('/permissions/{id}', [PermissionController::class, 'show'])->name('permissions.show');
+Route::get('/permissions/{id}/edit', [PermissionController::class, 'edit'])->name('permissions.edit');
+Route::post('/permissions', [PermissionController::class, 'store'])->name('permissions.store');
+Route::put('/permissions/{id}', [PermissionController::class, 'update'])->name('permissions.update');
+Route::delete('/permissions/{id}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
 
 Route::middleware([
     'auth:sanctum',

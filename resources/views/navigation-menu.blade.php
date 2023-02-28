@@ -23,6 +23,11 @@
                             {{ __('Users') }}
                         </x-nav-link>
                     @endcan
+                    @can('viewAny', App\Models\User::class)
+                        <x-nav-link href="{{ route('permissions.index') }}" :active="request()->routeIs('permissions.index')">
+                            {{ __('Permissions') }}
+                        </x-nav-link>
+                    @endcan
 
                 </div>
             </div>
@@ -170,6 +175,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('velden.index') }}" :active="request()->routeIs('velden.index')">
                 {{ __('Velden') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('Users') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                 {{ __('Users') }}

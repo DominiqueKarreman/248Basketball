@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\RedirectResponse;
+use Spatie\Permission\Models\Permission;
 
 
-class UserController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +21,10 @@ class UserController extends Controller
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('401');
         } 
-        $users = User::all();
-        return view('users.index', compact('users'));
+
+        $roles = Role::select('id', 'name')->withCount('permissions')->orderBy('name')->get();
+        // dd($roles);
+        return view('permissions.index', compact('roles'));
     }
 
     /**
@@ -29,7 +33,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        
+        if (!auth()->user()->hasPermissionTo('view roles')) {
+            abort('401');
+        } 
     }
 
     /**
@@ -38,7 +44,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        
     }
 
     /**
@@ -57,9 +62,6 @@ class UserController extends Controller
      */
     public function edit($user)
     {
-        if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
-        } 
         $user = User::find($user);
 
         return view('users.edit', [

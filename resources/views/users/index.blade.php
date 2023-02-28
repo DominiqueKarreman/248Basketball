@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
-                {{ __('Velden') }}
+                {{ __('Users') }}
             </h2>
         </div>
     </x-slot>
@@ -110,23 +110,23 @@
                                         class="w-10 h-10 rounded-full object-cover">
                                 @else
                                     <img class="w-10 h-10 rounded-full object-cover"
-                                        src="/storage/{{ $user->profile_photo_path }}"
-                                        alt="{{ $user->name }}" />
+                                        src="/storage/{{ $user->profile_photo_path }}" alt="{{ $user->name }}" />
                                 @endif
                                 <div class="pl-3">
-                                    <div class="text-base font-semibold">{{$user->name}}</div>
-                                    <div class="font-normal text-gray-500">{{$user->email}}</div>
+                                    <div class="text-base font-semibold">{{ $user->name }}</div>
+                                    <div class="font-normal text-gray-500">{{ $user->email }}</div>
                                 </div>
                             </th>
+
                             <td class="px-6 py-4">
-                               {{$user->roles->first()->name}}
+                                {{ $user->roles->first()->name }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    @if($user->email_verified_at)
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Geverifieerd
+                                    @if ($user->email_verified_at)
+                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Geverifieerd
                                     @else
-                                    <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Niet geverifieerd
+                                        <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Niet geverifieerd
                                     @endif
                                 </div>
 

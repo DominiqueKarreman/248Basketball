@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
-                {{ __('Permissions') }}
+                {{ __('Rollen en permissies') }}
             </h2>
         </div>
     </x-slot>
@@ -45,7 +45,10 @@
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @can('update', $role)
+                            @if($role->name !== 'Admin')
                                 <a href="{{ route('roles.edit', $role->id) }}">Edit</a>
+                            @endif
+                            
                             @endcan
                         </th>
 

@@ -53,6 +53,7 @@ Route::middleware([
     Route::get('/users/{veld}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::put('/users/{veld}', [UserController::class, 'update'])->name('users.update');
+    Route::put('/users/{id}/changeRoles', [UserController::class, 'changeRoles'])->name('users.changeRoles');
     Route::delete('/users/{veld}', [UserController::class, 'destroy'])->name('users.destroy');
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');

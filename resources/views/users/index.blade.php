@@ -119,16 +119,22 @@
                             </th>
 
                             <td class="px-6 py-4">
-                                
-                                @if(Auth::user()->hasPermissionTo('assign roles'))
-                                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    @foreach ($roles as $role)
-                                        <option {{ $user->roles->first()->name == $role->name ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
-                                        
-                                    @endforeach
-                                    {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
-                                   
-                                  </select>
+
+                                @if (Auth::user()->hasPermissionTo('assign roles'))
+                                    <form method="POST" action="{{ route('users.changeRoles', $user->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <select onchange="this.form.submit()" name="user_role" id="countries"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            @foreach ($roles as $role)
+                                                <option
+                                                    {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}
+                                                    value="{{ $role->name }}">{{ $role->name }}</option>
+                                            @endforeach
+                                            {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
+
+                                        </select>
+                                    </form>
                                 @else
                                     {{ $user->roles->first()->name }}
                                 @endif

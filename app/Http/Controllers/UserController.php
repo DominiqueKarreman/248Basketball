@@ -85,6 +85,14 @@ class UserController extends Controller
         // Redirect back to the index page
         return redirect()->route('users.index');
     }
+    public function changeRoles(Request $request, $id)
+    {
+        
+        $user = User::find($id);
+        $user->syncRoles([]);
+        $user->assignRole($request->user_role);
+        return redirect()->route('users.index')->banner('Rol is gewijzigd');
+    }
     /**
      * Remove the specified resource from storage.
      */

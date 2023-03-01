@@ -27,7 +27,8 @@ class VeldController extends Controller
     public function create()
     {
         //
-        
+
+        return view('velden.create');
     }
 
     /**
@@ -35,9 +36,13 @@ class VeldController extends Controller
      */
     public function store(Request $request)
     {
-     
         //
-        return redirect()->route('velden.index')->banner('Veld updated successfully');
+        // dd($request->all());
+        $inputs = $request->all();
+        $inputs['verlichting'] = $request->has('verlichting');
+        $inputs['competitie'] = $request->has('competitie');
+        $veld = Veld::create($inputs);
+        return redirect()->route('velden.index');
     }
 
     /**

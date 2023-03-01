@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
-                {{ __('Users') }}
+                {{ __('Gebruikers') }}
             </h2>
         </div>
     </x-slot>
@@ -15,7 +15,7 @@
                     class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button">
                     <span class="sr-only">Action button</span>
-                    Action
+                    Actie
                     <svg class="w-3 h-3 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -58,7 +58,7 @@
                 </div>
                 <input type="text" id="table-search-users"
                     class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search for users">
+                    placeholder="Zoek naar gebruikers">
             </div>
         </div>
     </div>
@@ -79,16 +79,16 @@
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Name
+                            Naam
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Position
+                            Rol
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Status
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Action
+                            Actie
                         </th>
                     </tr>
                 </thead>
@@ -119,7 +119,19 @@
                             </th>
 
                             <td class="px-6 py-4">
-                                {{ $user->roles->first()->name }}
+                                
+                                @if(Auth::user()->hasPermissionTo('assign roles'))
+                                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    @foreach ($roles as $role)
+                                        <option {{ $user->roles->first()->name == $role->name ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
+                                        
+                                    @endforeach
+                                    {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
+                                   
+                                  </select>
+                                @else
+                                    {{ $user->roles->first()->name }}
+                                @endif
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">

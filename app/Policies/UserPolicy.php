@@ -61,6 +61,12 @@ class UserPolicy
         //
     }
 
+    public function assignRole(User $user): bool
+    {
+        //
+        return $user->hasPermissionTo('assign roles');
+    }
+
     /**
      * Determine whether the user can permanently delete the model.
      */

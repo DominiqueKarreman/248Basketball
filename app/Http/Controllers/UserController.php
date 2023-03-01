@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\RedirectResponse;
 
 
@@ -20,7 +21,10 @@ class UserController extends Controller
             abort('401');
         } 
         $users = User::all();
-        return view('users.index', compact('users'));
+        $roles = Role::all();
+        return view('users.index', [
+            'users' => $users,
+            'roles' => $roles]);
     }
 
     /**

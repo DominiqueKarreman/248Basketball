@@ -97,6 +97,9 @@ class RoleController extends Controller
         $rolePermission = $role->permissions->pluck('name')->toArray();
         $array = [];
         foreach (Permission::all() as $permission) {
+            if($permission->name == 'assign roles'){
+                continue;
+            }
             if (!in_array($permission->name, $rolePermission)) {
                 
                 array_push($array, ['name' => $permission->name, 'checked' => '']);

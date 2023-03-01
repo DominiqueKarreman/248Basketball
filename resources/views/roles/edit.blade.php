@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
-                {{ __('Permissions') }}
+                {{ __('Rol aanpassen') }}
             </h2>
         </div>
     </x-slot>

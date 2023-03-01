@@ -16,8 +16,8 @@ class RolesAndPermissionSeeder extends Seeder
     public function run(): void
     {
         //
-        $role = Role::create(['name' => 'admin']);
-        $role_user = Role::create(['name' => 'user']);
+        $role = Role::create(['name' => 'Admin']);
+        $role_user = Role::create(['name' => 'User']);
         
         //velden permissions
          
@@ -39,6 +39,7 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'view roles']);
         $permission = Permission::create(['name' => 'edit roles']);
         $permission = Permission::create(['name' => 'delete roles']);
+        $permission = Permission::create(['name' => 'assign roles']);
 
         //permissions permissions
 
@@ -47,8 +48,12 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'edit permissions']);
         $permission = Permission::create(['name' => 'delete permissions']);
         
+        //assign permissions to roles
         
         $role->givePermissionTo(Permission::all());
+        Permission::all()->each(function ($permission) {
+            $permission->assignRole('admin');
+        });
        
 
     }

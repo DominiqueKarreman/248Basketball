@@ -53,7 +53,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        return $user->hasRole('admin');
+        return $user->hasPermissionTo('edit roles');
     }
 
     /**

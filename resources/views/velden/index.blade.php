@@ -97,7 +97,7 @@
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             @can('update', $veld)
-                                <a href="{{ route('velden.edit', $veld->id) }}">Edit</a>
+                                <a class="text-indigo-500" href="{{ route('velden.edit', $veld->id) }}">Edit</a>
                             @endcan
 
                         </th>

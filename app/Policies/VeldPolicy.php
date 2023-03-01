@@ -51,6 +51,7 @@ class VeldPolicy
     public function delete(User $user, Veld $veld): bool
     {
         //
+        return $user->hasPermissionTo('delete velden');
     }
 
     /**

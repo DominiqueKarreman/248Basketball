@@ -98,8 +98,10 @@ class VeldController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Veld $veld)
+    public function destroy($veld)
     {
         //
+        Veld::destroy($veld);
+        return redirect()->route('velden.index')->banner('Veld is verwijderd');
     }
 }

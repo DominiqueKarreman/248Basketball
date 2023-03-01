@@ -6,16 +6,16 @@
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
-                {{ __('Veld aanpassen') }}
+                {{ __('Veld aanmaken') }}
             </h2>
         </div>
     </x-slot>
 
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto mt-6 ">
-        <form action="{{ route('velden.update', $veld->id) }}" method="POST">
+        <form action="{{ route('velden.store') }}" method="POST">
             @csrf
-            @method('PUT')
+
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                 {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     Posts
@@ -59,50 +59,45 @@
 
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input type="text" name="naam" id="naam" value="{{ $veld->naam }}"
+                            <input type="text" name="naam" id="naam" required
                                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input type="text" name="adres" id="adres" value="{{ $veld->adres }}"
+                            <input type="text" name="adres" id="adres"
                                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                            <input type="text" name="plaats" id="plaats" value="{{ $veld->plaats }}"
+                            <input type="text" name="plaats" id="plaats" required
                                 class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1"
-                                {{ $veld->competitie ? 'checked' : '' }}
+                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1" 
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
                         <th scope="row"
                             class="py-4 w-full px-6 font-medium text-gray-900 whitespace-nowrap flex dark:text-white">
 
-                            <input type="time" name="openingstijden" id="openingstijden"
-                                value="{{ $veld->openingstijden }}"
+                            <input type="time" name="openingstijden" id="openingstijden" required
                                 class="block  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <input type="time" name="sluitingstijden" id="sluitingstijden"
-                                value="{{ $veld->sluitingstijden }}"
+                            <input type="time" name="sluitingstijden" id="sluitingstijden" required
                                 class="block  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                         </th>
-
-
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
                             <select name="conditie" id="conditie"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option {{ $veld->conditie == 'Slecht' ? 'selected' : '' }} value="Slecht">Slecht
+                                <option value="Slecht">Slecht
                                 </option>
-                                <option {{ $veld->conditie == 'Voldoende' ? 'selected' : '' }}value="Voldoende">
+                                <option value="Voldoende">
                                     Voldoende</option>
-                                <option {{ $veld->conditie == 'Goed' ? 'selected' : '' }} value="Goed">Goed</option>
+                                <option value="Goed">Goed</option>
                             </select>
 
                         </th>
@@ -167,39 +162,37 @@
 
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <input type="text" name="longitude" id="longitude" value="{{ $veld->longitude }}"
+                        <input type="text" name="longitude" id="longitude" required
                             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="latitude" id="latitude" value="{{ $veld->latitude }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                    </th>
-
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
-                        <input type="text" name="postcode" id="postcode" value="{{ $veld->postcode }}"
+                        <input type="text" name="latitude" id="latitude" required
                             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
 
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="capaciteit" id="capaciteit" value="{{ $veld->capaciteit }}"
+                        <input type="text" name="postcode" id="postcode" required
+                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                    </th>
+
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
+                        <input type="text" name="capaciteit" id="capaciteit" required
                             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="aantal_baskets" id="aantal_baskets"
-                            value="{{ $veld->aantal_baskets }}"
+                        <input type="text" name="aantal_baskets" id="aantal_baskets" required
                             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting"
-                            {{ $veld->verlichting ? 'checked' : '' }}
+                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting" 
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                 </tr>
@@ -245,22 +238,13 @@
 
                     <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap  dark:text-white">
                         <button id="submit" type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Pas aan</button>
-                       
-                       @can('delete', $veld)
-                       <button id="delete" type="button"
-                            class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Verwijder</button>         
-                            @endcan     
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak veld aan</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         </form>
-        
-        <form id="deleteForm" method="POST" action="{{route('velden.destroy', $veld->id)}}">
-            @csrf
-            @method('DELETE')
-        </form>
+
     </div>
     <style>
         body {
@@ -274,13 +258,6 @@
             justify-self: center;
             margin: auto;
 
-        }
-        #delete {
-        
-            padding: 2vh 15vh 2vh 15vh;
-            align-self: center;
-            justify-self: center;
-            margin: auto;
         }
 
         .test {
@@ -311,12 +288,10 @@
     </style>
     <script>
         let mapOptions = {
-            center: ["{{ $veld->latitude }}", "{{ $veld->longitude }}"],
-            zoom: 20
+            center: [52.37232391185994, 5.223880736178714],
+            zoom: 15
         }
         let map = new L.map('map', mapOptions);
-
-        let marker = L.marker(["{{ $veld->latitude }}", "{{ $veld->longitude }}"]).addTo(map);
         let layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
         map.addLayer(layer);
         let [lat, long] = [document.getElementById('latitude').value, document.getElementById('longitude').value];
@@ -348,13 +323,14 @@
             map.setView([lat, lon], 15);
             document.getElementById('plaats').value = data[0].address.city || data[0].address.town || data[0].address
                 .state || '';
-            let oldName = document.getElementById('naam').value
-            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
+            let oldName = document.getElementById('naam').value;
+            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office  || data[0].address.leisure || data[0].address.tourism || oldName;
             document.getElementById('postcode').value = data[0].address.postcode || '';
             document.getElementById('adres').value =
                 `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;
             document.getElementById('latitude').value = lat;
             document.getElementById('longitude').value = lon;
+
             return data;
         }
 
@@ -364,7 +340,7 @@
             fetch(nominatimUrl)
                 .then(response => response.json())
                 .then((data) => {
-                    console.log(data.address);
+                    console.log(data);
                     document.getElementById('plaats').value = data.address.city || data.address.town || data.address
                         .state || '';
                     let oldName = document.getElementById('naam').value
@@ -381,12 +357,6 @@
             console.log('test')
             getLatLong(document.getElementById('search').value);
         })
-
-        document.getElementById('delete').addEventListener('click', function() {
-
-            document.getElementById('deleteForm').submit();
-        })
-
     </script>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">
         {{-- {{ $posts->links() }} --}}

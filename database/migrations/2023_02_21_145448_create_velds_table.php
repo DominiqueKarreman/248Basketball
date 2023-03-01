@@ -25,8 +25,8 @@ return new class extends Migration
             $table->boolean('competitie');
             $table->time('openingstijden');
             $table->time('sluitingstijden');
-            $table->foreignId('veld_leider')->references('id')->on('users');
-            $table->integer('aantal_bezoekers');
+            $table->foreignId('veld_leider')->nullable()->constrained()->references('id')->on('users');
+            $table->integer('aantal_bezoekers')->nullable()->constrained();
             $table->string('conditie');
             $table->timestamps();
         });

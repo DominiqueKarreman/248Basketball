@@ -41,6 +41,9 @@
                         <th scope="col" class="py-3 px-6">
                             Competitie
                         </th>
+                        <th scope="col" class="py-3 px-6">
+                            Beschikbaarheid
+                        </th>
                         <th scope="col" class="py-3 w-[12vw] px-6">
                             Tijden
                         </th>
@@ -78,6 +81,12 @@
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <input name="competitie" id="checked-checkbox" type="checkbox" value="1"
                                 {{ $veld->competitie ? 'checked' : '' }}
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <input name="is_active" id="checked-checkbox" type="checkbox" value="1"
+                                {{ $veld->is_active ? 'checked' : '' }}
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
                         <th scope="row"
@@ -245,19 +254,20 @@
 
                     <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap  dark:text-white">
                         <button id="submit" type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Pas aan</button>
-                       
-                       @can('delete', $veld)
-                       <button id="delete" type="button"
-                            class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Verwijder</button>         
-                            @endcan     
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Pas
+                            aan</button>
+
+                        @can('delete', $veld)
+                            <button id="delete" type="button"
+                                class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Verwijder</button>
+                        @endcan
                     </td>
                 </tr>
             </tbody>
         </table>
         </form>
-        
-        <form id="deleteForm" method="POST" action="{{route('velden.destroy', $veld->id)}}">
+
+        <form id="deleteForm" method="POST" action="{{ route('velden.destroy', $veld->id) }}">
             @csrf
             @method('DELETE')
         </form>
@@ -275,8 +285,9 @@
             margin: auto;
 
         }
+
         #delete {
-        
+
             padding: 2vh 15vh 2vh 15vh;
             align-self: center;
             justify-self: center;
@@ -349,7 +360,8 @@
             document.getElementById('plaats').value = data[0].address.city || data[0].address.town || data[0].address
                 .state || '';
             let oldName = document.getElementById('naam').value
-            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
+            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address
+                .building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
             document.getElementById('postcode').value = data[0].address.postcode || '';
             document.getElementById('adres').value =
                 `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;
@@ -368,7 +380,9 @@
                     document.getElementById('plaats').value = data.address.city || data.address.town || data.address
                         .state || '';
                     let oldName = document.getElementById('naam').value
-                    document.getElementById('naam').value = data.address.amenity || data.address.shop || data.address.building || data.address.office || data.address.leisure || data.address.tourism || oldName;
+                    document.getElementById('naam').value = data.address.amenity || data.address.shop || data
+                        .address.building || data.address.office || data.address.leisure || data.address.tourism ||
+                        oldName;
                     document.getElementById('postcode').value = data.address.postcode || '';
                     document.getElementById('adres').value =
                         `${data.address.road || ''} ${data.address.house_number || ''}`;
@@ -383,10 +397,8 @@
         })
 
         document.getElementById('delete').addEventListener('click', function() {
-
             document.getElementById('deleteForm').submit();
         })
-
     </script>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">
         {{-- {{ $posts->links() }} --}}

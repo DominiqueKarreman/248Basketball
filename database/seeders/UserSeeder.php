@@ -26,6 +26,6 @@ class UserSeeder extends Seeder
              'email' => 'test@hotmail.com',
              'password' => Hash::make('12345678'),
          ]);
-        $user_standard->assignRole('user');
+        // $user_standard->assignRole('user');
     }
 }

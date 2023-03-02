@@ -19,6 +19,7 @@ class RolesAndPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'admin']);
         $role_moderator = Role::create(['name' => 'moderator']);
         $role_user = Role::create(['name' => 'user']);
+        $role_user = Role::create(['name' => 'user', 'guard_name' => 'api']);
         
         //velden permissions
          

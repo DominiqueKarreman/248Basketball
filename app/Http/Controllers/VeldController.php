@@ -58,8 +58,8 @@ class VeldController extends Controller
      */
     public function edit($veld)
     {
-        $veld = Veld::find($veld);       
-        
+        $veld = Veld::find($veld);
+
         return view('velden.edit', [
             'veld' => $veld
         ]);
@@ -79,8 +79,9 @@ class VeldController extends Controller
         $veld->plaats = $request->input('plaats');
         $veld->capaciteit = $request->input('capaciteit');
         $veld->aantal_baskets = $request->input('aantal_baskets');
-        $veld->verlichting = $request->input('verlichting');
-        $veld->competitie = $request->input('competitie');
+        $veld->verlichting = $request->input('verlichting') || false;
+        $veld->competitie = $request->input('competitie') || false;
+        $veld->is_active = $request->input('is_active') || false;
         $veld->openingstijden = $request->input('openingstijden');
         $veld->sluitingstijden = $request->input('sluitingstijden');
         $veld->veld_leider = $request->input('veld_leider');
@@ -88,10 +89,11 @@ class VeldController extends Controller
         $veld->conditie = $request->input('conditie');
         $veld->longitude = $request->input('longitude');
         $veld->latitude = $request->input('latitude');
+
         $veld->save();
         // ...
-        
-    
+
+
         // Redirect back to the index page
         return redirect()->route('velden.index');
     }

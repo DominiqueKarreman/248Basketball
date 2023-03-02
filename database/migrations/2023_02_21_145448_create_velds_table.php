@@ -28,6 +28,7 @@ return new class extends Migration
             $table->foreignId('veld_leider')->nullable()->constrained()->references('id')->on('users');
             $table->integer('aantal_bezoekers')->nullable()->constrained();
             $table->string('conditie');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

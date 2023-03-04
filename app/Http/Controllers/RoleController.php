@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
 
         $roles = Role::select('id', 'name')->withCount('permissions')->orderBy('name')->get();
@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('create roles')) {
-            abort('401');
+            abort('403');
         }
 
         
@@ -58,7 +58,7 @@ class RoleController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('create roles')) {
-            abort('401');
+            abort('403');
         }
         // dd($request->all());
         $role = Role::create(['name' => $request->role_name, 'guard_name' => 'web']);
@@ -132,7 +132,7 @@ class RoleController extends Controller
     public function permissionUpdate(Request $request, $id)
     {
         if (!auth()->user()->hasPermissionTo('edit roles')) {
-            abort('401');
+            abort('403');
         } 
 
 

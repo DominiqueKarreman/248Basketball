@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sessie;
-use App\Http\Requests\StoreSessieRequest;
-use App\Http\Requests\UpdateSessieRequest;
+use App\Models\Locatie;
+use App\Http\Requests\StoreLocatieRequest;
+use App\Http\Requests\UpdateLocatieRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
-class SessieController extends Controller
+class LocatieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class SessieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSessieRequest $request): RedirectResponse
+    public function store(StoreLocatieRequest $request): RedirectResponse
     {
         //
     }
@@ -37,7 +37,7 @@ class SessieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sessie $sessie): Response
+    public function show(Locatie $locatie): Response
     {
         //
     }
@@ -45,7 +45,7 @@ class SessieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sessie $sessie): Response
+    public function edit(Locatie $locatie): Response
     {
         //
     }
@@ -53,7 +53,7 @@ class SessieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSessieRequest $request, Sessie $sessie): RedirectResponse
+    public function update(UpdateLocatieRequest $request, Locatie $locatie): RedirectResponse
     {
         //
     }
@@ -61,7 +61,7 @@ class SessieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sessie $sessie): RedirectResponse
+    public function destroy(Locatie $locatie): RedirectResponse
     {
         //
     }

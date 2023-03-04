@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -33,9 +35,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    }
+    Route::get(
+        '/dashboard',
+        function () {
+            return view('dashboard');
+        }
     )->name('dashboard');
     Route::resource('velden', VeldController::class);
 
@@ -72,4 +76,7 @@ Route::middleware([
     Route::put('/roles/{id}', [RoleController::class, 'update'])->name('roles.update');
     Route::put('/roles/{id}/permissions/edit', [RoleController::class, 'permissionUpdate'])->name('roles.permissions.update');
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
+    Route::resource('events', EventController::class);
+    Route::resource('locaties', LocatieController::class);
 });

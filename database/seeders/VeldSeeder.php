@@ -14,6 +14,6 @@ class VeldSeeder extends Seeder
     public function run(): void
     {
         //
-        Veld::create(['longitude' => 52.350784, 'latitude' => 5.264702, 'naam' => 'Veld 1', 'adres' => 'Adres 1', 'postcode' => '1234 AB', 'plaats' => 'Plaats 1', 'capaciteit' => 10, 'aantal_baskets' => 2, 'verlichting' => true, 'competitie' => true, 'openingstijden' => '08:00:00', 'sluitingstijden' => '22:00:00', 'veld_leider' => 1, 'aantal_bezoekers' => 0, 'conditie' => 'Goed']);
+        Veld::create(['latitude' => 52.350784, 'longitude' => 5.264702, 'naam' => 'Veld 1', 'adres' => 'Adres 1', 'postcode' => '1234 AB', 'plaats' => 'Plaats 1', 'capaciteit' => 10, 'aantal_baskets' => 2, 'verlichting' => true, 'competitie' => true, 'openingstijden' => '08:00:00', 'sluitingstijden' => '22:00:00', 'veld_leider' => 1, 'aantal_bezoekers' => 0, 'conditie' => 'Goed']);
     }
 }

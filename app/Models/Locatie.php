@@ -18,4 +18,8 @@ class Locatie extends Model
         'plaats',
         'veld_id',
     ];
+    public function veld($veld_id) 
+    {
+        return Veld::find($veld_id);
+    }
 }

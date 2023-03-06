@@ -78,5 +78,13 @@ Route::middleware([
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
 
     Route::resource('events', EventController::class);
-    Route::resource('locaties', LocatieController::class);
+
+    Route::get('/locaties', [LocatieController::class, 'index'])->name('locaties.index');
+    Route::get('/locaties/create', [LocatieController::class, 'create'])->name('locaties.create');
+    Route::get('/locaties/{id}', [LocatieController::class, 'show'])->name('locaties.show');
+    Route::get('/locaties/{id}/edit', [LocatieController::class, 'edit'])->name('locaties.edit');
+    Route::post('/locaties', [LocatieController::class, 'store'])->name('locaties.store');
+    Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
+    
+    Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
 });

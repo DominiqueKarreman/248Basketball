@@ -18,6 +18,9 @@ class VeldController extends Controller
     {
         //
         $velden = Veld::all();
+        $velden = Veld::query()
+        ->select('velden.*', 'users.name as veld_leider')
+        ->leftJoin('users', 'velden.veld_leider', '=', 'users.id')->get();
         return view('velden.index', compact('velden'));
     }
 

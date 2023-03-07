@@ -19,7 +19,7 @@ class PermissionController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
 
         $roles = Role::select('id', 'name')->withCount('permissions')->orderBy('name')->get();
@@ -34,7 +34,7 @@ class PermissionController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
     }
 
@@ -53,7 +53,7 @@ class PermissionController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
     }
 

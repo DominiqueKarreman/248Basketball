@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         ]);
         $user->assignRole('admin');
         $user_standard = User::create([
-             'name' => 'Dominique Karreman',
+             'name' => 'Marjon Phu',
              'email' => 'test@hotmail.com',
              'password' => Hash::make('12345678'),
          ]);

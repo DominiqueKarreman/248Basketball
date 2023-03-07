@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionSeeder::class,
             UserSeeder::class,
             VeldSeeder::class,
+            EventSeeder::class,
 
         ]);
         // \App\Models\User::factory(10)->create();

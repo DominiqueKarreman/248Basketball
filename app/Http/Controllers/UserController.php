@@ -17,8 +17,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+        if (!auth()->user()->hasPermissionTo('view users')) {
+            abort('403');
         } 
         $users = User::all();
         $roles = Role::all();
@@ -52,7 +52,7 @@ class UserController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
     }
 
@@ -62,7 +62,7 @@ class UserController extends Controller
     public function edit($user)
     {
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         } 
         $user = User::find($user);
 

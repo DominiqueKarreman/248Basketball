@@ -15,15 +15,22 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('velden.index') }}" :active="request()->routeIs('velden.index')">
-                        {{ __('Velden') }}
-                    </x-nav-link>
+                    @can('viewAny', App\Models\Event::class)
+                        <x-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                            {{ __('Evenementen') }}
+                        </x-nav-link>
+                    @endcan
+                    @can('viewAny', App\Models\Veld::class)
+                        <x-nav-link href="{{ route('velden.index') }}" :active="request()->routeIs('velden.index')">
+                            {{ __('Velden') }}
+                        </x-nav-link>
+                    @endcan
                     @can('viewAny', App\Models\User::class)
                         <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                             {{ __('Users') }}
                         </x-nav-link>
                     @endcan
-                    @can('viewAny', App\Models\User::class)
+                    @can('viewAny', Spatie\Permission\Models\Role::class)
                         <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
                             {{ __('Rechten') }}
                         </x-nav-link>
@@ -94,15 +101,15 @@
                                 <button
                                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     @if (!Auth::user()->profile_photo_path)
-                                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
-                                            class="h-8 w-8 rounded-full object-cover">
+                                        <img src="{{ Auth::user()->profile_photo_url }}"
+                                            alt="{{ Auth::user()->name }}" class="h-8 w-8 rounded-full object-cover">
                                     @else
                                         <img class="h-8 w-8 rounded-full object-cover"
                                             src="/storage/{{ Auth::user()->profile_photo_path }}"
                                             alt="{{ Auth::user()->name }}" />
                                     @endif
 
-                                   
+
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">
@@ -173,18 +180,24 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @can('viewAny', App\Models\Event::class)
+                <x-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                    {{ __('Evenementen') }}
+                </x-responsive-nav-link>
+            @endcan
             <x-responsive-nav-link href="{{ route('velden.index') }}" :active="request()->routeIs('velden.index')">
                 {{ __('Velden') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                {{ __('Users') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                {{ __('Users') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
-                {{ __('Rechten') }}
-            </x-responsive-nav-link>
+            @can('viewAny', App\Models\User::class)
+                <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', Spatie\Permission\Models\Role::class)
+                <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                    {{ __('Rechten') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
@@ -192,8 +205,15 @@
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <div class="shrink-0 mr-3">
-                        <img class="h-10 w-10 rounded-full object-cover"
-                            src="/storage/{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+                        @if (!Auth::user()->profile_photo_path)
+                            <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+                                class="h-10 w-10 rounded-full object-cover">
+                        @else
+                            <img class="h-10 w-10 rounded-full object-cover"
+                                src="/storage/{{ Auth::user()->profile_photo_path }}"
+                                alt="{{ Auth::user()->name }}" />
+                        @endif
+
                     </div>
                 @endif
 

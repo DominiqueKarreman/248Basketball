@@ -26,4 +26,5 @@ class Veld extends Model
         'aantal_bezoekers',
         'conditie',
    ];
+  
 }

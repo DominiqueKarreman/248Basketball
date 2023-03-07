@@ -31,9 +31,7 @@
                     <th scope="col" class="py-3 px-6">
                         verantwoordelijke
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        aanmeldingen
-                    </th>
+                 
                     <th scope="col" class="py-3 px-6">
                         Type event
                     </th>
@@ -70,12 +68,7 @@
                             {{ $event->verantwoordelijke }}
 
                         </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
-                            {{ $event->aantal_aanmeldingen }}
-
-                        </th>
+           
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 

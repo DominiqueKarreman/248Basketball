@@ -47,11 +47,15 @@ class LocatieController extends Controller
         $locatie = Locatie::find($locatie_id);
         if($locatie->veld_id != null){
             $locatie->veld = $locatie->veld($locatie->veld_id);
+            $locatie->events = Event::join('users', 'events.verantwoordelijke', '=', 'users.id')
+            ->where('locatie_id', $locatie_id)
+            ->orWhere('veld_id', $locatie->veld_id)
+            ->get();
         }
+
         $locatie->events = Event::join('users', 'events.verantwoordelijke', '=', 'users.id')
-        ->where('locatie_id', $locatie_id)
-        ->orWhere('veld_id', $locatie->veld_id)
-        ->get();
+            ->where('locatie_id', $locatie_id)
+            ->get();
         
         //find events where location id or veld_id is the same as the locatie id
         // dd($locatie->events);    

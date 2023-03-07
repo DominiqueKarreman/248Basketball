@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -27,23 +29,95 @@ class UserController extends Controller
             'roles' => $roles]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    // /**
+    //  * Show the form for creating a new resource.
+    //  */
+    // public function create()
+    // {
+    //     //
         
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request)
+    // {
+        
+        
+    // }
+
+
+    public function register(Request $request){
+        //this will make sure these fields are required
+        $fields = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users,email',
+            'password' => 'required|string|confirmed'
+        ]);
+
+        //here we create the user
+        $user = User::create([
+            'name' => $fields['name'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password'])
+        ]);
+
+        //make a token
+        $token = $user->createToken('248token')->plainTextToken;
+
+        //make the response
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+        
+        //return a response and a status code
+        return response ($response, 201);
+    }
+    
+    public function login(Request $request){
+        //this will make sure these fields are required
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        //Check the email
+        $user = User::where('email', $fields['email'])->first();
+
+        //Check password
+        if(!$user || !Hash::check($fields['password'], $user->password)){
+            return response([
+                'message' => 'Bad creds'
+            ], 401);
+        }
+
+        
+        //make a token
+        $token = $user->createToken('248token')->plainTextToken;
+
+        //make the response
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+        
+        //return a response and a status code
+        return response ($response, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-        
+
+    //because the token gets stored in the database we need a logout function
+    public function logout(Request $request){
+        auth()->user()->tokens()->delete();
+
+        return [
+            'message' => 'Logged out'
+        ];
     }
+
+
 
     /**
      * Display the specified resource.

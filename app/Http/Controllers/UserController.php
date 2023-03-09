@@ -87,7 +87,7 @@ class UserController extends Controller
         //Check the email
         $user = User::where('email', $fields['email'])->first();
 
-        return "tesasddasdt";
+       
         //Check password
         if(!$user || !Hash::check($fields['password'], $user->password)){
             return response([

@@ -53,14 +53,16 @@ class UserController extends Controller
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
+            'geboorte_datum' => 'required|date'
         ]);
 
         //here we create the user
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
+            'password' => bcrypt($fields['password']),
+            'geboorte_datum' => $fields['geboorte_datum']
         ]);
 
         //make a token

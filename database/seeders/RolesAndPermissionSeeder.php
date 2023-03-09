@@ -22,7 +22,7 @@ class RolesAndPermissionSeeder extends Seeder
         
         //velden permissions
          
-        $permission = Permission::create(['name' => 'create velden']);
+        // $permission = Permission::create(['name' => 'create velden']);
         $permission = Permission::create(['name' => 'view velden']);
         $permission = Permission::create(['name' => 'edit velden']);
         $permission = Permission::create(['name' => 'delete velden']);

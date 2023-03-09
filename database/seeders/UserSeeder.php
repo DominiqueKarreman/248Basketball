@@ -19,12 +19,14 @@ class UserSeeder extends Seeder
             'name' => 'Dominique Karreman',
             'email' => 'domikar2010@hotmail.com',
             'password' => Hash::make('12345678'),
+            'geboorte_datum' => '2004-18-08'
         ]);
         $user->assignRole('admin');
         $user_standard = User::create([
              'name' => 'Marjon Phu',
              'email' => 'test@hotmail.com',
              'password' => Hash::make('12345678'),
+             'geboorte_datum' => '1999-15-02'
          ]);
         $user_standard->assignRole('user');
     }

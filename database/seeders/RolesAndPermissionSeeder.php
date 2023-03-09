@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
 class RolesAndPermissionSeeder extends Seeder
@@ -15,6 +18,12 @@ class RolesAndPermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('permissions')->truncate();
+        Schema::enableForeignKeyConstraints();
+
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        app()['cache']->forget('spatie.permission.cache');
         //
         $role = Role::create(['name' => 'Admin']);
         $role_moderator = Role::create(['name' => 'Moderator']);
@@ -22,7 +31,7 @@ class RolesAndPermissionSeeder extends Seeder
         
         //velden permissions
          
-        // $permission = Permission::create(['name' => 'create velden']);
+        $permission = Permission::create(['name' => 'create velden']);
         $permission = Permission::create(['name' => 'view velden']);
         $permission = Permission::create(['name' => 'edit velden']);
         $permission = Permission::create(['name' => 'delete velden']);

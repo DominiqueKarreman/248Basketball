@@ -86,6 +86,7 @@ class UserController extends Controller
         //Check the email
         $user = User::where('email', $fields['email'])->first();
 
+        return "tesasddasdt";
         //Check password
         if(!$user || !Hash::check($fields['password'], $user->password)){
             return response([
@@ -93,7 +94,6 @@ class UserController extends Controller
             ], 401);
         }
 
-        
         //make a token
         $token = $user->createToken('248token')->plainTextToken;
 

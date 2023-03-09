@@ -78,6 +78,7 @@ class UserController extends Controller
     
     public function login(Request $request){
         //this will make sure these fields are required
+        return $request;
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'

@@ -16,6 +16,9 @@ class ApiEventController extends Controller
     public function index(): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('view events')) {
+            abort('403');
+        }
         $events = Event::all();
         foreach ($events as $event) {
             $event->latitude = $event->getLatLong()['latitude'];
@@ -36,6 +39,9 @@ class ApiEventController extends Controller
     public function store(Request $request): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('create events')) {
+            abort('403');
+        }
         $event = Event::firstOrCreate($request->all());
         //check if the event hasnt already been stored in the database
         if ($event->wasRecentlyCreated) {
@@ -60,6 +66,9 @@ class ApiEventController extends Controller
     public function show($id): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('view events')) {
+            abort('403');
+        }
         $event = Event::find($id);
         if ($event) {
             $event->latitude = $event->getLatLong()['latitude'];
@@ -98,6 +107,9 @@ class ApiEventController extends Controller
     public function destroy($id): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('delete events')) {
+            abort('403');
+        }
         $event = Event::find($id);
         if ($event) {
             $event->delete();

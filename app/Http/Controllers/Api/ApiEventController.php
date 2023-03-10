@@ -98,6 +98,9 @@ class ApiEventController extends Controller
     public function destroy($id): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('delete events')) {
+            return Response('You are not authorized to delete events', 403);
+        }
         $event = Event::find($id);
         if ($event) {
             $event->delete();

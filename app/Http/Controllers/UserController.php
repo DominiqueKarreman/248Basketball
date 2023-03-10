@@ -22,8 +22,10 @@ class UserController extends Controller
         if (!auth()->user()->hasPermissionTo('view users')) {
             abort('403');
         } 
+        
         $users = User::all();
         $roles = Role::all();
+        dd($users[0]->roles->first->name);
         return view('users.index', [
             'users' => $users,
             'roles' => $roles]);

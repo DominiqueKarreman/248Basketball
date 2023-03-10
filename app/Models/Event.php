@@ -39,4 +39,16 @@ class Event extends Model
         $this->is_active = false;
         $this->save();
     }
+    public function getLatLong(){
+        if($this->locatie_id !== null){
+            $locatie = Locatie::find($this->locatie_id);
+            return ["latitude" => $locatie->latitude,
+                    "longitude" => $locatie->longitude];
+        } else {
+            $veld = Veld::find($this->veld_id);
+            return ["latitude" => $veld->latitude,
+                    "longitude" => $veld->longitude];
+        }
+      
+    }
 }

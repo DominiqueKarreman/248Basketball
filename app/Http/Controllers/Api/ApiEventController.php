@@ -57,9 +57,23 @@ class ApiEventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event): Response
+    public function show($id): Response
     {
         //
+        $event = Event::find($id);
+        if ($event) {
+            $event->latitude = $event->getLatLong()['latitude'];
+            $event->longitude = $event->getLatLong()['longitude'];
+            $responseBody = [
+                'event' => $event,
+            ];
+            return Response($responseBody, 200);
+        } else {
+            $responseBody = [
+                'message' => 'Event not found',
+            ];
+            return Response($responseBody, 404);
+        }
     }
 
     /**

@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //add protected routes here
     Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/events', [ApiEventController::class, 'index']);
+    Route::get('/events/{id}', [ApiEventController::class, 'show']);
     Route::post('/events', [ApiEventController::class, 'store']);
     Route::delete('/events/{id}', [ApiEventController::class, 'destroy']);
 });

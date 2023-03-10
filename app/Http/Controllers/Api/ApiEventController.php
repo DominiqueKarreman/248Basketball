@@ -17,7 +17,7 @@ class ApiEventController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view events')) {
-            abort('403');
+            return Response(["message" => 'You are not authorized to view events'], 403);
         }
         $events = Event::all();
         foreach ($events as $event) {
@@ -40,7 +40,7 @@ class ApiEventController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('create events')) {
-            abort('403');
+            return Response(["message" => 'You are not authorized to create events'], 403);
         }
         $event = Event::firstOrCreate($request->all());
         //check if the event hasnt already been stored in the database
@@ -67,7 +67,7 @@ class ApiEventController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view events')) {
-            abort('403');
+            return Response(["message" => 'You are not authorized to view events'], 403);
         }
         $event = Event::find($id);
         if ($event) {
@@ -108,7 +108,7 @@ class ApiEventController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('delete events')) {
-            return Response('You are not authorized to delete events', 403);
+            return Response(["message" => 'You are not authorized to delete events'], 403);
         }
         $event = Event::find($id);
         if ($event) {

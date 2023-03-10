@@ -67,7 +67,8 @@ class UserController extends Controller
             'password' => bcrypt($fields['password']),
             'geboorte_datum' => $fields['geboorte_datum']
         ]);
-
+        //asign role to user
+        $user->assignRole('user');
         //make a token
         $token = $user->createToken('248token')->plainTextToken;
 

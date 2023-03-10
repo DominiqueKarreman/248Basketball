@@ -26,6 +26,7 @@ class UserController extends Controller
         $users = User::all();
         $roles = Role::all();
         // dd($users[0]->roles->first->name);
+        dd($roles, $users);
         return view('users.index', [
             'users' => $users,
             'roles' => $roles]);

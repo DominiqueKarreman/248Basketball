@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index(): Response
     {
         //
-        phpinfo();
+        
         if (!auth()->user()->hasPermissionTo('view events')) {
             abort('403');
         }

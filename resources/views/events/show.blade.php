@@ -119,6 +119,7 @@
                                     <p>{{ $eventT->beschrijving }}</p>
                                    
                                 </div>
+                               
                                 <img src="../{{ $eventT->img_url }}" class="img_preview" id="img_preview"
                                     alt="asdasd">
                             </div>

@@ -97,7 +97,7 @@ class UserController extends Controller
         //Check password
         if(!$user || !Hash::check($fields['password'], $user->password)){
             return response([
-                'message' => 'Bad creds'
+                'message' => 'Uw inloggevens zijn incorrect'
             ], 401);
         }
 

@@ -21,12 +21,13 @@ class UserController extends Controller
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('401');
-        } 
+        }
         $users = User::all();
         $roles = Role::all();
         return view('users.index', [
             'users' => $users,
-            'roles' => $roles]);
+            'roles' => $roles
+        ]);
     }
 
     // /**
@@ -35,7 +36,7 @@ class UserController extends Controller
     // public function create()
     // {
     //     //
-        
+
     // }
 
     // /**
@@ -43,12 +44,13 @@ class UserController extends Controller
     //  */
     // public function store(Request $request)
     // {
-        
-        
+
+
     // }
 
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         //this will make sure these fields are required
         $fields = $request->validate([
             'name' => 'required|string',
@@ -71,12 +73,13 @@ class UserController extends Controller
             'user' => $user,
             'token' => $token
         ];
-        
+
         //return a response and a status code
-        return response ($response, 201);
+        return response($response, 201);
     }
-    
-    public function login(Request $request){
+
+    public function login(Request $request)
+    {
         //this will make sure these fields are required
         $fields = $request->validate([
             'email' => 'required|string',
@@ -87,13 +90,13 @@ class UserController extends Controller
         $user = User::where('email', $fields['email'])->first();
 
         //Check password
-        if(!$user || !Hash::check($fields['password'], $user->password)){
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' => 'Bad creds'
+                'message' => 'Uw inloggegevens zijn incorrect'
             ], 401);
         }
 
-        
+
         //make a token
         $token = $user->createToken('248token')->plainTextToken;
 
@@ -103,14 +106,15 @@ class UserController extends Controller
             'roles' => $user->getRoleNames(),
             'token' => $token
         ];
-        
+
         //return a response and a status code
-        return response ($response, 201);
+        return response($response, 201);
     }
 
 
     //because the token gets stored in the database we need a logout function
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth()->user()->tokens()->delete();
 
         return [
@@ -128,7 +132,7 @@ class UserController extends Controller
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('401');
-        } 
+        }
     }
 
     /**
@@ -138,7 +142,7 @@ class UserController extends Controller
     {
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('401');
-        } 
+        }
         $user = User::find($user);
 
         return view('users.edit', [
@@ -162,7 +166,7 @@ class UserController extends Controller
     }
     public function changeRoles(Request $request, $id)
     {
-        
+
         $user = User::find($id);
         $user->syncRoles([]);
         $user->assignRole($request->user_role);

@@ -100,6 +100,7 @@ class UserController extends Controller
         //make the response
         $response = [
             'user' => $user,
+            'roles' => $user->getRoleNames(),
             'token' => $token
         ];
         

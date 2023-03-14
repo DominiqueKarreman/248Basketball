@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         }
         $users = User::all();
         $roles = Role::all();
@@ -93,7 +93,7 @@ class UserController extends Controller
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
                 'message' => 'Uw inloggegevens zijn incorrect'
-            ], 401);
+            ], 403);
         }
 
 
@@ -131,7 +131,7 @@ class UserController extends Controller
     {
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         }
     }
 
@@ -141,7 +141,7 @@ class UserController extends Controller
     public function edit($user)
     {
         if (!auth()->user()->hasPermissionTo('view roles')) {
-            abort('401');
+            abort('403');
         }
         $user = User::find($user);
 

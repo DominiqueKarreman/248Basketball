@@ -32,5 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/events/{id}', [ApiEventController::class, 'show']);
     Route::post('/events', [ApiEventController::class, 'store']);
     Route::delete('/events/{id}', [ApiEventController::class, 'destroy']);
-    
+    //users endpoints
+    Route::get('/user', [UserController::class, 'showApi']);
+
 });

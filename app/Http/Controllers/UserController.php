@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 
 
 class UserController extends Controller
@@ -21,15 +22,16 @@ class UserController extends Controller
         //
         if (!auth()->user()->hasPermissionTo('view users')) {
             abort('403');
-        } 
-        
+        }
+
         $users = User::all();
         $roles = Role::all();
-       
+
         // dd($roles, $users);
         return view('users.index', [
             'users' => $users,
-            'roles' => $roles]);
+            'roles' => $roles
+        ]);
     }
 
     // /**
@@ -38,7 +40,7 @@ class UserController extends Controller
     // public function create()
     // {
     //     //
-        
+
     // }
 
     // /**
@@ -46,12 +48,13 @@ class UserController extends Controller
     //  */
     // public function store(Request $request)
     // {
-        
-        
+
+
     // }
 
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         //this will make sure these fields are required
         $fields = $request->validate([
             'name' => 'required|string',
@@ -77,14 +80,15 @@ class UserController extends Controller
             'user' => $user,
             'token' => $token
         ];
-        
+
         //return a response and a status code
-        return response ($response, 201);
+        return response($response, 201);
     }
-    
-    public function login(Request $request){
+
+    public function login(Request $request)
+    {
         //this will make sure these fields are required
-        
+
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
@@ -93,9 +97,9 @@ class UserController extends Controller
         //Check the email
         $user = User::where('email', $fields['email'])->first();
 
-       
+
         //Check password
-        if(!$user || !Hash::check($fields['password'], $user->password)){
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
                 'message' => 'Uw inloggevens zijn incorrect'
             ], 401);
@@ -110,14 +114,15 @@ class UserController extends Controller
             'roles' => $user->getRoleNames(),
             'token' => $token
         ];
-        
+
         //return a response and a status code
-        return response ($response, 201);
+        return response($response, 201);
     }
 
 
     //because the token gets stored in the database we need a logout function
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth()->user()->tokens()->delete();
 
         return [
@@ -135,7 +140,7 @@ class UserController extends Controller
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
-        } 
+        }
     }
 
     /**
@@ -145,13 +150,12 @@ class UserController extends Controller
     {
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
-        } 
+        }
         $user = User::find($user);
 
         return view('users.edit', [
             'user' => $user
         ]);
-
     }
 
     /**
@@ -169,7 +173,7 @@ class UserController extends Controller
     }
     public function changeRoles(Request $request, $id)
     {
-        
+
         $user = User::find($id);
         $user->syncRoles([]);
         $user->assignRole($request->user_role);
@@ -181,5 +185,24 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function showApi()
+    {
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first();
+
+
+        if ($user->profile_photo_path) {
+            $photo = $user->profile_photo_path;
+        } else {
+            $photo = $user->profile_photo_url;
+        }
+
+        $response = ["naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];
+        return Response(
+            $response,
+            200
+        );
     }
 }

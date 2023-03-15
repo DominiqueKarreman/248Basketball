@@ -197,6 +197,8 @@ class UserController extends Controller
             $photo = "http://116.203.134.102/storage/" . $user->profile_photo_path;
         } else {
             $photo = $user->profile_photo_url;
+            $photo = str_replace("7F9CF5", "EDB12C", $photo);
+            $photo = str_replace("EBF4FF", "222222", $photo);
         }
 
         $response = ["naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];

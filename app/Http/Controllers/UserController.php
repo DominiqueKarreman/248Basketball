@@ -194,7 +194,7 @@ class UserController extends Controller
 
 
         if ($user->profile_photo_path) {
-            $photo = $user->profile_photo_path;
+            $photo = "http://116.203.134.102/storage/" . $user->profile_photo_path;
         } else {
             $photo = $user->profile_photo_url;
         }

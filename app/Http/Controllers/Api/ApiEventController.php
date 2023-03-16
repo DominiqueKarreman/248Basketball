@@ -23,10 +23,10 @@ class ApiEventController extends Controller
         foreach ($events as $event) {
             $event->latitude = $event->getLatLong()['latitude'];
             $event->longitude = $event->getLatLong()['longitude'];
+            $event->img_url = "http://116.203.134.102/" . $event->img_url;
         }
-    
-        return response($events, 200);
 
+        return response($events, 200);
     }
 
     /**
@@ -124,6 +124,5 @@ class ApiEventController extends Controller
             ];
             return Response($responseBody, 404);
         }
-
     }
 }

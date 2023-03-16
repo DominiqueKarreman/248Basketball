@@ -7,17 +7,17 @@
         </div>
     </x-slot>
 
-    <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+    <div class="overflow-x-auto relative shadow-md bg-zinc-800 sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
+        <table class="w-full text-sm bg-zinc-700 text-left text-gray-500 dark:text-gray-400 ">
+            <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-zinc-700 dark:text-white dark:bg-gray-800">
                 Evenementen
                 @can('create', App\Models\Event::class)
                     <a href="{{ route('events.create') }}"
-                        class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                        class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs bg-zinc-800 text-[#EDB12C] uppercase   dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
                         Naam
@@ -48,50 +48,50 @@
             </thead>
             <tbody>
                 @foreach ($events as $event)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $event->naam }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $event->locatie }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $event->datumTijd }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $event->verantwoordelijke }}
 
                         </th>
            
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $event->is_open ? 'Open' : 'Gesloten' }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $event->is_active ? 'Actief' : 'Non actief' }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @can('viewAny', $event)
-                                <a class="text-indigo-500" href="{{ route('events.show', $event->id) }}">View</a>
+                                <a class="text-[#EDB12C]" href="{{ route('events.show', $event->id) }}">View</a>
                             @endcan
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @can('update', $event)
-                                <a class="text-indigo-500" href="{{ route('events.edit', $event->id) }}">Edit</a>
+                                <a class="text-[#EDB12C]" href="{{ route('events.edit', $event->id) }}">Edit</a>
                             @endcan
 
                         </th>

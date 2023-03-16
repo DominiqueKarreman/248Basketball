@@ -60,8 +60,7 @@
                                             src="/storage/{{ Auth::user()->profile_photo_path }}"
                                             alt="{{ Auth::user()->name }}" />
                                     @endif
-
-
+                       
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">

@@ -29,8 +29,7 @@ class EventController extends Controller
             ->select('events.*', 'users.name as verantwoordelijke')
             ->leftJoin('users', 'events.verantwoordelijke', '=', 'users.id')->get();
 
-        $first = $events->first();
-        $first->openEvent();
+     
         return response(view('events.index', [
             'events' => $events,
         ]), 200);

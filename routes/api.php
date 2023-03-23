@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\Api\ApiVeldController;
 use App\Http\Controllers\Api\ApiEventController;
 
 /*
@@ -34,5 +35,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/events/{id}', [ApiEventController::class, 'destroy']);
     //users endpoints
     Route::get('/user', [UserController::class, 'showApi']);
-
+    //velden endpoints 
+    Route::get('/velden', [ApiVeldController::class, 'index']);
+    Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
+    
+    
 });

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('aantal_bezoekers')->nullable()->constrained();
             $table->string('conditie');
             $table->boolean('is_active')->default(true);
+            $table->string('img_url');
             $table->timestamps();
         });
     }

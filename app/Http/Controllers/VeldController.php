@@ -44,7 +44,18 @@ class VeldController extends Controller
         $inputs = $request->all();
         $inputs['verlichting'] = $request->has('verlichting');
         $inputs['competitie'] = $request->has('competitie');
+
         $veld = Veld::create($inputs);
+        
+        if ($request->hasFile('img_url')) {
+            $img_url = "storage/velden/" . $request->file('img_url')->getClientOriginalName();
+            $request->file('img_url')->storeAs('public/velden', $request->file('img_url')->getClientOriginalName());
+        } else {
+            $img_url = 'null';
+        }
+        
+        $veld->img_url = $img_url;
+        $veld->save();
         return redirect()->route('velden.index');
     }
 

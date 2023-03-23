@@ -25,6 +25,7 @@ class Veld extends Model
           'veld_leider',
           'aantal_bezoekers',
           'conditie',
+          'img_url'
      ];
      public function distance($lat1, $lon1, $lat2, $lon2)
      {

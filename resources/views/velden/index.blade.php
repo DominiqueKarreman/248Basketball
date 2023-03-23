@@ -40,9 +40,7 @@
                     <th scope="col" class="py-3 px-6">
                         Aantal bezoekers
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        Conditie
-                    </th>
+                 
                     <th scope="col" class="py-3 px-6">
                         <span class="sr-only">Edit</span>
                     </th>
@@ -86,12 +84,6 @@
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
                             {{ $veld->aantal_bezoekers }}
-
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
-                            {{ $veld->conditie }}
 
                         </th>
                         <th scope="row"

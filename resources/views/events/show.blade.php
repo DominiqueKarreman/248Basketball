@@ -17,7 +17,7 @@
             @csrf
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                {{-- <caption class="p-5 text-lg font-semibold text-left text-white bg-white dark:text-white dark:bg-gray-800">
                     Posts
                     @can('create', App\Models\Post::class)
                     <a href="{{ route('posts.create') }}"
@@ -25,7 +25,7 @@
                     @endcan
                     <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
                 </caption> --}}
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
 
                         <th scope="col" class="py-3 px-6">
@@ -65,43 +65,43 @@
                 </thead>
                 <tbody>
 
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $eventT->naam }}
                         </th>
                         @if ($eventT->veld)
                             <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                                 {{ $eventT->veld->adres }}
                             </th>
                         @endif
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @if ($eventT->veld)
-                                <a class="text-indigo-500"
+                                <a class="text-[#EDB12C]"
                                     href="{{ route('velden.edit', $eventT->veld->id) }}">{{ $eventT->veld->naam }}</a>
                             @else
-                                <a class="text-indigo-500"
+                                <a class="text-[#EDB12C]"
                                     href="{{ route('locaties.show', $eventT->locatie->id) }}">{{ $eventT->locatie->naam }}</a>
                             @endif
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $eventT->verantwoordelijke->name }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $eventT->datumTijd }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $eventT->duratie / 60 }} Minuten
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @if ($eventT->veld)
                                 Basketball
                             @else
@@ -109,10 +109,10 @@
                             @endif
                         </th>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th colspan="7" scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             <div class="imgdiv">
                                 <div class="beschrijvingDiv">
                                     <h1 class="text-xl ">Beschrijving:</h1>
@@ -126,22 +126,22 @@
                         </th>
 
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-800 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th colspan="7" scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @can('update', $eventT)
                             <a href="{{ route('events.edit', $eventT->id) }}"
-                              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Edit event</a>
+                              class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Edit event</a>
                         @endcan
                         </th>
                     </tr>
                     {{-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                         <th colspan="7" scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             <textarea type="text" name="beschrijving" id="beschrijving" required placeholder="Beschrijving"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                                class="block w-full p-2 text-white border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                         </th>
 
                     </tr> --}}
@@ -151,7 +151,7 @@
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6 ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            {{-- <caption class="p-5 text-lg font-semibold text-left text-white bg-white dark:text-white dark:bg-gray-800">
                         Posts
                         @can('create', App\Models\Post::class)
                         <a href="{{ route('posts.create') }}"
@@ -159,7 +159,7 @@
                         @endcan
                         <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
                     </caption> --}}
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th id="longitude_header" scope="col" class="hidden py-3 px-6">
                         Longitude
@@ -185,36 +185,36 @@
             </thead>
             <tbody>
 
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-zinc-700  border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
                     <th id="longitude_row" scope="row"
-                        class="hidden py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="hidden py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                         <input type="text" name="longitude" id="longitude" required
-                            class=" block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class=" block w-full p-2 text-white border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </th>
                     <th id="latitude_row" scope="row"
-                        class="hidden py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="hidden py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                         <input type="text" name="latitude" id="latitude" required
-                            class=" block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class=" block w-full p-2 text-white border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
 
                     <th id="postcode_row" scope="row"
-                        class="hidden py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="hidden py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                         <input type="text" name="postcode" id="postcode" required
-                            class=" block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class=" block w-full p-2 text-white border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <input type="text" name="plaats" id="plaats" class="hidden">
 
                     </th>
 
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                         {{ $eventT->capaciteit }}
                     </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                         {{ $eventT->is_open ? 'Ja' : 'Nee' }}
                     </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                         {{ $eventT->prijs ? "{$eventT->prijs}€" : 'Gratis' }}
                     </th>
                 </tr>

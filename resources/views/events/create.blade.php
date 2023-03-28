@@ -121,24 +121,6 @@
                                     Non Basketball</option>
                             </select>
                         </th>
-
-
-
-                        {{-- <td class="py-4 px-6 text-right">
-                            @can('update', $post)
-                            <a href="{{ route('posts.edit', $post->id) }}"
-                                class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                @endcan
-                                
-                                @can('delete', $post)
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                    class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                </form>
-                                @endcan
-                            </td> --}}
                     </tr>
                     <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
                         <th colspan="6" scope="row"
@@ -239,14 +221,10 @@
                         <input type="text" name="postcode" id="postcode" required
                             class=" block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <input type="text" name="plaats" id="plaats" class="hidden">
-
                     </th>
-
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-
                         <input type="text" name="capaciteit" id="capaciteit" required
                             class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                         <input id="checked-checkbox" type="checkbox" value="1" name="is_open"
@@ -259,16 +237,14 @@
                     </th>
                 </tr>
                 <tr id="search_row" class="hidden bg-zinc-700 w-full dark:bg-gray-800 dark:border-gray-700">
-
-                    <td colspan="6" class="py-2 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
-
+                    <td colspan="6"
+                        class="py-2 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
                         <div class="searchbarinput ">
-
                             <input onkeydown="return event.key != 'Enter';" type="text" name="search"
                                 id="search" placeholder="Zoek naar een plek"
                                 class="bg-zinc-800 border border-black w-full text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <button type="button" id="searchbutton"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
+                                class="text-white bg-[#EDB12C] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
                         </div>
 
                     </td>
@@ -289,7 +265,7 @@
 
             <tbody>
 
-                <tr class="bg-zinc-700 test     dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-zinc-700 test dark:bg-gray-800 dark:border-gray-700">
                     {{-- <iframe class="map"
                                 src="https://maps.google.com/maps?q=52.37232391185994,5.223880736178714&z=15&output=embed"
                                 width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
@@ -297,7 +273,6 @@
                     <div id="map"></div>
                 </tr>
                 <tr class="bg-zinc-800 test  dark:bg-gray-800 dark:border-gray-700">
-
                     <td class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
                         <button id="submit" type="submit"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak

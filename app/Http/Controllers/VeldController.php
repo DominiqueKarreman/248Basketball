@@ -19,8 +19,25 @@ class VeldController extends Controller
         //
         $velden = Veld::all();
         $velden = Veld::query()
-        ->select('velden.*', 'users.name as veld_leider')
-        ->leftJoin('users', 'velden.veld_leider', '=', 'users.id')->get();
+            ->select('velden.*', 'users.name as veld_leider')
+            ->leftJoin('users', 'velden.veld_leider', '=', 'users.id')->get();
+        foreach ($velden as $veld) {
+            if ($veld->veld_leider) {
+                $veld->veld_leider = $veld->veld_leider;
+                $firstname = explode(" ", $veld->veld_leider)[0] . ".";
+                $lastname = explode(" ", $veld->veld_leider)[1][0];
+                // dd($firstname, $lastname);
+                $veld->veld_leider = $firstname . " " . $lastname;
+            } else {
+                $veld->veld_leider = 'Geen';
+        }
+        $tijden = explode(":", $veld->openingstijden);
+        $veld->openingstijden = $tijden[0] . ":" . $tijden[1] . "-";
+        // sluitings tijden
+        $tijden = explode(":", $veld->sluitingstijden);
+        $veld->sluitingstijden = $tijden[0] . ":" . $tijden[1];
+        
+        }
         return view('velden.index', compact('velden'));
     }
 
@@ -66,7 +83,6 @@ class VeldController extends Controller
         return view('velden.edit', [
             'veld' => $veld
         ]);
-
     }
 
     /**

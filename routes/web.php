@@ -42,6 +42,7 @@ Route::middleware([
         }
     )->name('dashboard');
     Route::resource('velden', VeldController::class);
+    Route::resource('users', UserController::class);
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
@@ -53,12 +54,15 @@ Route::middleware([
 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('/users/{veld}', [UserController::class, 'show'])->name('users.show');
-    Route::get('/users/{veld}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    //edit
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    //update
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::put('/users/{veld}', [UserController::class, 'update'])->name('users.update');
     Route::put('/users/{id}/changeRoles', [UserController::class, 'changeRoles'])->name('users.changeRoles');
-    Route::delete('/users/{veld}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::get('/permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
@@ -85,6 +89,6 @@ Route::middleware([
     Route::get('/locaties/{id}/edit', [LocatieController::class, 'edit'])->name('locaties.edit');
     Route::post('/locaties', [LocatieController::class, 'store'])->name('locaties.store');
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
-    
+
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
 });

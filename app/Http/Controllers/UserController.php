@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
-
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -146,12 +146,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($user)
+    public function edit($id)
     {
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
         }
-        $user = User::find($user);
+        $user = User::find($id);
 
         return view('users.edit', [
             'user' => $user
@@ -161,15 +161,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $user)
+    public function update(Request $request, $id)
     {
-        // Update the Veld model with the new data from the request
-
-        // ...
-
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->geboorte_datum = $request->geboorte_datum;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         // Redirect back to the index page
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');
     }
     public function changeRoles(Request $request, $id)
     {

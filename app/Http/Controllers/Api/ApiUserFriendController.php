@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use App\Models\UserFriend;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserFriendRequest;
 use App\Http\Requests\UpdateUserFriendRequest;
-use Illuminate\Http\Request;
 
 class ApiUserFriendController extends Controller
 {
@@ -23,21 +25,20 @@ class ApiUserFriendController extends Controller
         // dd($user->name, $user->id);
         // dd($friends);
         return Response($friends, 200);
-
-
     }
 
     public function requests(): Response
     {
         $user = Auth()->user();
         $friends = UserFriend::where('friends_id', $user->id)->where('is_mutual', 0)->get();
-        dd($friends);
+        // dd($friends);
+        return Response($friends, 200);
     }
 
     public function decide(int $id, Request $request)
     {
         $friendRequest = UserFriend::where('id', $id)->where('is_mutual', 0)->first();
-        if(!$friendRequest) return response(["message" => "Kan de vriendschapsverzoek met id " . $id . " niet vinden"], 404);
+        if (!$friendRequest) return response(["message" => "Kan de vriendschapsverzoek met id " . $id . " niet vinden"], 404);
 
         $user = Auth()->user();
 
@@ -49,12 +50,16 @@ class ApiUserFriendController extends Controller
             $friendRequest->request_accepted_at = now();
             $friendRequest->save();
             UserFriend::firstOrCreate(["user_id" => $user->id, "friends_id" => $friendRequest->user_id, "is_mutual" => true, "request_accepted_at" => now()]);
+            return response(["message" => "Vriendschapsverzoek succesvol geaccepteerd"], 200);
         }
-        if($request->decision == 'Decline') {
+        if ($request->decision == 'Decline') {
             $friendRequest->delete();
-            return response(["message" => "Vriendschapsverzoek succesvol verwijderd"],204);
+            return response(["message" => "Vriendschapsverzoek succesvol verwijderd"], 204);
         }
-        dd($id, $friendRequest, $user->name, $user->id, $request->all());
+        elseif ($request->decision !== 'Accept' && $request->decision !== 'Decline') {
+            return response(["message" => "Geen geldige keuze gemaakt"], 400);
+        }
+        // dd($id, $friendRequest, $user->name, $user->id, $request->all());    
     }
 
 
@@ -70,10 +75,18 @@ class ApiUserFriendController extends Controller
      */
     public function store(StoreUserFriendRequest $request)
     {
+        if (!$request->all()) return response(["message" => "Geen vriendschapsverzoek ontvangen"], 400);
+        if ($request->friend_id == Auth()->user()->id) return response(["message" => "Je kan jezelf niet toevoegen als vriend"], 400);
+        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 0)->exists()) return response(["message" => "Je hebt al een verzoek gestuurd naar deze gebruiker"], 400);
+        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 1)->exists()) return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
+        if (UserFriend::where('user_id', $request->friend_id)->where('friends_id', Auth()->user()->id)->where('is_mutual', 1)->exists()) return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
+
         $user = Auth()->user();
 
         $friendRequest = UserFriend::firstOrCreate(["user_id" => $user->id, "friends_id" => $request->friend_id]);
         dd($friendRequest);
+        $friend = User::find($request->friend_id);
+        return Response(["message" => "Vriendschapsverzoek naar " . $friend->name . " verstuurd"], 201);
     }
 
     /**
@@ -107,11 +120,15 @@ class ApiUserFriendController extends Controller
     {
         $user = Auth()->user();
 
-        $friendRelation = UserFriend::where('user_id', $user->id)->where("friends_id", $id)->get();
-        $userFriend = UserFriend::where('user_id', $friendRelation->user_id)->where("friends_id", $user->id)->get();
-        dd($friendRelation, $userFriend);
+        $friendRelation = UserFriend::where('user_id', $user->id)->where("friends_id", $id)->first();
+        if(!$friendRelation) return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);
+        // dd($friendRelation->id);/?
+        $userFriend = UserFriend::where('user_id', $friendRelation->friends_id)->where("friends_id", $user->id)->first();
+        if($userFriend->is_mutual == 0) return response(["message" => "Je kan geen vriendschapsverzoek verwijderen"], 400);
+        if(!$userFriend) return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);  
+        // dd($friendRelation, $userFriend);
         $friendRelation->delete();
         $userFriend->delete();
-        return response(204);
+        return response(["message" => "Vriend succesvol verwijderd"], 204);
     }
 }

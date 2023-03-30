@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiUserFriendController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -38,6 +39,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //velden endpoints 
     Route::get('/velden', [ApiVeldController::class, 'index']);
     Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
-    
-    
+
+    Route::get("/friends", [ApiUserFriendController::class, "index"]);
+    Route::post("/friends", [ApiUserFriendController::class, "store"]);
+    Route::get("/friends/requests", [ApiUserFriendController::class, "requests"]);
+    Route::post("/friends/request/{id}/decide", [ApiUserFriendController::class, "decide"]);
+    Route::delete("/friends/{id}/unfriend", [ApiUserFriendController::class, "unfriend"]);
 });

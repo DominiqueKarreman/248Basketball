@@ -148,10 +148,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        //e.preventDefault();
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
         }
         $user = User::find($id);
+        $message = $user;
 
         return view('users.edit', [
             'user' => $user
@@ -163,13 +165,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->geboorte_datum = $request->geboorte_datum;
         $user->password = Hash::make($request->password);
         $user->save();
-
         // Redirect back to the index page
         return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');
     }

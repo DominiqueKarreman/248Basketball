@@ -42,7 +42,7 @@ Route::middleware([
         }
     )->name('dashboard');
     Route::resource('velden', VeldController::class);
-    Route::resource('users', UserController::class);
+    // Route::resource('users', UserController::class);
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');

@@ -12,8 +12,9 @@
 
     <div class="mb-6 ">
         <div class="flex justify-center  dark:bg-gray-900">
-            <form method="GET" action="{{ route('users.edit', $user->id) }}" class="bg-zinc-700 p-6 rounded-lg mt-6">
+            <form method="POST" action="{{ route('users.update', $user->id) }}" class="bg-zinc-700 p-6 rounded-lg mt-6">
                 @csrf
+                @method('PUT')
                 <div class="flex justify-center font-semibold mb-4">
                     <h2 class="text-[#EDB12C]">Gebruiker aanpassen</h2>
                 </div>
@@ -38,7 +39,7 @@
                     @enderror
                 </div>
                 {{-- Make changing the passwords optional --}}
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     <x-label for="password" value="{{ __('Password') }}" />
                     <x-input id="password" class="block mt-1 w-full" type="password" name="password"
                         autocomplete="new-password" />
@@ -48,12 +49,12 @@
                     <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                     <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
                         name="password_confirmation" autocomplete="new-password" />
-                </div>
+                </div> --}}
 
 
                 <div class="flex items-center justify-end mt-4">
 
-                    <x-button class="ml-4">
+                    <x-button class="ml-4" type="submit">
                         {{ __('Update') }}
                     </x-button>
                 </div>

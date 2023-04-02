@@ -20,7 +20,7 @@ class ApiUserFriendController extends Controller
         //
         $user = Auth()->user();
         // dd($user);
-        $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->get();
+        $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->join('users', 'user_friends.friends_id', '=', 'users.id')->select('user_friends.*', 'users.name', 'users.profile_photo_path','user_friends.id as id')->get();
 
         // dd($user->name, $user->id);
         // dd($friends);

@@ -45,4 +45,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get("/friends/requests", [ApiUserFriendController::class, "requests"]);
     Route::post("/friends/request/{id}/decide", [ApiUserFriendController::class, "decide"]);
     Route::delete("/friends/{id}/unfriend", [ApiUserFriendController::class, "unfriend"]);
+    Route::get("/friends/provider:{provider}", [ApiUserFriendController::class, "socialFriends"]);
 });

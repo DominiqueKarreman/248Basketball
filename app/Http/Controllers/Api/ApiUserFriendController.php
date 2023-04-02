@@ -26,7 +26,25 @@ class ApiUserFriendController extends Controller
         // dd($friends);
         return Response($friends, 200);
     }
+    public function socialFriends(string $provider): Response
+    {
+        if ($provider === "facebook") {
+            $users = User::where('facebook_id', '!=', null)->get();
+        } else if ($provider === "google") {
+            $users = User::where('google_id', '!=', null)->get();
+        } else if ($provider === "whatsapp") {
+            $users = User::where('phone_number', '!=', null)->get();
+        } else {
+            return response(["message" => "Provider " . $provider . " is niet ondersteund"], 404);
+        }
+        // dd($users);
+        $user = Auth()->user();
 
+        // $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->get();
+
+        // dd($friends);
+        return Response($users, 200);
+    }
     public function requests(): Response
     {
         $user = Auth()->user();
@@ -38,7 +56,8 @@ class ApiUserFriendController extends Controller
     public function decide(int $id, Request $request)
     {
         $friendRequest = UserFriend::where('id', $id)->where('is_mutual', 0)->first();
-        if (!$friendRequest) return response(["message" => "Kan de vriendschapsverzoek met id " . $id . " niet vinden"], 404);
+        if (!$friendRequest)
+            return response(["message" => "Kan de vriendschapsverzoek met id " . $id . " niet vinden"], 404);
 
         $user = Auth()->user();
 
@@ -55,8 +74,7 @@ class ApiUserFriendController extends Controller
         if ($request->decision == 'Decline') {
             $friendRequest->delete();
             return response(["message" => "Vriendschapsverzoek succesvol verwijderd"], 204);
-        }
-        elseif ($request->decision !== 'Accept' && $request->decision !== 'Decline') {
+        } elseif ($request->decision !== 'Accept' && $request->decision !== 'Decline') {
             return response(["message" => "Geen geldige keuze gemaakt"], 400);
         }
         // dd($id, $friendRequest, $user->name, $user->id, $request->all());    
@@ -75,11 +93,16 @@ class ApiUserFriendController extends Controller
      */
     public function store(StoreUserFriendRequest $request)
     {
-        if (!$request->all()) return response(["message" => "Geen vriendschapsverzoek ontvangen"], 400);
-        if ($request->friend_id == Auth()->user()->id) return response(["message" => "Je kan jezelf niet toevoegen als vriend"], 400);
-        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 0)->exists()) return response(["message" => "Je hebt al een verzoek gestuurd naar deze gebruiker"], 400);
-        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 1)->exists()) return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
-        if (UserFriend::where('user_id', $request->friend_id)->where('friends_id', Auth()->user()->id)->where('is_mutual', 1)->exists()) return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
+        if (!$request->all())
+            return response(["message" => "Geen vriendschapsverzoek ontvangen"], 400);
+        if ($request->friend_id == Auth()->user()->id)
+            return response(["message" => "Je kan jezelf niet toevoegen als vriend"], 400);
+        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 0)->exists())
+            return response(["message" => "Je hebt al een verzoek gestuurd naar deze gebruiker"], 400);
+        if (UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $request->friend_id)->where('is_mutual', 1)->exists())
+            return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
+        if (UserFriend::where('user_id', $request->friend_id)->where('friends_id', Auth()->user()->id)->where('is_mutual', 1)->exists())
+            return response(["message" => "Je bent al vrienden met deze gebruiker"], 400);
 
         $user = Auth()->user();
 
@@ -121,11 +144,14 @@ class ApiUserFriendController extends Controller
         $user = Auth()->user();
 
         $friendRelation = UserFriend::where('user_id', $user->id)->where("friends_id", $id)->first();
-        if(!$friendRelation) return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);
+        if (!$friendRelation)
+            return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);
         // dd($friendRelation->id);/?
         $userFriend = UserFriend::where('user_id', $friendRelation->friends_id)->where("friends_id", $user->id)->first();
-        if($userFriend->is_mutual == 0) return response(["message" => "Je kan geen vriendschapsverzoek verwijderen"], 400);
-        if(!$userFriend) return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);  
+        if ($userFriend->is_mutual == 0)
+            return response(["message" => "Je kan geen vriendschapsverzoek verwijderen"], 400);
+        if (!$userFriend)
+            return response(["message" => "Kan de vriendschap met id " . $id . " niet vinden"], 404);
         // dd($friendRelation, $userFriend);
         $friendRelation->delete();
         $userFriend->delete();

@@ -55,7 +55,8 @@ class ApiUserFriendController extends Controller
     public function requests(): Response
     {
         $user = Auth()->user();
-        $friends = UserFriend::where('friends_id', $user->id)->where('is_mutual', 0)->get();
+        $friends = UserFriend::where('friends_id', $user->id)->where('is_mutual', 0)->join('users', 'user_friends.user_id', '=', 'users.id')
+        ->get();
         // dd($friends);
         return Response($friends, 200);
     }

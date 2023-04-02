@@ -28,17 +28,24 @@ class ApiUserFriendController extends Controller
     }
     public function socialFriends(string $provider): Response
     {
+        $user = Auth()->user();
         if ($provider === "facebook") {
             $users = User::where('facebook_id', '!=', null)->get();
         } else if ($provider === "google") {
             $users = User::where('google_id', '!=', null)->get();
         } else if ($provider === "whatsapp") {
             $users = User::where('phone_number', '!=', null)->get();
+            foreach ($users as $key => $friend) {
+
+                $relation = UserFriend::where('user_id', $user->id)->where('friends_id', $friend->id)->first() || UserFriend::where('user_id', $friend->id)->where('friends_id', $user->id)->first();
+                if ($relation) {
+                    unset($users[$key]);
+                }
+            }
         } else {
             return response(["message" => "Provider " . $provider . " is niet ondersteund"], 404);
         }
         // dd($users);
-        $user = Auth()->user();
 
         // $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->get();
 
@@ -107,7 +114,7 @@ class ApiUserFriendController extends Controller
         $user = Auth()->user();
 
         $friendRequest = UserFriend::firstOrCreate(["user_id" => $user->id, "friends_id" => $request->friend_id]);
-        dd($friendRequest);
+        // dd($friendRequest);
         $friend = User::find($request->friend_id);
         return Response(["message" => "Vriendschapsverzoek naar " . $friend->name . " verstuurd"], 201);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\RoleController;
@@ -22,12 +23,16 @@ use App\Http\Controllers\PermissionController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/velden', function () {
-
-    return view('velden');
-
+Route::get('/ws', function () {
+    // event(new App\Events\chatMessage('Hello World'));
+    return View('ws');
 });
+Route::get('/wse', function () {
+    event(new App\Events\chatMessage('Hello World'));
+    return View('ws');
+});
+
+
 
 
 Route::middleware([
@@ -41,7 +46,7 @@ Route::middleware([
             return view('dashboard');
         }
     )->name('dashboard');
-    Route::resource('velden', VeldController::class);
+
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
@@ -85,6 +90,9 @@ Route::middleware([
     Route::get('/locaties/{id}/edit', [LocatieController::class, 'edit'])->name('locaties.edit');
     Route::post('/locaties', [LocatieController::class, 'store'])->name('locaties.store');
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
-    
+
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
+    Route::post('/ws', [ChatController::class, 'store'])->name('ws.store');
+    Route::post('/ws/typing', [ChatController::class, 'typing'])->name('ws.typing');
+    
 });

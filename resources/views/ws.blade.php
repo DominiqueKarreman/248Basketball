@@ -34,17 +34,45 @@
 <script type="module">
    
     // let chat = document.getElementById('chat');
-   
+    let channel = Echo.join("presence-chat.1")
+    .here((users) => {
+        console.log(users);
+    })
+    .joining((user) => {
+        console.log(user.name, "joined");
+    })
+    .leaving((user) => {
+        console.log(user.name, "left");
+    })
+    .listen(".chatMessage", (e) => {
+        console.log(e.message);
+    })
+    .listenForWhisper("typing", (e) => {
+        console.log(e);
+    });
+
+
+    document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    let message = document.getElementById("message").value;
+    try {
+    axios.post("/ws", {
+        message: message,
+    });
+} catch (e) {
+    console.log(e);
+}
+    document.getElementById("message").value = "";
+});
 
     document.getElementById("message").oninput = (e) => {
-    console.log(e)
+
     if (document.getElementById("message").value.length == 1 ) {
-        axios.post("/ws/typing", {
-            typing: true,
-            username: "{{ Auth()->user()->name }} ",
-            message: null
-        });
-    
+        channel.whisper('typing', {
+        typing: true,
+        username: "{{ Auth()->user()->name }} ",
+        message: null
+    });
     }
 };
 

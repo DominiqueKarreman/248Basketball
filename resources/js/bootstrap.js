@@ -30,3 +30,4 @@ window.Echo = new Echo({
     encrypted: false,
     enabledTransports: ["ws", "wss"],
 });
+console.log(window.location.hostname)

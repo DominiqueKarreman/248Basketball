@@ -5,9 +5,15 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Websockets\SocketHandler\UpdatePostSocketHandler;
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
 use App\Http\Controllers\PermissionController;
+
+use App\Websockets\SocketHandler\BaseSocketHandler;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -94,5 +100,5 @@ Route::middleware([
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
     Route::post('/ws', [ChatController::class, 'store'])->name('ws.store');
     Route::post('/ws/typing', [ChatController::class, 'typing'])->name('ws.typing');
-    
 });
+WebSocketsRouter::webSocket('/socket/update-post', BaseSocketHandler::class);

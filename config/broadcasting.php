@@ -39,7 +39,7 @@ return [
 
                 'encrypted' => false,
                 'useTLS' => false,
-                "host" => '127.0.0.1',
+                "host" => '172.20.10.4',
                 "port" => 6001,
                 "scheme" => 'http',
             ],

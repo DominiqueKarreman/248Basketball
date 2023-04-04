@@ -43,11 +43,10 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        if (!$request->message == null) {
+       
 
             event(new chatMessage($request->message));
-        }
+       
 
         redirect()->back();
 

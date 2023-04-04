@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [UserController::class, 'showApi']);
     //velden endpoints 
     Route::get('/velden', [ApiVeldController::class, 'index']);
-    Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
+    Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);  
 
     Route::get("/friends", [ApiUserFriendController::class, "index"]);
     Route::post("/friends", [ApiUserFriendController::class, "store"]);

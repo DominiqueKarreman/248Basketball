@@ -32,7 +32,7 @@ class chatMessage implements ShouldBroadcast
     public function broadcastOn()
     {
 
-        return new PresenceChannel('presence-chat.1');
+    return new PresenceChannel('presence-chat.1');
 
     }
 

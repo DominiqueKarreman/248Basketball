@@ -149,8 +149,9 @@
 
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-[#EDB12C] dark:text-blue-500 hover:underline">Edit
+                                <a href="{{ route('users.edit', $user->id) }}"
+                                    class="font-medium
+                                    text-[#EDB12C] dark:text-blue-500 hover:underline">Edit
                                     user</a>
                             </td>
                         </tr>

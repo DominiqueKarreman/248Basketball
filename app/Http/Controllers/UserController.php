@@ -170,7 +170,6 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->geboorte_datum = $request->geboorte_datum;
-        $user->password = Hash::make($request->password);
         $user->save();
         // Redirect back to the index page
         return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');

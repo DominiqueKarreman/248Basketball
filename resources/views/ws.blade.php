@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    <form action="{{ route('ws.store') }}" id="form" method="POST">
+    <form  id="form" method="POST">
         @csrf
         <input type="text" name="message" id="message">
         <button type="submit" form="form">Send</button>

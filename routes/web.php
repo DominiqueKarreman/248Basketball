@@ -28,6 +28,10 @@ Route::get('/velden', function () {
     return view('velden');
 
 });
+Route::get('/ws', function () {
+   
+    return View('ws');
+});
 
 
 Route::middleware([

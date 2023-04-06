@@ -61,9 +61,9 @@
         console.log("error", err);
     };
     ws.onmessage = (e) => {
-        console.log(JSON.parse(e.data).data);
+        console.log(JSON.parse(e.data).message);
         let li = document.createElement("li");
-        li.innerHTML = JSON.parse(e.data).data;
+        li.innerHTML = JSON.parse(e.data).message;
         document.getElementById("list").appendChild(li);
 
     };

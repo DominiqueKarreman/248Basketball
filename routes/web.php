@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\LocatieController;
-use App\Http\Controllers\RoleController;
+use App\Models\ChatMessage;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
 
 /*
@@ -23,14 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/velden', function () {
-
-    return view('velden');
-
-});
 Route::get('/ws', function () {
-   
-    return View('ws');
+    $user =  Auth::user();
+    $messages = ChatMessage::where('from_user', $user->id)->orWhere('to_user', $user->id)->get();
+    return View('ws', ['messages' => $messages]);
 });
 
 
@@ -45,7 +42,7 @@ Route::middleware([
             return view('dashboard');
         }
     )->name('dashboard');
-    Route::resource('velden', VeldController::class);
+ 
     // Route::resource('users', UserController::class);
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');

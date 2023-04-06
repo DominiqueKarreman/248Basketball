@@ -12,12 +12,18 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    <form  id="form" method="POST">
+    <form id="form" method="POST">
         @csrf
         <input type="text" name="message" id="message">
         <button type="submit" form="form">Send</button>
         <div id="chat">
-            <ul id="list"></ul>
+            <ul id="list">
+                @foreach ($messages as $message)
+                    <li>{{ $message->message }}</li>
+                @endforeach
+
+
+            </ul>
         </div>
 
 </head>
@@ -41,7 +47,7 @@
     // AuthKey = new Buffer(AuthKey).toString("base64");
     const userparams = userParams(`{{ Auth::user()->id }}`, 1);
     let link =
-        `ws://116.203.134.102:6001/chat/private/${userparams}?appKey=248basketball_key&AuthIdentifier=${AuthIdentifier}&AuthKey=${AuthKey}`;
+        `ws://192.168.2.32:6001/chat/private/${userparams}?appKey=248basketball_key&AuthIdentifier=${AuthIdentifier}&AuthKey=${AuthKey}`;
     const ws = new WebSocket(link);
 
     ws.onopen = () => {

@@ -20,8 +20,17 @@ class ApiUserFriendController extends Controller
         //
         $user = Auth()->user();
         // dd($user);
-        $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->join('users', 'user_friends.friends_id', '=', 'users.id')->select('user_friends.*', 'users.name', 'users.profile_photo_path','user_friends.id as id')->get();
-
+        $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->join('users', 'user_friends.friends_id', '=', 'users.id')->select('user_friends.*', 'users.name', 'users.profile_photo_path', 'user_friends.id as id')->get();
+        foreach ($friends as $friend) {
+            if ($friend->profile_photo_path) {
+                $photo = "http://116.203.134.102/storage/" . $user->profile_photo_path;
+            } else {
+                $photo = $friend->profile_photo_url;
+                $photo = str_replace("7F9CF5", "EDB12C", $photo);
+                $photo = str_replace("EBF4FF", "222222", $photo);
+            }
+            $friend->profile_pic = $photo;
+        }
         // dd($user->name, $user->id);
         // dd($friends);
         return Response($friends, 200);
@@ -56,7 +65,7 @@ class ApiUserFriendController extends Controller
     {
         $user = Auth()->user();
         $friends = UserFriend::where('friends_id', $user->id)->where('is_mutual', 0)->join('users', 'user_friends.user_id', '=', 'users.id')->select('user_friends.*', 'users.*', 'user_friends.id as id')->get();
-           
+
         // dd($friends);
         return Response($friends, 200);
     }

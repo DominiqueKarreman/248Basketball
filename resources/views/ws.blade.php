@@ -70,7 +70,7 @@
 
     let message = document.getElementById("message")
     message.addEventListener('input', function(e) {
-        console.log(e.target.value)
+        console.log(e.target.value, e.target.value.length)
 
         if (e.target.value.length == 0) {
             ws.send(JSON.stringify({

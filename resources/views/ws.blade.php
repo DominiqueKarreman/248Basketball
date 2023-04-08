@@ -71,12 +71,23 @@
     let message = document.getElementById("message")
     message.addEventListener('input', function(e) {
         console.log(e.target.value)
-        ws.send(JSON.stringify({
-            message: "is typing...",
-            from: "{{ Auth::user()->id }}",
-            to: 1,
-            typing : true
-        }));
+
+        if (e.target.value.length == 0) {
+            ws.send(JSON.stringify({
+                message: "is typing...",
+                from: "{{ Auth::user()->id }}",
+                to: 1,
+                typing: false
+            }));
+        }
+        if(e.target.value.length == 1){
+            ws.send(JSON.stringify({
+                message: "is typing...",
+                from: "{{ Auth::user()->id }}",
+                to: 1,
+                typing: true
+            }));
+        }
     })
 
     document.getElementById("form").addEventListener("submit", function(e) {

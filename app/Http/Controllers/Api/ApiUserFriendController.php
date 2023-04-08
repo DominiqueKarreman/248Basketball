@@ -21,11 +21,16 @@ class ApiUserFriendController extends Controller
         $user = Auth()->user();
         // dd($user);
         $friends = UserFriend::where('user_id', $user->id)->where('is_mutual', 1)->join('users', 'user_friends.friends_id', '=', 'users.id')->select('user_friends.*', 'users.name', 'users.profile_photo_path', 'user_friends.id as id')->get();
+      
         foreach ($friends as $friend) {
-            if ($friend->profile_photo_path) {
-                $friend->photo = "http://116.203.134.102/storage/" . $friend->profile_photo_path;
+            $friendObject = User::where('id', $friend->friends_id)->first();
+
+            if ($friendObject->profile_photo_path) {
+                
+                $friend->photo = "http://116.203.134.102/storage/" . $friendObject->profile_photo_path;
             } else {
-                $friend->photo = $friend->profile_photo_url;
+                // dd($friendObject->profile_photo_url);
+                $friend->photo = $friendObject->profile_photo_url;
                 $friend->photo = str_replace("7F9CF5", "EDB12C", $friend->photo);
                 $friend->photo = str_replace("EBF4FF", "222222", $friend->photo);
             }

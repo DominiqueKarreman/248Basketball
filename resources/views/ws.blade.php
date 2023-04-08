@@ -68,9 +68,9 @@
 
     };
 
-    let message = document.getElementById("onchange")
+    let message = document.getElementById("message")
     message.addEventListener('input', function(e) {
-        console.log(message.value)
+        console.log(e.target.value)
         ws.send(JSON.stringify({
             message: "is typing...",
             from: "{{ Auth::user()->id }}",

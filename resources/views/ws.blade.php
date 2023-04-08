@@ -68,7 +68,16 @@
 
     };
 
-    let message = document.getElementById("message")
+    let message = document.getElementById("onchange")
+    message.addEventListener('input', function(e) {
+        console.log(message.value)
+        ws.send(JSON.stringify({
+            message: "is typing...",
+            from: "{{ Auth::user()->id }}",
+            to: 1,
+            typing : true
+        }));
+    })
 
     document.getElementById("form").addEventListener("submit", function(e) {
         e.preventDefault();

@@ -38,7 +38,7 @@ class ApiUserController extends Controller
           array_push($nonVriendenGebruikers, $gebruiker);
         }
 
-        return response($gebruikers);
+        return response($nonVriendenGebruikers);
     }
 
     /**

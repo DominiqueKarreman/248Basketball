@@ -6,12 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\ApiVeldController;
 
 use App\Http\Controllers\Api\ApiEventController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\Api\ApiUserFriendController;
 use App\Http\Controllers\Api\ApiChatMessageController;
-=======
 use App\Http\Controllers\Api\ApiUserController;
->>>>>>> Stashed changes
 
 /*
 |--------------------------------------------------------------------------

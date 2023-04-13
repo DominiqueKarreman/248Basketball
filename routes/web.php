@@ -24,12 +24,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< Updated upstream
 Route::get('/ws', function () {
     $user =  Auth::user();
     $messages = ChatMessage::where('from_user', $user->id)->orWhere('to_user', $user->id)->get();
     return View('ws', ['messages' => $messages]);
 });
 
+=======
+>>>>>>> Stashed changes
 
 Route::middleware([
     'auth:sanctum',
@@ -42,7 +45,11 @@ Route::middleware([
             return view('dashboard');
         }
     )->name('dashboard');
+<<<<<<< Updated upstream
  
+=======
+
+>>>>>>> Stashed changes
     // Route::resource('users', UserController::class);
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');

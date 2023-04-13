@@ -6,8 +6,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\ApiVeldController;
 
 use App\Http\Controllers\Api\ApiEventController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\Api\ApiUserFriendController;
 use App\Http\Controllers\Api\ApiChatMessageController;
+=======
+use App\Http\Controllers\Api\ApiUserController;
+>>>>>>> Stashed changes
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/events/{id}', [ApiEventController::class, 'destroy']);
     //users endpoints
     Route::get('/user', [UserController::class, 'showApi']);
+    Route::get('/gebruikers', [ApiUserController::class, 'gebruikers']);
     //velden endpoints 
     Route::get('/velden', [ApiVeldController::class, 'index']);
     Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);

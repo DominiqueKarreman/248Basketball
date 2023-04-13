@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -13,9 +13,26 @@ class ApiUserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function gebruikers(): Response
     {
         //
+        $gebruikers = User::select([ 'name', 'email', 'profile_photo_path' ])->get();
+        //for each with key value pairs
+        
+        foreach($gebruikers as $gebruikerIndex => $gebruiker){
+            // $gebruiker->img_url = "http:// 
+            if(!$gebruiker->profile_photo_path){
+                $gebruiker->photo = $gebruiker->profile_photo_url;
+                $gebruiker->photo = str_replace("7F9CF5", "EDB12C",   $gebruiker->photo);
+                $gebruiker->photo = str_replace("EBF4FF", "222222",   $gebruiker->photo);
+                unset($gebruikers[$gebruikerIndex]['profile_photo_url']);
+            } else {
+                $gebruiker->photo = "http://116.203.134.102/storage/" . $gebruiker->profile_photo_path;
+            }
+            $gebruiker = ["name" => $gebruiker->name, 'email' => $gebruiker->email, 'photo' => $gebruiker->photo];
+        }
+
+        return response($gebruikers);
     }
 
     /**

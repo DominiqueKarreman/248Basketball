@@ -19,12 +19,12 @@ class ApiVeldController extends Controller
         $velden = Veld::all();
         return response($velden, 200);
     }
-    public function locationSorted($lat, $long) : Response
+    public function locationSorted($lat, $long): Response
     {
         $latitude = $lat;
         $longitude = $long;
         $tempVeld = new Veld();
-        $velden = $tempVeld->sortWithDistance($latitude, $longitude);    
+        $velden = $tempVeld->sortWithDistance($latitude, $longitude);
         return response($velden, 200);
     }
     /**
@@ -46,9 +46,24 @@ class ApiVeldController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Veld $veld): Response
+    public function show($id): Response
     {
         //
+        if (!auth()->user()->hasPermissionTo('view velden')) {
+            return Response(["message" => 'You are not authorized to view velden'], 403);
+        }
+        $veld = veld::find($id);
+        if ($veld) {
+            $responseBody = [
+                'veld' => $veld,
+            ];
+            return Response($responseBody, 200);
+        } else {
+            $responseBody = [
+                'message' => 'veld not found',
+            ];
+            return Response($responseBody, 404);
+        }
     }
 
     /**

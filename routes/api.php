@@ -27,6 +27,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //add protected routes here
     Route::post('/logout', [UserController::class, 'logout']);
+    Route::put('/users/edit/{id}', [UserController::class, 'update']);
 
     //events endpoints
     Route::get('/events', [ApiEventController::class, 'index']);
@@ -38,6 +39,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //velden endpoints 
     Route::get('/velden', [ApiVeldController::class, 'index']);
     Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
-    
-    
+
+
 });

@@ -170,6 +170,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->geboorte_datum = $request->geboorte_datum;
+        // $user->profile_picture = $request->profile_picture;
         $user->save();
         // Redirect back to the index page
         return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');

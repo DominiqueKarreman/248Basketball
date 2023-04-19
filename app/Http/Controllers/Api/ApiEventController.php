@@ -73,6 +73,7 @@ class ApiEventController extends Controller
         if ($event) {
             $event->latitude = $event->getLatLong()['latitude'];
             $event->longitude = $event->getLatLong()['longitude'];
+            $event->img_url = "http://116.203.134.102/" . $event->img_url;
             $responseBody = [
                 'event' => $event,
             ];

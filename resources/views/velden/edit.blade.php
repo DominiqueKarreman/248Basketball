@@ -17,17 +17,8 @@
             @csrf
             @method('PUT')
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                    Posts
-                    @can('create', App\Models\Post::class)
-                    <a href="{{ route('posts.create') }}"
-                    class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                    @endcan
-                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                </caption> --}}
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-
                         <th scope="col" class="py-3 px-6">
                             Naam
                         </th>
@@ -47,66 +38,57 @@
                         <th scope="col" class="py-3 w-[12vw] px-6">
                             Tijden
                         </th>
-
-
                         <th scope="col" class="py-3 px-6">
                             Conditie
                         </th>
-
-
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-
+                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <input type="text" name="naam" id="naam" value="{{ $veld->naam }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <input type="text" name="adres" id="adres" value="{{ $veld->adres }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <input type="text" name="plaats" id="plaats" value="{{ $veld->plaats }}"
-                                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+                                class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <input name="competitie" id="checked-checkbox" type="checkbox" value="1"
                                 {{ $veld->competitie ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <input name="is_active" id="checked-checkbox" type="checkbox" value="1"
                                 {{ $veld->is_active ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-gray-300 rounded focus:ring-[#EDB12C] dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
                         <th scope="row"
-                            class="py-4 w-full px-6 font-medium text-gray-900 whitespace-nowrap flex dark:text-white">
-
+                            class="py-4 w-full px-6 font-medium text-[#EDB12C] whitespace-nowrap flex dark:text-white">
                             <input type="time" name="openingstijden" id="openingstijden"
                                 value="{{ $veld->openingstijden }}"
-                                class="block  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="block  p-2 text-[#EDB12C] border rounded bg-zinc-800 border-gray-blacked-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <input type="time" name="sluitingstijden" id="sluitingstijden"
                                 value="{{ $veld->sluitingstijden }}"
-                                class="block  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="block  p-2 text-[#EDB12C] border rounded bg-zinc-800 border-gray-blacked-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                         </th>
 
 
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
                             <select name="conditie" id="conditie"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gra bg-zinc-800y-700 dark:black600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option {{ $veld->conditie == 'Slecht' ? 'selected' : '' }} value="Slecht">Slecht
                                 </option>
                                 <option {{ $veld->conditie == 'Voldoende' ? 'selected' : '' }}value="Voldoende">
@@ -115,40 +97,13 @@
                             </select>
 
                         </th>
-
-
-
-                        {{-- <td class="py-4 px-6 text-right">
-                            @can('update', $post)
-                            <a href="{{ route('posts.edit', $post->id) }}"
-                                class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                @endcan
-                                
-                                @can('delete', $post)
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                    class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                </form>
-                                @endcan
-                            </td> --}}
                     </tr>
-
                 </tbody>
             </table>
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6 ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                        Posts
-                        @can('create', App\Models\Post::class)
-                        <a href="{{ route('posts.create') }}"
-                        class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                        @endcan
-                        <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                    </caption> --}}
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
                         Longitude
@@ -174,55 +129,56 @@
             </thead>
             <tbody>
 
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                         <input type="text" name="longitude" id="longitude" value="{{ $veld->longitude }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
                         <input type="text" name="latitude" id="latitude" value="{{ $veld->latitude }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
 
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
                         <input type="text" name="postcode" id="postcode" value="{{ $veld->postcode }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
 
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
                         <input type="text" name="capaciteit" id="capaciteit" value="{{ $veld->capaciteit }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
                         <input type="text" name="aantal_baskets" id="aantal_baskets"
                             value="{{ $veld->aantal_baskets }}"
-                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="block w-full p-2 text-[#EDB12C] bg-zinc-800 border border-black rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                     </th>
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                         <input id="checked-checkbox" type="checkbox" value="1" name="verlichting"
                             {{ $veld->verlichting ? 'checked' : '' }}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                 </tr>
-                <tr class="bg-white w-full border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-zinc-700 w-full border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
-                    <td colspan="6" class="py-2 px-6 font-medium text-gray-900 whitespace-nowrap  dark:text-white">
+                    <td colspan="6"
+                        class="py-2 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
 
                         <div class="searchbarinput ">
 
                             <input onkeydown="return event.key != 'Enter';" type="text" name="search"
                                 id="search" placeholder="Zoek naar een plek"
-                                class="bg-gray-50 border border-gray-300 w-full text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-zinc-800 border border-zinc-800 w-full text-[#EDB12C] placeholder-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray bg-zinc-800-700 dark:black00 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <button type="button" id="searchbutton"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
+                                class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
                         </div>
 
                     </td>
@@ -232,7 +188,7 @@
 
 
         <table class="text-sm text-left w-full text-gray-500 dark:text-gray-400 ">
-            {{-- <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            {{-- <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-white dark:text-white dark:bg-gray-800">
                                     Posts
                                     @can('create', App\Models\Post::class)
                                     <a href="{{ route('posts.create') }}"
@@ -243,18 +199,18 @@
 
             <tbody>
 
-                <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white test border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
                     {{-- <iframe class="map"
                                 src="https://maps.google.com/maps?q=52.37232391185994,5.223880736178714&z=15&output=embed"
                                 width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
                     <div id="map"></div>
                 </tr>
-                <tr class="bg-white test border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-zinc-700 border-zinc-800 test border-b dark:bg-gray-800 dark:border-gray-700">
 
-                    <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap  dark:text-white">
+                    <td class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
                         <button id="submit" type="submit"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Pas
+                            class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Pas
                             aan</button>
 
                         @can('delete', $veld)
@@ -278,7 +234,7 @@
         }
 
         #submit {
-            background-color: #4CAF50;
+            
             padding: 2vh 15vh 2vh 15vh;
             align-self: center;
             justify-self: center;

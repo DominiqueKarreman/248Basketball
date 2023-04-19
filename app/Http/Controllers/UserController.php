@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
-
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -146,12 +146,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($user)
+    public function edit($id)
     {
+        //e.preventDefault();
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
         }
-        $user = User::find($user);
+        $user = User::find($id);
+        $message = $user;
 
         return view('users.edit', [
             'user' => $user
@@ -161,15 +163,16 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $user)
+    public function update(Request $request, $id)
     {
-        // Update the Veld model with the new data from the request
-
-        // ...
-
-
+        // dd($request->all());
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->geboorte_datum = $request->geboorte_datum;
+        $user->save();
         // Redirect back to the index page
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');
     }
     public function changeRoles(Request $request, $id)
     {
@@ -201,7 +204,7 @@ class UserController extends Controller
             $photo = str_replace("EBF4FF", "222222", $photo);
         }
 
-        $response = ["naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];
+        $response = ["id" => $user->id, "naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];
         return Response(
             $response,
             200

@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'name' => 'Dominique Karreman',
             'email' => 'domikar2010@hotmail.com',
             'password' => Hash::make('12345678'),
-            'geboorte_datum' => '2004-18-08'
+            'geboorte_datum' => '2004-18-08',
+            'phone_number' => '+3153872098'
         ]);
         $user->assignRole('admin');
         $user_standard = User::create([

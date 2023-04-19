@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/gebruikers', [ApiUserController::class, 'gebruikers']);
     //velden endpoints 
     Route::get('/velden', [ApiVeldController::class, 'index']);
-    Route::get('/velden/{id}', [ApiEventController::class, 'show']);
+    Route::get('/velden/{id}', [ApiVeldController::class, 'show']);
     Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
 
     Route::get("/friends", [ApiUserFriendController::class, "index"]);
@@ -53,6 +53,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get("/messages", [ApiChatMessageController::class, "index"]);
     Route::get("/messages/{withUser}", [ApiChatMessageController::class, "withUser"]);
-
 });
-

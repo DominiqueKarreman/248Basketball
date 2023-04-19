@@ -29,6 +29,6 @@ class UserSeeder extends Seeder
             'geboorte_datum' => '1999-15-02',
             'phone_number' => '+31611056246'
         ]);
-        $user_standard->assignRole('admin');
+        $user_standard->assignRole('user');
     }
 }

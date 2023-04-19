@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('geboorte_datum');
+            $table->string('phone_number')->nullable();
+            $table->string('online')->nullable();
             
             $table->timestamps();
         });

@@ -10,15 +10,15 @@
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            <caption class="p-5 text-lg font-semibold text-left text-white bg-zinc-700 border-zinc-800 dark:text-white dark:bg-gray-800">
                 Rollen
                 @can('create', Spatie\Permission\Models\Role::class)
                     <a href="{{ route('roles.create') }}"
-                        class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                        class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
                         Naam
@@ -33,17 +33,17 @@
             </thead>
             <tbody>
                 @foreach ($roles as $role)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-zinc-800 border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $role->name }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $role->permissions_count }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             @can('update', $role)
                             @if($role->name !== 'Admin')
                                 <a href="{{ route('roles.edit', $role->id) }}">Edit</a>
@@ -75,7 +75,7 @@
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            <caption class="p-5 text-lg font-semibold text-left text-white bg-zinc-700 border-zinc-800 dark:text-white dark:bg-gray-800">
                 Permissies
                 @can('create', Spatie\Permission\Models\Permission::class)
                     <a href="{{ route('velden.create') }}"
@@ -83,7 +83,7 @@
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
                         Naam
@@ -92,9 +92,9 @@
             </thead>
             <tbody>
                 @foreach ($permissions as $permission)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-zinc-800 border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $permission->name }}
                         </th>
                     </tr>

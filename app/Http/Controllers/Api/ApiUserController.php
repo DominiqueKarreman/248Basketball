@@ -80,7 +80,7 @@ class ApiUserController extends Controller
     {
         $user = Auth()->user()->id;
         $user = User::find($user);
-        if($user->notificationToken == null){
+        if($user->notification_token == null){
             $user->notification_token = $request->notification_token;
             $user->save();
             return response(["message" => "Token updated"], 200);

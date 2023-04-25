@@ -76,7 +76,17 @@ class ApiUserController extends Controller
         ]);
 
     }
-
+    public function notificationToken(Request $request): Response
+    {
+        $user = Auth()->user()->id;
+        $user = User::find($user);
+        if($user->notificationToken == null){
+            $user->notification_token = $request->notification_token;
+            $user->save();
+            return response(["message" => "Token updated"], 200);
+        }
+        return response(['message' => 'Token already exists'], 200);
+    }
     /**
      * Update the specified resource in storage.
      */

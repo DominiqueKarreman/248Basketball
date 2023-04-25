@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('geboorte_datum');
             $table->string('phone_number')->nullable();
             $table->string('online')->nullable();
-            
+            $table->string('notification_token')->nullable();
             $table->timestamps();
         });
     }

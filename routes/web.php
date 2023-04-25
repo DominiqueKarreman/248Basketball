@@ -24,6 +24,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/noti', function () {
+    
+    
+    $channelName = 'news';
+    $recipient= 'ExponentPushToken[fl86hwLCspR3As0SMwa8SZ]';
+    
+    // You can quickly bootup an expo instance
+    $expo = \ExponentPhpSDK\Expo::normalSetup();
+    
+    // Subscribe the recipient to the server
+    $expo->subscribe($channelName, $recipient);
+    
+    // Build the notification data
+    $notification = ['body' => 'Hello World!'];
+    
+    // Notify an interest with a notification
+    $expo->notify([$channelName], $notification);
+    return view('welcome');
+});
+
 
 Route::middleware([
     'auth:sanctum',

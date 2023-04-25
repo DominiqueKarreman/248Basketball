@@ -55,5 +55,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get("/messages/{withUser}", [ApiChatMessageController::class, "withUser"]);
 
     //notification endpoints
-    Route::get("/notification_token", [ApiUserController::class, "notificationToken"]);
+    Route::post("/notification_token", [ApiUserController::class, "notificationToken"]);
 });

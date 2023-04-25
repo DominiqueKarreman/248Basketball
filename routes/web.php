@@ -92,7 +92,7 @@ Route::middleware([
 
         $channelName = 'news';
         $user = Auth()->user()->notification_token;
-    
+    dd($user);
         
         // You can quickly bootup an expo instance
         $expo = \ExponentPhpSDK\Expo::normalSetup();

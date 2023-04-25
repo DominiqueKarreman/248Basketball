@@ -204,7 +204,7 @@ class UserController extends Controller
             $photo = str_replace("EBF4FF", "222222", $photo);
         }
 
-        $response = ["id" => $user->id, "naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];
+        $response = ["id" => $user->id, "naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum, "notification_token" => $user->notification_token, "roles" => $user->getRoleNames()];
         return Response(
             $response,
             200

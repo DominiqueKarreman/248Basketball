@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ChatMessage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -24,25 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/noti', function () {
-    
-    
-    $channelName = 'news';
-    $recipient= 'ExponentPushToken[fl86hwLCspR3As0SMwa8SZ]';
-    
-    // You can quickly bootup an expo instance
-    $expo = \ExponentPhpSDK\Expo::normalSetup();
-    
-    // Subscribe the recipient to the server
-    $expo->subscribe($channelName, $recipient);
-    
-    // Build the notification data
-    $notification = ['body' => 'Hello World!'];
-    
-    // Notify an interest with a notification
-    $expo->notify([$channelName], $notification);
-    return view('welcome');
-});
 
 
 Route::middleware([
@@ -105,4 +87,25 @@ Route::middleware([
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
 
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
+
+    Route::get('/noti', function () {
+
+        $channelName = 'news';
+        $user = Auth()->user()->token;
+      
+        
+        // You can quickly bootup an expo instance
+        $expo = \ExponentPhpSDK\Expo::normalSetup();
+        
+        // Subscribe the recipient to the server
+        $expo->subscribe($channelName, $user);
+        
+        // Build the notification data
+        $notification = ['body' => 'Hello World!'];
+        
+        // Notify an interest with a notification
+        $expo->notify([$channelName], $notification);
+        return view('welcome');
+    });
+    
 });

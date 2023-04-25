@@ -91,8 +91,8 @@ Route::middleware([
     Route::get('/noti', function () {
 
         $channelName = 'news';
-        $user = Auth()->user()->token;
-        dd($user);
+        $user = Auth()->user()->notification_token;
+    
         
         // You can quickly bootup an expo instance
         $expo = \ExponentPhpSDK\Expo::normalSetup();

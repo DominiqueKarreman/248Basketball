@@ -92,20 +92,19 @@ Route::middleware([
 
         $channelName = 'news';
         $user = Auth()->user()->notification_token;
-    dd($user);
-        
+        // dd($user);
+
         // You can quickly bootup an expo instance
         $expo = \ExponentPhpSDK\Expo::normalSetup();
-        
+
         // Subscribe the recipient to the server
         $expo->subscribe($channelName, $user);
-        
+
         // Build the notification data
         $notification = ['body' => 'Hello World!'];
-        
+
         // Notify an interest with a notification
         $expo->notify([$channelName], $notification);
         return view('welcome');
     });
-    
 });

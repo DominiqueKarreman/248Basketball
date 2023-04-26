@@ -3,12 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Api\ApiVeldController;
+use App\Http\Controllers\Api\ApiUserController;
 
+use App\Http\Controllers\Api\ApiVeldController;
 use App\Http\Controllers\Api\ApiEventController;
 use App\Http\Controllers\Api\ApiUserFriendController;
 use App\Http\Controllers\Api\ApiChatMessageController;
-use App\Http\Controllers\Api\ApiUserController;
+use App\Http\Controllers\Api\ApiUserNotificationTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get("/messages/{withUser}", [ApiChatMessageController::class, "withUser"]);
 
     //notification endpoints
-    Route::post("/notification_token", [ApiUserController::class, "notificationToken"]);
+    
+    Route::get("/notification_token", [ApiUserNotificationTokenController::class, "index"]);
+    Route::post("/notification_token", [ApiUserNotificationTokenController::class, "store"]);
+    Route::delete("/notification_token/{id}", [ApiUserNotificationTokenController::class, "destroy"]);
 });

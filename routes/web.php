@@ -9,6 +9,7 @@ use App\Http\Controllers\VeldController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PickupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::middleware([
         }
     )->name('dashboard');
     // Route::resource('users', UserController::class);
-
+    Route::resource('pickups', PickupController::class);
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
     Route::get('/velden/{veld}', [VeldController::class, 'show'])->name('velden.show');

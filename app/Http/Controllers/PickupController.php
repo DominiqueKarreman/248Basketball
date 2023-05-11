@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use view;
 use App\Models\User;
 use App\Models\Veld;
+use App\Models\Group;
 use App\Models\Pickup;
 use App\Models\Locatie;
+use App\Models\PickupPlayer;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePickupRequest;
@@ -29,18 +32,41 @@ class PickupController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function createPickupGame(Request $request)
     {
-        //
-        $velden = Veld::all();
-        $pickups = Pickup::all();
-        $locaties = Locatie::all();
-        return response(view('pickups.create', [
-            "pickups" => $pickups,
-            "velden" => $velden,
-            "locaties" => $locaties,
-            "users" => User::all()
-        ]));
+        $user = auth()->user();
+        $group = new Group([
+            'name' => $request->group_name,
+            'user_id' => $user->id,
+        ]);
+        $group->save();
+        $pickup = new Pickup([
+            'is_active' => false,
+            'is_official' => false,
+            'is_private' => $request->is_private ?? true,
+            'name' => $request->name,
+            'veld' => $request->veld,
+            'max_players' => $request->max_players,
+            'current_players' => 0,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'description' => $request->description,
+            'group' => $group->id,
+            'creator' => auth()->id(),
+        ]);
+        $pickup->save();
+        $playerIds = $request->player_ids;
+        foreach ($playerIds as $playerId) {
+            $pickupPlayer = new PickupPlayer([
+                'group' => $group->id,
+                'user' => $playerId,
+            ]);
+            $pickupPlayer->save();
+        }
+        return response()->json([
+            'message' => 'Pickup game created successfully',
+            'pickup' => $pickup,
+        ], 201);
     }
 
     /**

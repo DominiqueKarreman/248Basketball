@@ -20,7 +20,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->string('geboorte_datum');
+            $table->string('geboorte_datum')->default('01-01-2000');
             $table->string('phone_number')->nullable();
             $table->string('online')->nullable();
             $table->string('notification_token')->nullable();

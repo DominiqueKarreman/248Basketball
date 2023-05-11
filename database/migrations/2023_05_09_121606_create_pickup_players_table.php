@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('group')->constrained()->references('id')->on('groups');
             $table->foreignId('user')->constrained()->references('id')->on('users');
+            $table->foreignId('pickup')->constrained()->references('id')->on('pickups');
+            $table->boolean('accepted')->default(false);
             $table->integer('current_wins')->default(0);
             $table->integer('current_losses')->default(0);
             $table->integer('current_misses')->default(0);

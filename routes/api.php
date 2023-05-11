@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //users endpoints
     Route::get('/user', [UserController::class, 'showApi']);
     Route::get('/gebruikers', [ApiUserController::class, 'gebruikers']);
-    //velden endpoints 
+    //velden endpoints
     Route::get('/velden', [ApiVeldController::class, 'index']);
     Route::get('/velden/{id}', [ApiVeldController::class, 'show']);
     Route::get('/velden/sort/{lat}/{long}', [ApiVeldController::class, 'locationSorted']);
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get("/messages/{withUser}", [ApiChatMessageController::class, "withUser"]);
 
     //notification endpoints
-    
+
     Route::get("/notification_token", [ApiUserNotificationTokenController::class, "index"]);
     Route::post("/notification_token", [ApiUserNotificationTokenController::class, "store"]);
     Route::delete("/notification_token/{id}", [ApiUserNotificationTokenController::class, "destroy"]);
@@ -65,5 +65,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Route::resource('pickups', ApiPickupController::class);
 
     Route::get('pickups', [ApiPickupController::class, "index"]);
+    Route::post('pickups', [ApiPickupController::class, "createPickupGame"]);
+    Route::get('pickups/requests', [ApiPickupController::class, "getPickupRequests"]);
+    Route::post('pickups/{id}/invitationDecide', [ApiPickupController::class, "DecidePickupInvitation"]);
+    Route::delete('/pickups/{id}/players/{userId}', [ApiPickupController::class, "removePlayerFromPickup"]);
+    Route::post('pickups/{id}/invite', [ApiPickupController::class, "inviteToPickup"]);
     Route::get('pickups/{id}', [ApiPickupController::class, "show"]);
+    Route::get('pickups/{id}/players', [ApiPickupController::class, "getPickupPlayers"]);
+    Route::put('/pickups/{id}', [ApiPickupController::class, "updatePickup"]);
 });

@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_official')->default(false);
+            $table->boolean('is_private')->default(true);
             $table->string('name');
             $table->foreignId('veld')->constrained()->references('id')->on('velden');
             $table->integer('max_players');
-            $table->integer('current_players');
-            $table->time('start_time'); 
+            $table->integer('current_players')->default(0);
+            $table->time('start_time');
             $table->time('end_time');
             $table->string('description');
             $table->foreignId('group')->constrained()->references('id')->on('groups');

@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ApiVeldController;
 use App\Http\Controllers\Api\ApiEventController;
 use App\Http\Controllers\Api\ApiUserFriendController;
 use App\Http\Controllers\Api\ApiChatMessageController;
+use App\Http\Controllers\Api\ApiPickupController;
 use App\Http\Controllers\Api\ApiUserNotificationTokenController;
 
 /*
@@ -60,4 +61,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get("/notification_token", [ApiUserNotificationTokenController::class, "index"]);
     Route::post("/notification_token", [ApiUserNotificationTokenController::class, "store"]);
     Route::delete("/notification_token/{id}", [ApiUserNotificationTokenController::class, "destroy"]);
+
+    // Route::resource('pickups', ApiPickupController::class);
+
+    Route::get('pickups', [ApiPickupController::class, "index"]);
+    Route::get('pickups/{id}', [ApiPickupController::class, "show"]);
 });

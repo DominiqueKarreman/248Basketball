@@ -337,23 +337,6 @@
             height: 30vh;
         }
     </style>
-    <script>
-        // example longitude
-       
-        let file = document.getElementById('dropzone-file')
-        file.addEventListener('change', function() {
-            console.log(this.files[0])
-            const reader = new FileReader();
-
-            reader.addEventListener('load', function() {
-                document.getElementById('img_preview').setAttribute("src", this.result);
-            })
-            document.getElementById('img_preview').classList.remove('hidden');
-            reader.readAsDataURL(this.files[0]);
-        });
-
-
-    </script>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">
         {{-- {{ $posts->links() }} --}}
     </div>

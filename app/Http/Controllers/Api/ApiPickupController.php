@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Pickup;
 use App\Models\PickupPlayer;
 use Illuminate\Http\Request;
+use App\Models\VeldStatistic;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -50,7 +51,30 @@ class ApiPickupController extends Controller
 
         return response($pickupReturn);
     }
+    public function activatePickup($id)
+    {
+        $user = auth()->user();
+        try {
+            $pickup = Pickup::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Pickup: ' . $id .  " bestaat niet",
+            ], 404);
+        }
+        if ($user->id != $pickup->creator) {
+            return response()->json([
+                'error' => 'Alleen de eigenaar kan de pickup activeren',
+            ], 403);
+        }
 
+        $pickup->is_active = true;
+        $pickup->save();
+
+        return response()->json([
+            'message' => 'Pickup game activated successfully.',
+            'pickup' => $pickup,
+        ]);
+    }
     public function createPickupGame(Request $request)
     {
         $user = auth()->user();
@@ -267,6 +291,58 @@ class ApiPickupController extends Controller
             'players' => $players,
         ]);
     }
+
+    public function addGameResult(Request $request, $id)
+    {
+        $user = auth()->user();
+
+        try {
+            $pickup = Pickup::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Pickup: ' . $id .  " bestaat niet",
+            ], 404);
+        }
+
+        if ($user->id != $pickup->creator) {
+            return response()->json([
+                'error' => 'Alleen de eigenaar kan game resultaten doorgeven',
+            ], 403);
+        }
+        if (!$request->winners || !$request->losers) {
+            return response()->json([
+                'error' => 'Geen winnaars of verliezers meegegeven',
+            ], 404);
+        }
+
+        $winnerIds = $request->winners;
+        $loserIds = $request->losers;
+
+        $winners = PickupPlayer::whereIn('user', $winnerIds)
+            ->where('pickup', $pickup->id)
+            ->get();
+
+        $losers = PickupPlayer::whereIn('user', $loserIds)
+            ->where('pickup', $pickup->id)
+            ->get();
+
+        foreach ($winners as $winner) {
+            $winner->current_wins++;
+            $winner->save();
+        }
+
+        foreach ($losers as $loser) {
+            $loser->current_losses++;
+            $loser->save();
+        }
+
+        return response()->json([
+            'message' => 'Game result added successfully.',
+            'winners' => $winners,
+            'losers' => $losers,
+        ]);
+    }
+
     public function updatePickup(Request $request, $id)
     {
         $user = auth()->user();
@@ -289,6 +365,77 @@ class ApiPickupController extends Controller
 
         return response()->json([
             'message' => 'Pickup updated successfully',
+            'pickup' => $pickup,
+        ]);
+    }
+
+    public function savePickupPlayerStats($id)
+    {
+        try {
+            $pickup = Pickup::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Pickup bestaat niet',
+            ], 404);
+        }
+
+        $pickupPlayers = PickupPlayer::all();
+        foreach ($pickupPlayers as $pickupPlayer) {
+            $veldStatistic = VeldStatistic::where('user', $pickupPlayer->user)
+                ->where('veld', $pickup->veld)
+                ->first();
+
+            if (!$veldStatistic) {
+                $veldStatistic = new VeldStatistic();
+                $veldStatistic->user = $pickupPlayer->user;
+                $veldStatistic->veld = $pickup->veld;
+            }
+
+            $veldStatistic->wins += $pickupPlayer->current_wins;
+            $veldStatistic->losses += $pickupPlayer->current_losses;
+            $veldStatistic->games_played += $pickupPlayer->current_games_played;
+
+            if ($pickupPlayer->misses) {
+                $veldStatistic->misses += $pickupPlayer->current_misses;
+            }
+
+            if ($pickupPlayer->makes) {
+                $veldStatistic->makes += $pickupPlayer->current_makes;
+            }
+
+            if ($pickupPlayer->points) {
+                $veldStatistic->points += $pickupPlayer->current_points;
+            }
+
+            $veldStatistic->save();
+        }
+
+        return response()->json([
+            'message' => 'Pickup player stats saved to veld statistics successfully.',
+        ]);
+    }
+
+    public function deactivatePickup($id)
+    {
+        $user = auth()->user();
+        try {
+            $pickup = Pickup::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Pickup bestaat niet',
+            ], 404);
+        }
+        if ($user->id != $pickup->creator) {
+            return response()->json([
+                'error' => 'Alleen de eigenaar kan een pickup deactiveren',
+            ], 403);
+        }
+
+        $pickup->is_active = false;
+        $pickup->save();
+
+        return response()->json([
+            'message' => 'Pickup game deactivated successfully.',
             'pickup' => $pickup,
         ]);
     }

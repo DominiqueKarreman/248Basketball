@@ -17,14 +17,7 @@
             @csrf
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                {{-- <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-white dark:text-white dark:bg-gray-800">
-                    Posts
-                    @can('create', App\Models\Post::class)
-                    <a href="{{ route('posts.create') }}"
-                    class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
-                    @endcan
-                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                </caption> --}}
+
                 <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
 
@@ -339,7 +332,7 @@
     </style>
     <script>
         // example longitude
-       
+
         let file = document.getElementById('dropzone-file')
         file.addEventListener('change', function() {
             console.log(this.files[0])
@@ -351,8 +344,6 @@
             document.getElementById('img_preview').classList.remove('hidden');
             reader.readAsDataURL(this.files[0]);
         });
-
-
     </script>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">
         {{-- {{ $posts->links() }} --}}

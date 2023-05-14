@@ -24,14 +24,11 @@ class UserController extends Controller
             abort('403');
         }
 
-        $users = User::all();
+        $users = User::paginate(10);
+
         $roles = Role::all();
 
-        // dd($roles, $users);
-        return view('users.index', [
-            'users' => $users,
-            'roles' => $roles
-        ]);
+        return view('users.index', compact('users', 'roles'));
     }
 
     // /**

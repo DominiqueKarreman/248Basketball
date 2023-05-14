@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('current_players')->default(0);
             $table->time('start_time');
             $table->time('end_time');
+            $table->date('date');
             $table->string('description');
             $table->foreignId('group')->constrained()->references('id')->on('groups');
             $table->foreignId('creator')->constrained()->references('id')->on('users');

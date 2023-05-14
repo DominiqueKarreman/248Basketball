@@ -24,18 +24,16 @@ class ApiPickupController extends Controller
     {
         //
         $user = auth()->user();
-        // $pickups = Pickup::query()
-        //     ->select('pickups.*', 'groups.name', 'pickup_players.*')
-        //     ->leftJoin('groups', 'pickups.group', '=', 'groups.id')
 
-        //     ->get();
         $pickups = Pickup::all();
         $pickupReturn = [];
         $pickups = Pickup::query()
-            ->select('pickups.*', 'groups.name as group_name')
+            ->select('pickups.*', 'groups.name as group_name', 'velden.naam as veld_name', 'velden.img_url as veld_image')
             ->leftJoin('groups', 'pickups.group', '=', 'groups.id')
+            ->leftJoin('velden', 'pickups.veld', '=', 'velden.id')
             ->get();
         $pickups = $pickups->map(function ($pickup) {
+            $pickup->veld_image = "http://116.203.134.102/" . $pickup->veld_image;
             $pickup->players = PickupPlayer::query()
                 ->select('pickup_players.*', 'users.name as player_name')
                 ->leftJoin('users', 'pickup_players.user', '=', 'users.id')

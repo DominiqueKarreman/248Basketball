@@ -64,8 +64,9 @@ class ApiVeldController extends Controller
             $user = new User();
             if ($pickup->creator_img_url == null) {
                 $pickup->creator_img_url = $user->getUserProfilePhotoUrl($pickup->creator);
+            } else {
+                $pickup->creator_img_url = "http://116.203.134.102/storage/" . $pickup->creator_img_url;
             }
-            $pickup->creator_img_url = "http://116.203.134.102/storage/" . $pickup->creator_img_url;
         }
         $accessiblePickups = [];
         foreach ($pickups as $pickup) {
@@ -76,7 +77,7 @@ class ApiVeldController extends Controller
 
             foreach ($pickup->players as $player) {
                 $user = User::find($player->user);
-                dd($user->profile_photo_path, $user);
+                // dd($user->profile_photo_path);
                 if ($user->profile_photo_path == null) {
                     $player->photo = $user->getUserProfilePhotoUrl($user->id);
                 } else {

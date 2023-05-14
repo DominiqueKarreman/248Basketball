@@ -76,26 +76,41 @@ class ApiPickupController extends Controller
     public function createPickupGame(Request $request)
     {
         $user = auth()->user();
-        $group = new Group([
-            'name' => $request->group_name,
-            'user_id' => $user->id,
-        ]);
-        $group->save();
-        $pickup = new Pickup([
-            'is_active' => false,
-            'is_official' => false,
-            'is_private' => $request->is_private ?? true,
-            'name' => $request->name,
-            'veld' => $request->veld,
-            'max_players' => $request->max_players,
-            'current_players' => 0,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'description' => $request->description,
-            'group' => $group->id,
-            'creator' => auth()->id(),
-        ]);
-        $pickup->save();
+        try {
+            $group = new Group([
+                'name' => $request->group_name,
+                'user_id' => $user->id,
+            ]);
+            $group->save();
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'error' => 'er ging wat fout: ' . $e,
+            ], 404);
+        }
+        try {
+            $pickup = new Pickup([
+                'is_active' => false,
+                'is_official' => false,
+                'is_private' => $request->is_private ?? true,
+                'name' => $request->name,
+                'veld' => $request->veld,
+                'max_players' => $request->max_players,
+                'current_players' => 0,
+                'date' => $request->date,
+                'start_time' => $request->start_time,
+                'end_time' => $request->end_time,
+                'description' => $request->description,
+                'group' => $group->id,
+                'creator' => auth()->id(),
+            ]);
+            $pickup->save();
+        } catch (\Exception $e) {
+            $group->delete();
+            return response()->json([
+                'error' => 'er ging wat fout: ' . $e,
+            ], 404);
+        }
         $playerIds = $request->player_ids;
         // dd($playerIds, $group);
         $creator = new PickupPlayer([

@@ -6,7 +6,9 @@
             </h2>
         </div>
     </x-slot>
-
+    @php
+        $search = '';
+    @endphp
 
     <div class="overflow-x-auto relative  sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
         <div class="flex items-center justify-between   dark:bg-gray-900">
@@ -56,7 +58,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <input type="text" id="table-search-users"
+                <input type="text" id="table-search-users" value="{{ $search }}"
                     class="block p-2 pl-10 text-sm text-[#EDB12C] border border-black rounded-lg w-80 bg-zinc-800 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Zoek naar gebruikers">
             </div>
@@ -94,73 +96,122 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                        <tr
-                            class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700 hover:bg-zinc-800 dark:hover:bg-gray-600">
-                            <td class="w-4 p-4">
-                                <div class="flex items-center">
-                                    <input id="checkbox-table-search-1" type="checkbox"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-black rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                </div>
-                            </td>
-                            <th scope="row"
-                                class="flex items-center px-6 py-4 text-[#EDB12C] whitespace-nowrap dark:text-white">
-                                @if (!$user->profile_photo_path)
-                                    <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}"
-                                        class="w-10 h-10 rounded-full object-cover">
-                                @else
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        src="/storage/{{ $user->profile_photo_path }}" alt="{{ $user->name }}" />
-                                @endif
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">{{ $user->name }}</div>
-                                    <div class="font-normal text-gray-300">{{ $user->email }}</div>
-                                </div>
-                            </th>
-
-                            <td class="px-6 py-4">
-
-                                @if (Auth::user()->hasPermissionTo('assign roles'))
-                                    <form method="POST" action="{{ route('users.changeRoles', $user->id) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <select onchange="this.form.submit()" name="user_role" id="countries"
-                                            class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            @foreach ($roles as $role)
-                                                <option
-                                                    {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}
-                                                    value="{{ $role->name }}">{{ $role->name }}</option>
-                                            @endforeach
-                                            {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
-                                        </select>
-                                    </form>
-                                @else
-                                    {{ $user->roles->first()->name }}
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    @if ($user->email_verified_at)
-                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Geverifieerd
+                        @if (strpos(strtolower($user->name), strtolower('')) !== false ||
+                                strpos(strtolower($user->email), strtolower('')) !== false)
+                            <tr
+                                class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700 hover:bg-zinc-800 dark:hover:bg-gray-600">
+                                <td class="w-4 p-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-black rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row"
+                                    class="flex items-center px-6 py-4 text-[#EDB12C] whitespace-nowrap dark:text-white">
+                                    @if (!$user->profile_photo_path)
+                                        <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}"
+                                            class="w-10 h-10 rounded-full object-cover">
                                     @else
-                                        <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Niet geverifieerd
+                                        <img class="w-10 h-10 rounded-full object-cover"
+                                            src="/storage/{{ $user->profile_photo_path }}" alt="{{ $user->name }}" />
                                     @endif
-                                </div>
+                                    <div class="pl-3">
+                                        <div class="text-base font-semibold">{{ $user->name }}</div>
+                                        <div class="font-normal text-gray-300">{{ $user->email }}</div>
+                                    </div>
+                                </th>
 
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="{{ route('users.edit', $user->id) }}"
-                                    class="font-medium
+                                <td class="px-6 py-4">
+
+                                    @if (Auth::user()->hasPermissionTo('assign roles'))
+                                        <form method="POST" action="{{ route('users.changeRoles', $user->id) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <select onchange="this.form.submit()" name="user_role" id="countries"
+                                                class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                @foreach ($roles as $role)
+                                                    <option
+                                                        {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}
+                                                        value="{{ $role->name }}">{{ $role->name }}</option>
+                                                @endforeach
+                                                {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
+                                            </select>
+                                        </form>
+                                    @else
+                                        {{ $user->roles->first()->name }}
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        @if ($user->email_verified_at)
+                                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Geverifieerd
+                                        @else
+                                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Niet
+                                            geverifieerd
+                                        @endif
+                                    </div>
+
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('users.edit', $user->id) }}"
+                                        class="font-medium
                                     text-[#EDB12C] dark:text-blue-500 hover:underline">Edit
-                                    user</a>
-                            </td>
-                        </tr>
+                                        user</a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
+                    @push('scripts')
+                        <script>
+                            const searchInput = document.getElementById('search');
+                            let search = '';
 
+                            searchInput.addEventListener('input', (event) => {
+                                search = event.target.value;
+                            });
+                        </script>
+                    @endpush
                 </tbody>
-            </table>
-        </div>
 
+            </table>
+
+            {{ $users->links() }}
+        </div>
+        <style>
+            .pagination {
+                display: flex;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .pagination>li {
+                margin: 0 0.25rem;
+            }
+
+            .pagination>li>a,
+            .pagination>li>span {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+                background-color: #02264b;
+                color: #4a5568;
+                font-weight: 500;
+                text-decoration: none;
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            .pagination>li>a:hover,
+            .pagination>li>span:hover {
+                background-color: #145caa;
+            }
+
+            .pagination>.active>a,
+            .pagination>.active>span {
+                background-color: #4a5568;
+                color: #edf2f7;
+            }
+        </style>
     </div>
 
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">

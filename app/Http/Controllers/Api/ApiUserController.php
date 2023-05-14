@@ -17,17 +17,17 @@ class ApiUserController extends Controller
     public function gebruikers(): Response
     {
         //
-        $gebruikers = User::select([ 'id', 'name', 'email', 'profile_photo_path' ])->get();
+        $gebruikers = User::select(['id', 'name', 'email', 'profile_photo_path'])->get();
         //for each with key value pairs
         $nonVriendenGebruikers = [];
-        foreach($gebruikers as $gebruikerIndex => $gebruiker){
-            // $gebruiker->img_url = "http:// 
-            if($gebruiker->email == Auth()->user()->email){
+        foreach ($gebruikers as $gebruikerIndex => $gebruiker) {
+            // $gebruiker->img_url = "http://
+            if ($gebruiker->email == Auth()->user()->email) {
                 continue;
             }
             $userRelation = UserFriend::where('user_id', Auth()->user()->id)->where('friends_id', $gebruiker->id)->Orwhere('friends_id', Auth()->user()->id)->where("user_id", $gebruiker->id)->first();
-            if($userRelation) continue;
-            if(!$gebruiker->profile_photo_path){
+            if ($userRelation) continue;
+            if (!$gebruiker->profile_photo_path) {
                 $gebruiker->photo = $gebruiker->profile_photo_url;
                 $gebruiker->photo = str_replace("7F9CF5", "EDB12C",   $gebruiker->photo);
                 $gebruiker->photo = str_replace("EBF4FF", "222222",   $gebruiker->photo);
@@ -35,7 +35,7 @@ class ApiUserController extends Controller
             } else {
                 $gebruiker->photo = "http://116.203.134.102/storage/" . $gebruiker->profile_photo_path;
             }
-          array_push($nonVriendenGebruikers, $gebruiker);
+            array_push($nonVriendenGebruikers, $gebruiker);
         }
 
         return response($nonVriendenGebruikers);
@@ -74,13 +74,12 @@ class ApiUserController extends Controller
         return view('users.edit', [
             'user' => $user
         ]);
-
     }
     public function notificationToken(Request $request): Response
     {
         $user = Auth()->user()->id;
         $user = User::find($user);
-        if($user->notification_token == null){
+        if ($user->notification_token == null) {
             $user->notification_token = $request->token;
             $user->save();
             return response(["message" => "Token updated"], 200);

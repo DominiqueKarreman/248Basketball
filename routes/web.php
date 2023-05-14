@@ -41,6 +41,7 @@ Route::middleware([
     )->name('dashboard');
     // Route::resource('users', UserController::class);
     Route::resource('pickups', PickupController::class);
+
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
     Route::get('/velden/{veld}', [VeldController::class, 'show'])->name('velden.show');

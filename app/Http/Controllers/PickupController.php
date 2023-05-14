@@ -23,7 +23,16 @@ class PickupController extends Controller
     public function index(): Response
     {
         //
-        $pickups = Pickup::all();
+        $pickups = Pickup::join('users', 'pickups.creator', '=', 'users.id')
+            ->join('velden', 'pickups.veld', '=', 'velden.id')
+            ->join('groups', 'pickups.group', '=', 'groups.id')
+            ->select('pickups.*', 'users.name as creator', 'velden.naam as veld', 'velden.id as veld_id', 'groups.name as group')
+            ->get();
+        foreach ($pickups as $pickup) {
+            $pickup->aanmeldingen = PickupPlayer::where('pickup', $pickup->id)
+                ->where('accepted', true)
+                ->count();
+        }
         return response(view('pickups.index', [
             "pickups" => $pickups,
         ]));
@@ -32,43 +41,20 @@ class PickupController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createPickupGame(Request $request)
+    public function create()
     {
-        $user = auth()->user();
-        $group = new Group([
-            'name' => $request->group_name,
-            'user_id' => $user->id,
-        ]);
-        $group->save();
-        $pickup = new Pickup([
-            'is_active' => false,
-            'is_official' => false,
-            'is_private' => $request->is_private ?? true,
-            'name' => $request->name,
-            'veld' => $request->veld,
-            'max_players' => $request->max_players,
-            'current_players' => 0,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'description' => $request->description,
-            'group' => $group->id,
-            'creator' => auth()->id(),
-        ]);
-        $pickup->save();
-        $playerIds = $request->player_ids;
-        foreach ($playerIds as $playerId) {
-            $pickupPlayer = new PickupPlayer([
-                'group' => $group->id,
-                'user' => $playerId,
-            ]);
-            $pickupPlayer->save();
-        }
-        return response()->json([
-            'message' => 'Pickup game created successfully',
-            'pickup' => $pickup,
-        ], 201);
-    }
 
+        $velden = Veld::all();
+        $groups = Group::all();
+        $locaties = Locatie::all();
+
+        return view('pickups.create', [
+            'velden' => $velden,
+            'groups' => $groups,
+            'locaties' => $locaties,
+            'users' => User::all(),
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */

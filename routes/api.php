@@ -72,5 +72,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('pickups/{id}/invite', [ApiPickupController::class, "inviteToPickup"]);
     Route::get('pickups/{id}', [ApiPickupController::class, "show"]);
     Route::get('pickups/{id}/players', [ApiPickupController::class, "getPickupPlayers"]);
+    Route::put('/pickups/{id}/activate', [ApiPickupController::class, "activatePickup"]);
+    Route::put('/pickups/{id}/deactivate', [ApiPickupController::class, "deactivatePickup"]);
     Route::put('/pickups/{id}', [ApiPickupController::class, "updatePickup"]);
+    Route::post('/pickups/{id}/gameResult', [ApiPickupController::class, "addGameResult"]);
+    Route::post('/pickups/{id}/savePickupPlayerStats', [ApiPickupController::class, "savePickupPlayerStats"]);
 });

@@ -5,6 +5,7 @@ namespace App\Policies;
 use Illuminate\Auth\Access\Response;
 use App\Models\Pickup;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class PickupPolicy
 {
@@ -23,7 +24,22 @@ class PickupPolicy
     public function view(User $user, Pickup $pickup): bool
     {
         //
-        return $user->hasPermissionTo('view pickups');
+        //check if user is creator of pickup
+
+        //check if user is a player in the pickup
+        $players = $pickup->players();
+        $playerInPickup = false;
+        foreach ($players as $player) {
+            if ($player->user == $user->id) {
+                $playerInPickup = true;
+            }
+        }
+        // dd($user->id == $pickup->creator, $pickup->creator, $user->id, $playerInPickup);
+        if ($user->id == $pickup->creator || $playerInPickup || !$pickup->is_private) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -41,7 +57,8 @@ class PickupPolicy
     public function update(User $user, Pickup $pickup): bool
     {
         //
-        return $user->hasPermissionTo('update pickups');
+        // dd($user->name == $pickup->creator, $pickup->creator, $user->name);
+        return $user->hasPermissionTo('edit pickups') || $user->name == $pickup->creator;
     }
 
     /**

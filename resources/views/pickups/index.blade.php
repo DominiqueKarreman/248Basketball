@@ -27,7 +27,7 @@
                         Veld
                     </th>
                     <th scope="col" class="py-3 px-6">
-                        Max spelers
+                        Spelers
                     </th>
                     <th scope="col" class="py-3 px-6">
                         Tijden
@@ -49,17 +49,17 @@
                     <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $pickup->naam }}
+                            {{ $pickup->name }}
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $pickup->veld }}
+                            <a href="{{ route('velden.show', $pickup->veld_id) }}">{{ $pickup->veld }}</a>
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $pickup->max_players }}
+                            {{ $pickup->aanmeldingen }} / {{ $pickup->max_players }}
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $pickup->start_time }}{{ $pickup->end_time }}
+                            {{ substr($pickup->start_time, 0, 5) }} tot {{ substr($pickup->end_time, 0, 5) }}
 
                         </th>
 
@@ -75,7 +75,7 @@
                         </th>
 
                         <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            @can('update', $pickups)
+                            @can('update', $pickup)
                                 <a class="text-[#EDB12C]" href="{{ route('pickups.edit', $pickup->id) }}">Edit</a>
                             @endcan
 

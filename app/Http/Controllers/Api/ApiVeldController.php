@@ -76,7 +76,7 @@ class ApiVeldController extends Controller
 
             foreach ($pickup->players as $player) {
                 $user = User::find($player->user);
-                // dd($user->profile_photo_path);
+                dd($user->profile_photo_path, $user);
                 if ($user->profile_photo_path == null) {
                     $player->photo = $user->getUserProfilePhotoUrl($user->id);
                 } else {

@@ -17,7 +17,14 @@
             @csrf
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-
+                {{-- <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-white dark:text-white dark:bg-gray-800">
+                    Posts
+                    @can('create', App\Models\Post::class)
+                    <a href="{{ route('posts.create') }}"
+                    class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                    @endcan
+                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+                </caption> --}}
                 <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
 
@@ -332,7 +339,102 @@
     </style>
     <script>
         // example longitude
+        const baseUrl = 'https://nominatim.openstreetmap.org/search?q=';
+        const format = '&format=jsonv2';
+        const addressDetails = '&addressdetails=1';
+        const limit = '&limit=1';
 
+        const query = 'basketbal veld';
+        // const url = `${baseUrl}${query}${format}${addressDetails}${limit}`;
+        let mapOptions = {
+            center: [52.37232391185994, 5.223880736178714],
+            zoom: 15
+        }
+        const map = new L.map('map', mapOptions);
+        let layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+        map.addLayer(layer);
+        let [lat, long] = [document.getElementById('latitude').value, document.getElementById('longitude')
+            .value
+        ];
+
+        map.on('click', function(e) {
+            // let marker = L.marker(e.latlng).addTo(map);
+            document.getElementById('latitude').value = e.latlng.lat;
+            document.getElementById('longitude').value = e.latlng.lng;
+            lat = e.latlng.lat;
+            lon = e.latlng.lng;
+            if (document.getElementById('type_event').value == 'Non_basketball') {
+                getAddress();
+            }
+        });
+
+        async function getLatLong(query) {
+            const response = await fetch(`${baseUrl}${query}${format}${addressDetails}${limit}`);
+            const data = await response.json();
+            console.log(data);
+            const [lat, lon] = [data[0].lat, data[0].lon];
+            map.setView([lat, lon], 15);
+            let oldName = document.getElementById('naam').value;
+            document.getElementById('plaats').value = data[0].address.city || data[0].address.town || data[0].address
+                .state || '';
+            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address
+                .building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
+            document.getElementById('postcode').value = data[0].address.postcode || '';
+            document.getElementById('adres').value =
+                `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lon;
+
+            return data;
+        }
+
+        async function getAddress() {
+            const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+
+            fetch(nominatimUrl)
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data);
+
+                    let oldName = document.getElementById('naam').value
+                    document.getElementById('naam').value = data.address.amenity || data.address.shop || data
+                        .address.building || data.address.office || data.address.leisure || data.address.tourism ||
+                        oldName;
+                    document.getElementById('plaats').value = data.address.city || data.address.town || data.address
+                        .state || '';
+                    document.getElementById('postcode').value = data.address.postcode || '';
+                    document.getElementById('locatie').value =
+                        `${data.address.road || ''} ${data.address.house_number || ''}`;
+                    console.log(data.address.city, "city")
+                    return data;
+                })
+        }
+
+        document.getElementById('searchbutton').addEventListener('click', function() {
+            console.log('test')
+            getLatLong(document.getElementById('search').value);
+        })
+        var oldVeld = document.getElementById('veld_select').value;
+        document.getElementById('type_event').addEventListener('change', function() {
+            document.getElementById('longitude_row').classList.toggle('hidden');
+            document.getElementById('latitude_row').classList.toggle('hidden');
+            document.getElementById('postcode_row').classList.toggle('hidden');
+            document.getElementById('latitude_header').classList.toggle('hidden');
+            document.getElementById('longitude_header').classList.toggle('hidden');
+            document.getElementById('postcode_header').classList.toggle('hidden');
+            document.getElementById('search_row').classList.toggle('hidden');
+            document.getElementById('veld_header').innerHTML = "Selecteer locatie";
+            document.getElementById('veld_select').classList.toggle('hidden');
+            document.getElementById('locatie_select').classList.toggle('hidden');
+            document.getElementById('locatie_select').required = !document.getElementById('locatie_select')
+                .required;
+            if (document.getElementById('type_event') !== "Basketball") {
+                oldVeld = document.getElementById('veld_select').value;
+                document.getElementById('veld_select').value = null
+            } else {
+                document.getElementById('veld_select').value = oldVeld
+            }
+        })
         let file = document.getElementById('dropzone-file')
         file.addEventListener('change', function() {
             console.log(this.files[0])
@@ -344,6 +446,46 @@
             document.getElementById('img_preview').classList.remove('hidden');
             reader.readAsDataURL(this.files[0]);
         });
+
+
+        document.getElementById('veld_select').addEventListener('change', function() {
+
+            @foreach ($velden as $veld)
+                if ({{ $veld->id }} == document.getElementById('veld_select').value) {
+                    document.getElementById('naam').value = "{{ $veld->naam }} Evenement";
+                    document.getElementById('locatie').value = "{{ $veld->adres }}";
+                    document.getElementById('postcode').value = "{{ $veld->postcode }}";
+                    document.getElementById('latitude').value = "{{ $veld->latitude }}";
+                    document.getElementById('longitude').value = "{{ $veld->longitude }}";
+                    map.setView(["{{ $veld->latitude }}", "{{ $veld->longitude }}"], 25);
+                    //marker
+                    let marker = L.marker(["{{ $veld->latitude }}", "{{ $veld->longitude }}"]).addTo(map);
+                    marker.bindPopup("{{ $veld->naam }}").openPopup();
+
+                }
+            @endforeach
+            // document.getElementById('veldSelect').value
+
+        })
+        document.getElementById('locatie_select').addEventListener('change', function() {
+
+            @foreach ($locaties as $locatie)
+                if ({{ $locatie->id }} == document.getElementById('locatie_select').value) {
+                    document.getElementById('naam').value = "{{ $locatie->naam }} Evenement";
+                    document.getElementById('locatie').value = "{{ $locatie->adres }}";
+                    document.getElementById('postcode').value = "{{ $locatie->postcode }}";
+                    document.getElementById('latitude').value = "{{ $locatie->latitude }}";
+                    document.getElementById('longitude').value = "{{ $locatie->longitude }}";
+                    map.setView(["{{ $locatie->latitude }}", "{{ $locatie->longitude }}"], 25);
+                    //marker
+                    let marker = L.marker(["{{ $locatie->latitude }}", "{{ $locatie->longitude }}"]).addTo(map);
+                    marker.bindPopup("{{ $locatie->naam }}").openPopup();
+
+                }
+            @endforeach
+            // document.getElementById('veldSelect').value
+
+        })
     </script>
     <div class="overflow-x-auto relative w-full sm:w-3/4 mx-auto my-6">
         {{-- {{ $posts->links() }} --}}

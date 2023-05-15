@@ -24,14 +24,11 @@ class UserController extends Controller
             abort('403');
         }
 
-        $users = User::all();
+        $users = User::paginate(10);
+
         $roles = Role::all();
 
-        // dd($roles, $users);
-        return view('users.index', [
-            'users' => $users,
-            'roles' => $roles
-        ]);
+        return view('users.index', compact('users', 'roles'));
     }
 
     // /**
@@ -202,8 +199,7 @@ class UserController extends Controller
             $photo = str_replace("EBF4FF", "222222", $photo);
         }
 
-
-        $response = ["naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum];
+        $response = ["id" => $user->id, "naam" => $user->name, 'email' => $user->email, 'profile_picture' => $photo, "geboorte_datum" => $user->geboorte_datum, "notification_token" => $user->notification_token, "roles" => $user->getRoleNames()];
         return Response(
             $response,
             200

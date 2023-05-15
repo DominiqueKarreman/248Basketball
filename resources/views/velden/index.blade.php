@@ -9,15 +9,15 @@
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto my-6">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-zinc-700 dark:text-white dark:bg-gray-800">
                 Velden
                 @can('create', App\Models\Veld::class)
                     <a href="{{ route('velden.create') }}"
-                        class="float-right font-medium text-blue-600 dark:text-blue-500">+</a>
+                        class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
                         Naam
@@ -40,7 +40,9 @@
                     <th scope="col" class="py-3 px-6">
                         Aantal bezoekers
                     </th>
-                 
+                    <th scope="col" class="py-3 px-6">
+                        Conditie
+                    </th>
                     <th scope="col" class="py-3 px-6">
                         <span class="sr-only">Edit</span>
                     </th>
@@ -48,48 +50,54 @@
             </thead>
             <tbody>
                 @foreach ($velden as $veld)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $veld->naam }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $veld->adres }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             {{ $veld->plaats }}
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $veld->competitie ? 'Ja' : 'Nee' }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->openingstijden }} {{ $veld->sluitingstijden }}
+                            {{ $veld->openingstijden }}{{ $veld->sluitingstijden }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $veld->veld_leider }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
                             {{ $veld->aantal_bezoekers }}
 
                         </th>
                         <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+
+                            {{ $veld->conditie }}
+
+                        </th>
+                        <th scope="row"
+                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                             @can('update', $veld)
-                                <a class="text-indigo-500" href="{{ route('velden.edit', $veld->id) }}">Edit</a>
+                                <a class="text-[#EDB12C]" href="{{ route('velden.edit', $veld->id) }}">Edit</a>
                             @endcan
 
                         </th>

@@ -90,7 +90,7 @@ class VeldController extends Controller
     public function edit($veld)
     {
         $veld = Veld::find($veld);
-
+        
         return view('velden.edit', [
             'veld' => $veld
         ]);

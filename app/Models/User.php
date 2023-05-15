@@ -12,7 +12,7 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasRoles;
     use HasApiTokens;
@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'geboorte_datum'
+        'name', 'email', 'password', 'geboorte_datum', 'phone_number', 'online', 'notification_token'
     ];
     protected $guard_name = 'web';
 
@@ -43,7 +43,15 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
-
+    public function getUserProfilePhotoUrl($userId)
+    {
+        $user = User::find($userId);
+        if ($user) {
+            return $user->profile_photo_url;
+        } else {
+            return null;
+        }
+    }
     /**
      * The attributes that should be cast.
      *

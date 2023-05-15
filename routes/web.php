@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\LocatieController;
-use App\Http\Controllers\RoleController;
+use App\Models\ChatMessage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PickupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +26,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/velden', function () {
-
-    return view('velden');
-
-});
 
 
 Route::middleware([
@@ -41,8 +39,8 @@ Route::middleware([
             return view('dashboard');
         }
     )->name('dashboard');
-    Route::resource('velden', VeldController::class);
     // Route::resource('users', UserController::class);
+    Route::resource('pickups', PickupController::class);
 
     Route::get('/velden', [VeldController::class, 'index'])->name('velden.index');
     Route::get('/velden/create', [VeldController::class, 'create'])->name('velden.create');
@@ -91,4 +89,24 @@ Route::middleware([
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
 
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
+
+    Route::get('/noti', function () {
+
+        $channelName = 'news';
+        $user = Auth()->user()->notification_token;
+        // dd($user);
+
+        // You can quickly bootup an expo instance
+        $expo = \ExponentPhpSDK\Expo::normalSetup();
+
+        // Subscribe the recipient to the server
+        $expo->subscribe($channelName, $user);
+
+        // Build the notification data
+        $notification = ['body' => 'Hello World!'];
+
+        // Notify an interest with a notification
+        $expo->notify([$channelName], $notification);
+        return view('welcome');
+    });
 });

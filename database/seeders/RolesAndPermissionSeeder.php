@@ -65,6 +65,11 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'edit events']);
         $permission = Permission::create(['name' => 'delete events']);
         
+        $permission = Permission::create(['name' => 'create pickups']);
+        $permission = Permission::create(['name' => 'view pickups']);
+        $permission = Permission::create(['name' => 'edit pickups']);
+        $permission = Permission::create(['name' => 'delete pickups']);
+        
         $role->givePermissionTo(Permission::all());
         $role_moderator->givePermissionTo(Permission::all());
         $role_moderator->revokePermissionTo('assign roles');

@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //users endpoints
     Route::get('/user', [UserController::class, 'showApi']);
     Route::get('/gebruikers', [ApiUserController::class, 'gebruikers']);
+    Route::get('/factory/{amount}', [ApiUserController::class, 'factory']);
     //velden endpoints
     Route::get('/velden', [ApiVeldController::class, 'index']);
     Route::get('/velden/{id}', [ApiVeldController::class, 'show']);
@@ -64,17 +65,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Route::resource('pickups', ApiPickupController::class);
 
-    Route::get('pickups', [ApiPickupController::class, "index"]);
-    Route::post('pickups', [ApiPickupController::class, "createPickupGame"]);
-    Route::get('pickups/requests', [ApiPickupController::class, "getPickupRequests"]);
-    Route::post('pickups/{id}/invitationDecide', [ApiPickupController::class, "DecidePickupInvitation"]);
+    Route::get('/pickups', [ApiPickupController::class, "index"]);
+    Route::post('/pickups', [ApiPickupController::class, "createPickupGame"]);
+    Route::get('/pickups/requests', [ApiPickupController::class, "getPickupRequests"]);
+    Route::post('/pickups/{id}/invitationDecide', [ApiPickupController::class, "DecidePickupInvitation"]);
     Route::delete('/pickups/{id}/players/{userId}', [ApiPickupController::class, "removePlayerFromPickup"]);
-    Route::post('pickups/{id}/invite', [ApiPickupController::class, "inviteToPickup"]);
-    Route::get('pickups/{id}', [ApiPickupController::class, "show"]);
-    Route::get('pickups/{id}/players', [ApiPickupController::class, "getPickupPlayers"]);
+    Route::post('/pickups/{id}/invite', [ApiPickupController::class, "inviteToPickup"]);
+    // Route::get('/pickups/{id}', [ApiPickupController::class, "show"]);
+    Route::get('/pickups/{id}/players', [ApiPickupController::class, "getPickupPlayers"]);
     Route::put('/pickups/{id}/activate', [ApiPickupController::class, "activatePickup"]);
     Route::put('/pickups/{id}/deactivate', [ApiPickupController::class, "deactivatePickup"]);
     Route::put('/pickups/{id}', [ApiPickupController::class, "updatePickup"]);
     Route::post('/pickups/{id}/gameResult', [ApiPickupController::class, "addGameResult"]);
-    Route::post('/pickups/{id}/savePickupPlayerStats', [ApiPickupController::class, "savePickupPlayerStats"]);
+    Route::get('/pickups/usersToInvite', [ApiPickupController::class, "usersToInvite"]);
 });

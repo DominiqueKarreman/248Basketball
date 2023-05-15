@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Pickup;
+use App\Models\UserFriend;
 use App\Models\PickupPlayer;
 use Illuminate\Http\Request;
 use App\Models\VeldStatistic;
@@ -425,6 +426,37 @@ class ApiPickupController extends Controller
 
         return response()->json([
             'message' => 'Pickup player stats saved to veld statistics successfully.',
+        ]);
+    }
+
+    public function usersToInvite()
+    {
+        $user = auth()->user();
+        $users = User::all();
+        $usersToInvite = [];
+        $userRelations = UserFriend::where('user_id', $user->id)->orWhere('friends_id', $user->id)->get();
+        //check if the user is already friends with the user
+        foreach ($userRelations as $friend) {
+            if ($friend->user_id == $user->id) {
+                $friendId = $friend->friends_id;
+                $friend = $users->where('id', $friendId)->first();
+                array_push($usersToInvite, $friend);
+            }
+        }
+        //put the rest of the users in the array
+        foreach ($users as $user) {
+            if (auth()->user()->id == $user->id) {
+                continue;
+            }
+            //no duplicate values in the array
+            if (in_array($user, $usersToInvite)) {
+                continue;
+            }
+            array_push($usersToInvite, $user);
+        }
+
+        return response()->json([
+            'users' => $usersToInvite,
         ]);
     }
 

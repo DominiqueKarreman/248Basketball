@@ -48,7 +48,17 @@ class ApiUserController extends Controller
     {
         //
     }
+    public function factory($amount): Response
+    {
+        $users = User::factory()->count($amount)->create();
+        foreach ($users as $user) {
+            $user->assignRole('User');
+            $user->profile_photo_path = "https://i.pravatar.cc/300?u=" . $user->email;
+            $user->save();
+        }
 
+        return response($users);
+    }
     /**
      * Store a newly created resource in storage.
      */

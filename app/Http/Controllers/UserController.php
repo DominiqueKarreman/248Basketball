@@ -150,8 +150,6 @@ class UserController extends Controller
             abort('403');
         }
         $user = User::find($id);
-        $message = $user;
-
         return view('users.edit', [
             'user' => $user
         ]);
@@ -162,11 +160,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
+
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->geboorte_datum = $request->geboorte_datum;
+        $user->profile_picture = $request->profile_picture;
         $user->save();
         // Redirect back to the index page
         return redirect()->route('users.index')->banner('Gebruiker is gewijzigd');
@@ -191,7 +190,6 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $user = User::where('id', $id)->first();
-
 
         if ($user->profile_photo_path) {
             $photo = "http://116.203.134.102/storage/" . $user->profile_photo_path;

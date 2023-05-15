@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\ApiUserController;
-
 use App\Http\Controllers\Api\ApiVeldController;
 use App\Http\Controllers\Api\ApiEventController;
 use App\Http\Controllers\Api\ApiUserFriendController;
@@ -33,6 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //add protected routes here
     Route::post('/logout', [UserController::class, 'logout']);
 
+
     //events endpoints
     Route::get('/events', [ApiEventController::class, 'index']);
     Route::get('/events/{id}', [ApiEventController::class, 'show']);
@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/events/{id}', [ApiEventController::class, 'destroy']);
     //users endpoints
     Route::get('/user', [UserController::class, 'showApi']);
+    Route::put('/users/edit/{id}', [ApiUserController::class, 'update']);
+    //velden endpoints 
     Route::get('/gebruikers', [ApiUserController::class, 'gebruikers']);
     Route::get('/factory/{amount}', [ApiUserController::class, 'factory']);
     //velden endpoints

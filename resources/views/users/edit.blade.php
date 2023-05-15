@@ -32,13 +32,12 @@
                 <div class="mt-4">
                     <x-label for="geboorte_datum" value="{{ __('Geboorte datum') }}" />
                     <x-input id="geboorte_datum" class="block mt-1 w-full" type="date"
-                        value="{{ old('geboorte_datum', \Carbon\Carbon::createFromFormat('Y-m-d', $user->geboorte_datum ?? '')->format('Y-m-d')) }}"
-                        name="geboorte_datum" autocomplete="bday" />
+                        value="{{ date('Y-m-d', strtotime($user->geboorte_datum)) }}" name="geboorte_datum"
+                        autocomplete="bday" pattern="\d{4}-\d{2}-\d{2}" />
                     @error('geboorte_datum')
                         <p class="text-red-500 mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
                 <div class="flex items-center justify-end mt-4">
 
                     <x-button class="ml-4" type="submit">

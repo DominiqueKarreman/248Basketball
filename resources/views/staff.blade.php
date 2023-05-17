@@ -12,11 +12,14 @@
 
 
 <body class="bg-black flex flex-col place-items-center h-full w-full">
+    <video autoplay muted loop id="hero-video">
+        <source src="/videos/testclip.mp4" type="video/mp4">
+    </video>
 
     <x-infoNavbar class="my-custom-class" />
 
 
-    <div id="hero-landing" class="bg-zinc-100 h-[100vh] w-full">
+    <div id="hero-landing">
         <div id="herotext">
             <h1 id="welcome" class="text-white font-semibold uppercase">248Basketball</h1>
             <h1 id="basketball" class="text-white font-semibold uppercase">Ontmoet het TEAM</h1>
@@ -26,27 +29,7 @@
         </div>
     </div>
 
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
-    <h1 class="text-white text-lg ">248Basketball</h1>
+
 </body>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -62,8 +45,8 @@
 
     #hero-landing {
         /* background-image: url('images/DSC00929-min.jpg'); */
-        background-color: black;
-        background-size: cover;
+        /* background-color: black; */
+        /* background-size: cover; */
         background-position: 0 40%;
         background-repeat: no-repeat;
 
@@ -148,6 +131,56 @@
         margin-left: 4vh;
         margin-right: -4vh;
 
+    }
+
+
+
+    #hero-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    @media (max-width: 640px) {
+        #welcome {
+            font-size: 2vh;
+            letter-spacing: 1.5vw;
+            position: relative;
+            margin-bottom: 0vh;
+            /* line-height: 12vw; */
+        }
+
+        #basketball {
+            font-size: 6vh;
+            letter-spacing: 1.5vw;
+            line-height: 12vw;
+        }
+
+        #basketball-stroke {
+            font-size: 6vh;
+            letter-spacing: 1.5vw;
+            line-height: 12vw;
+            transform: translate(0vh, 12);
+        }
+
+        #basketball-stroke-2 {
+            font-size: 6vh;
+            letter-spacing: 1.5vw;
+            line-height: 12vw;
+            transform: translate(0vh, 9vh);
+        }
+
+
+        #herotext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -180%);
+        }
     }
 </style>
 

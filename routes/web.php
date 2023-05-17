@@ -1,15 +1,16 @@
 <?php
 
 use App\Models\ChatMessage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VeldController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PickupController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\PickupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,14 @@ use App\Http\Controllers\PickupController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+Route::get('/staff', function (Request $request) {
+    $url = $request->url();
+    //split the string untill the last / and then return the last part
+    $url = substr($url, strrpos($url, '/') + 1);
+    // dd($url);
+    return view('staff', ['url' => $url]);
+})->name('staff');
 
 
 

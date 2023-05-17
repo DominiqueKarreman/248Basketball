@@ -12,7 +12,7 @@
 
 
 <body class="bg-black flex flex-col place-items-center h-full w-full">
-    <video autoplay muted loop id="hero-video">
+    <video autoplay muted loop id="hero-video" playsinline >
         <source src="/videos/testclip.mp4" type="video/mp4">
     </video>
 
@@ -179,7 +179,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -180%);
+            transform: translate(-50%, -160%);
         }
     }
 </style>

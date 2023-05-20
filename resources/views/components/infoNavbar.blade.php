@@ -1,7 +1,7 @@
 @props(['class' => ''])
 
-<nav class="bg-white w-full bg-black border-gray-200 dark:bg-gray-900 {{ $class }}">
-    <div class="flex w-full bg-black flex-wrap items-center justify-between mx-auto p-4">
+<nav class="bg-white  bg-transparent border-gray-200 dark:bg-gray-900 {{ $class }}">
+    <div class="flex w-full bg-transparent flex-wrap items-center justify-between sm:w-[90vw] mx-auto p-4">
         <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" id="logo" alt="">
         </a>
@@ -22,16 +22,15 @@
         </div>
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                     <a href="{{ url('/') }}"
-                        class="block py-2 text-[2vh] pl-3 pr-4 {{request()->routeIs('home') ? 'text-[#EDB12C]' : 'text-gray-500' }} bg-white rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
+                        class="block py-2 text-[2vh] pl-3 pr-4 {{ request()->routeIs('home') ? 'text-[#EDB12C]' : 'text-gray-500' }} bg-white rounded md:bg-transparent  md:p-0 md:dark:text-blue-500"
                         aria-current="page">{{ __('Home') }}</a>
                 </li>
                 <li>
                     <a href="{{ url('/staff') }}"
-
-                        class="block py-2 text-[2vh] pl-3 pr-4 {{request()->routeIs('staff') ? 'text-[#EDB12C]' : 'text-gray-500' }}  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Ons team') }}</a>
+                        class="block py-2 text-[2vh] pl-3 pr-4 {{ request()->routeIs('staff') ? 'text-[#EDB12C]' : 'text-gray-500' }}  rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Ons team') }}</a>
                 </li>
                 <li>
                     <a href="#"
@@ -46,3 +45,27 @@
     </div>
 </nav>
 
+<style>
+    nav {
+        width: 100vw;
+
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
+    html {
+        scroll-behavior: smooth;
+        margin: none;
+    }
+
+    #logo {
+        /* position: absolute;
+        top: 0;
+        left: 0; */
+        /* width: 10vh; */
+        height: 6vh;
+        /* margin-top: 2vh; */
+        margin-left: 4vh;
+        margin-right: -4vh;
+
+    }
+</style>

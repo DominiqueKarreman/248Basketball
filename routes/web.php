@@ -33,7 +33,9 @@ Route::get('/staff', function (Request $request) {
     // dd($url);
     return view('staff', ['url' => $url]);
 })->name('staff');
-
+Route::get('/news', function () {
+    return view('news');
+})->name('news');
 
 
 Route::middleware([

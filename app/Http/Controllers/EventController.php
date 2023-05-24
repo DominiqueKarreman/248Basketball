@@ -28,7 +28,6 @@ class EventController extends Controller
         $events = Event::query()
             ->select('events.*', 'users.name as verantwoordelijke')
             ->leftJoin('users', 'events.verantwoordelijke', '=', 'users.id')->get();
-
      
         return response(view('events.index', [
             'events' => $events,

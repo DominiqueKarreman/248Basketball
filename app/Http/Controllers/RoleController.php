@@ -42,12 +42,8 @@ class RoleController extends Controller
             abort('403');
         }
 
-        
-
         return view('roles.create', [
             'permissions' => Permission::all(),
-           
-
         ]);
     }
 
@@ -72,7 +68,6 @@ class RoleController extends Controller
             }
             // if($permission )
         }
-
 
         return redirect()->route('roles.index')->banner('Role created successfully');
     }

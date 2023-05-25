@@ -13,7 +13,7 @@
 
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop id="hero-video" playsinline>
-        <source src="/videos/testclip.mp4" type="video/mp4">
+        <source src="/videos/C0576.MP4" type="video/mp4">
     </video>
 
     <x-infoNavbar class="my-custom-class" />
@@ -31,44 +31,40 @@
     <div class="wrapper">
         <i id="left" class="fa-solid fa-angle-left"></i>
         <ul class="carousel">
+            @foreach ($staffMembers as $staffMember)
+                <a href="{{ route('staff.show', $staffMember->id) }}">
+                    <li class="card">
+                        <div class="img"><img src="/{{ $staffMember->image }}" alt="img" draggable="false">
+                        </div>
+                        <h2>{{ $staffMember->name }}</h2>
+                    </li>
+                </a>
+            @endforeach
             <li class="card">
                 <div class="img"><img src="/images/denzel.png" alt="img" draggable="false"></div>
                 <h2>Denzel Vaneer</h2>
-                <span>Sales Manager</span>
+
             </li>
             <li class="card">
                 <div class="img"><img src="/images/jorg.png" alt="img" draggable="false"></div>
                 <h2>Jorg Janssens</h2>
-                <span>Web Developer</span>
+
             </li>
             <li class="card">
                 <div class="img"><img src="/images/mats.png" alt="img" draggable="false"></div>
                 <h2>Mats swiers</h2>
-                <span>Online Teacher</span>
+
             </li>
             <li class="card">
                 <div class="img"><img src="/images/dave.png" alt="img" draggable="false"></div>
                 <h2>Dave laterveer</h2>
-                <span>Freelancer</span>
-            </li>
-            <li class="card">
-                <div class="img"><img src="/images/dave.png" alt="img" draggable="false"></div>
-                <h2>dave laterveer</h2>
-                <span>Bank Manager</span>
-            </li>
-            <li class="card">
-                <div class="img"><img src="/images/mats.png" alt="img" draggable="false"></div>
-                <h2>mats swiers</h2>
-                <span>App Designer</span>
             </li>
         </ul>
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
-    <div class="cards flex  items-center flex-row absolute bottom-[7vh]">
+    <!-- <div class="cards flex  items-center flex-row absolute bottom-[7vh]">
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24" fill="none"
-            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-chevron-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
             <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
         <div class="card w-[18vw] mx-[2vw] justify-center flex items-center bg-[#EDB12C] rounded-lg">
@@ -88,13 +84,11 @@
             <h1 class="name text-white absolute font-semibold uppercase">Dave laterveer</h1>
         </div>
         <button onclick="console.log('test')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24" fill="none"
-                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-chevron-right pointer-events-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right pointer-events-auto">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
         </button>
-    </div>
+    </div> -->
 
 </body>
 <style>
@@ -214,6 +208,7 @@
 
     .wrapper {
         max-width: 80vw;
+        top: 45vh;
         width: 100%;
         position: relative;
     }
@@ -290,6 +285,7 @@
         background: #EDB12C;
         cursor: pointer;
         padding-bottom: 15px;
+        height: 32vh;
         flex-direction: column;
         border-radius: 8px;
     }
@@ -298,20 +294,22 @@
 
     .card .img img {
 
-        height: 32vh;
+        height: 30vh;
         position: relative;
-        bottom: -10vh
+        bottom: -12vh
     }
 
     .carousel .card h2 {
         font-weight: 500;
         font-size: 2vh;
         z-index: 1;
+
         text-transform: uppercase;
         color: #fff;
         letter-spacing: 1.5vh;
         align-self: center;
-        margin: auto;
+        margin-bottom: 15vh;
+        /* margin: auto; */
         width: 100%;
         text-align: center;
         /* margin: 30px 0 5px; */

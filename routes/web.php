@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ChatMessage;
+use App\Models\StaffMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\StaffMemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +33,17 @@ Route::get('/staff', function (Request $request) {
     //split the string untill the last / and then return the last part
     $url = substr($url, strrpos($url, '/') + 1);
     // dd($url);
-    return view('staff', ['url' => $url]);
+    $staffMembers = StaffMember::all();
+    return view('staff', ['url' => $url, 'staffMembers' => $staffMembers]);
 })->name('staff');
+Route::get('/staff/{id}', function (Request $request, $id) {
+    $url = $request->url();
+    //split the string untill the last / and then return the last part
+    $url = substr($url, strrpos($url, '/') + 1);
+    $member = StaffMember::find($id);
+
+    return view('staff.show', ['url' => $url, 'member' => $member]);
+})->name('staff.show');
 Route::get('/news', function () {
     return view('news');
 })->name('news');
@@ -99,6 +110,10 @@ Route::middleware([
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
 
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
+
+    Route::get('/staffMembers', [StaffMemberController::class, 'index'])->name('staffMembers');
+    Route::get('/staffMembers/create', [StaffMemberController::class, 'create'])->name('staff.create');
+    Route::post('/staffMembers', [StaffMemberController::class, 'store'])->name('staff.store');
 
     Route::get('/noti', function () {
 

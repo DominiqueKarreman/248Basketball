@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         Permission::class => PermissionPolicy::class,
         Veld::class => VeldPolicy::class,
         User::class => UserPolicy::class,
-        
+        NewsArticle::class => NewsArticlePolicy::class,
     ];
 
     /**

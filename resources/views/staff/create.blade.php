@@ -11,11 +11,12 @@
         </div>
     </x-slot>
 
-
+    
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto mt-6 ">
         <form action="{{ route('staff.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
-
+            
+         
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                 {{-- <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-white dark:text-white dark:bg-gray-800">
                     Posts
@@ -70,12 +71,18 @@
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
-                                <option value="0">Geen</option>
+                                <option value="">Geen</option>
                             </select>
 
                         </th>
 
 
+                    </tr>
+                    <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
+                        <th colspan="6" scope="row"
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                            foto van Medewerker
+                        </th>
                     </tr>
                     <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
                         <th colspan="6" scope="row"
@@ -103,6 +110,43 @@
                                     </label>
                                 </div>
                                 <img src="" class="img_preview hidden" id="img_preview" alt="asdasd">
+                            </div>
+                        </th>
+
+                    </tr>
+                    <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
+                        <th colspan="6" scope="row"
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                            Video van Medewerker
+                        </th>
+                    </tr>
+                    <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
+                        <th colspan="6" scope="row"
+                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                            <div class="imgdiv">
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="dropzone-file2"
+                                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-black border-dashed rounded-lg cursor-pointer bg-zinc-800 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-zinc-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-zinc-500">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-[#EDB12C]" fill="none"
+                                                stroke="currentColor" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                                                </path>
+                                            </svg>
+                                            <p class="mb-2 text-sm text-[#EDB12C] dark:text-gray-400"><span
+                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="text-xs text-[#EDB12C] dark:text-gray-400">SVG, PNG, JPG or GIF
+                                                (MAX.
+                                                800x400px)</p>
+                                              
+                                        </div>
+                                        <input id="dropzone-file2" name="video" type="file" class="hidden"
+                                            required />
+                                    </label>
+                                </div>
+                                <img src="" class="img_preview2 hidden" id="img_preview2" alt="asdasd">
                             </div>
                         </th>
 
@@ -204,6 +248,14 @@
             object-position: center;
             border-radius: 0.5rem;
         }
+        .img_preview2 {
+            width: 100%;
+            height: 100%;
+            max-height: 32vh;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0.5rem;
+        }
 
         .imgdiv {
             display: flex;
@@ -231,13 +283,24 @@
 
         let file = document.getElementById('dropzone-file')
         file.addEventListener('change', function() {
-            console.log(this.files[0])
+            console.log(this.files[0], " first thing")
             const reader = new FileReader();
 
             reader.addEventListener('load', function() {
                 document.getElementById('img_preview').setAttribute("src", this.result);
             })
             document.getElementById('img_preview').classList.remove('hidden');
+            reader.readAsDataURL(this.files[0]);
+        });
+        let file2 = document.getElementById('dropzone-file2')
+        file2.addEventListener('change', function() {
+            console.log(this.files[0], " second thing")
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function() {
+                document.getElementById('img_preview2').setAttribute("src", this.result);
+            })
+            document.getElementById('img_preview2').classList.remove('hidden');
             reader.readAsDataURL(this.files[0]);
         });
     </script>

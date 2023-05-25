@@ -33,6 +33,14 @@ class UserSeeder extends Seeder
             'geboorte_datum' => '1999-15-02',
             'phone_number' => '+31611056246'
         ]);
+        $jorg = User::create([
+            'name' => 'Jorg Janssens',
+            'email' => 'jorgjanssens@outlook.com',
+            'password' => Hash::make('12345678'),
+            'geboorte_datum' => '1999-15-02',
+            'phone_number' => '+31623335589'
+        ]);
         $user_standard->assignRole('user');
+        $jorg->assignRole('admin');
     }
 }

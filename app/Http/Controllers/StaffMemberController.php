@@ -45,6 +45,13 @@ class StaffMemberController extends Controller
             //redirect with error
             return redirect()->route('staff.index')->with('error', 'Geen afbeelding gevonden!');
         }
+        if ($request->hasFile('video')) {
+            $video_url = "storage/staff/" . $request->file('video')->getClientOriginalName();
+            $request->file('video')->storeAs('public/staff', $request->file('video')->getClientOriginalName());
+        } else {
+            //redirect with error
+            return redirect()->route('staff.index')->with('error', 'Geen video gevonden!');
+        }
         //
         $staffMember = StaffMember::create([
             'name' => $request->name,
@@ -52,6 +59,7 @@ class StaffMemberController extends Controller
             'description' => $request->beschrijving,
             'email' => $request->email,
             'image' => $img_url,
+            'video' => $video_url,
             'phone' => $request->phone,
             'instagram' => $request->instagram,
             'facebook' => $request->facebook,

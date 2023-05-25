@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('role');
             $table->string('image');
-            $table->string('description');
+            $table->string('video');
+            $table->text('description');
             $table->string('email');
             $table->string('phone');
             $table->string('instagram')->nullable();

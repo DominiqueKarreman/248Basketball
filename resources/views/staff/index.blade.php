@@ -130,11 +130,11 @@
                                             @method('PUT')
                                             <select onchange="this.form.submit()" name="user_role" id="countries"
                                                 class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                @foreach ($roles as $role)
+                                                {{-- @foreach ($roles as $role)
                                                     <option
                                                         {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}
                                                         value="{{ $role->name }}">{{ $role->name }}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                                 {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
                                             </select>
                                         </form>

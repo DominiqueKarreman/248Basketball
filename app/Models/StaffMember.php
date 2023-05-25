@@ -13,6 +13,7 @@ class StaffMember extends Model
         'name',
         'role',
         'image',
+        'video',
         'description',
         'email',
         'phone',

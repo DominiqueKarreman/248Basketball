@@ -22,7 +22,7 @@
         } else {
             // Device is not in low power mode
             console.log('Device is not in low power mode');
-            document.getElementById('welcome').textContent = '248Basketball';
+            document.getElementById('welcome').textContent = 'normal mode';
         }
     });
 </script>

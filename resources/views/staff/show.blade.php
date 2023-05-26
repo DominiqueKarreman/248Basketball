@@ -10,7 +10,7 @@
 </head>
 
 
-
+{{-- {{dd($member->image)}} --}}
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop id="hero-video" playsinline>
         <source src="/{{ $member->video }}" type="video/mp4">

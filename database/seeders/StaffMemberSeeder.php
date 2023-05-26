@@ -18,8 +18,8 @@ class StaffMemberSeeder extends Seeder
         StaffMember::create([
             "name" => "Jorg Janssens",
             "role" => "Co-founder / Skills trainer",
-            "image" => "images/jorg.png",
-            "video" => "videos/jorg.MP4",
+            "image" => "storage/staff/jorg.png",
+            "video" => "storage/staff/jorg.MP4",
             "description" => 'Al vanaf mijn 7e ben ik te vinden op het basketbalveld. Vanaf het eerste moment ben ik verliefd op de sport. Het basketbalveld is de plek waar ik ben opgegroeid, vele lessen heb geleerd en waar ik mij altijd thuis voel. Ik probeer altijd het maximale uit mijzelf en anderen te halen. Na vele jaren op hoog niveau meegedraaid te hebben, wil ik nu mijn aandacht besteden aan anderen. Ik houd ervan om anderen te helpen met het ontwikkelen van hun game.
         “Basketball is not just a sport, Its a lifestyle.”',
             "email" => "jorgjanssens@outlook.com",

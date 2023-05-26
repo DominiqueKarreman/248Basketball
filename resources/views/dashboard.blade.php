@@ -11,34 +11,40 @@
                 {{-- <x-welcome /> --}}
 
                 <div class="flex bg-black gap-[5vh] ">
-
                     <div id="evenementen"
-                        class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-1 overflow-hidden">
+                    class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-1 overflow-hidden">
+                    <a href="{{route("events.index")}}">
                         <div class="content-div flex row align-center ">
-
+                            
                             <image class="h-[4vh] mr-1" src="images/eventIcon.svg">
-
+                                
                                 <h1 class="z-10 absolute self-center centereddd text-white">Evenementen</h1>
+                            </div>
+                        </a>
                         </div>
-                    </div>
                     <div id="velden"
                         class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-2 overflow-hidden">
+                        <a href="{{route("velden.index")}}">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/courtIcon.svg">
 
                                 <h1 class="z-10 absolute self-center centereddd text-white">Velden</h1>
                         </div>
+                    </a>
                     </div>
                     <div id="pickups"
                         class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center ease-in duration-300 background-3 overflow-hidden">
+                        <a href="{{route("pickups.index")}}">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/playerIcon.svg">
 
                                 <h1 class="z-10 absolute self-center centereddd text-white">Pick-ups</h1>
                         </div>
+                    </a>
                     </div>
+                    <a href="{{route("users.index")}}">
                     <div id="users"
                         class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-4 overflow-hidden">
                         <div class="content-div flex row align-center ">
@@ -47,6 +53,7 @@
                                 <h1 class="z-10 absolute self-center centereddd text-white">Users</h1>
 
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>

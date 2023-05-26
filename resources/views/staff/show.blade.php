@@ -11,6 +11,7 @@
 
 
 {{-- {{dd($member->image)}} --}}
+
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop id="hero-video" playsinline>
         <source src="/{{ $member->video }}" type="video/mp4">
@@ -127,16 +128,16 @@
     }
 
     #welcome {
-        font-size: 4vh;
+        font-size: 2vw;
         letter-spacing: 1.5vh;
         position: relative;
         margin-bottom: 0vh;
     }
 
     #basketball {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 7vw;
         left: 0;
         z-index: 10;
         position: relative;
@@ -159,13 +160,13 @@
         z-index: 10;
         position: absolute;
         font-size: 50vh;
-        /* bottom: 12vh */
+        /* bottom: 7vw */
     }
 
     #basketball-stroke {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 7vw;
         left: 0;
         -webkit-text-stroke: 2px #EDB12C;
         text-stroke: 1px #EDB12C;
@@ -178,9 +179,9 @@
     }
 
     #basketball-stroke-2 {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 7vw;
         left: 0;
         -webkit-text-stroke: 2px #EDB12C;
         text-stroke: 1px #EDB12C;
@@ -195,7 +196,7 @@
     #basketball-stroke-3 {
         font-size: 15vh;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 7vw;
         left: 0;
         -webkit-text-stroke: 1px white;
         text-stroke: 1px white;

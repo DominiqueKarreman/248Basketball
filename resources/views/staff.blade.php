@@ -113,16 +113,16 @@
     }
 
     #welcome {
-        font-size: 4vh;
+        font-size: 2vw;
         letter-spacing: 1.5vh;
         position: relative;
         margin-bottom: 0vh;
     }
 
     #basketball {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 9vw;
         left: 0;
         z-index: 10;
         position: relative;
@@ -134,9 +134,9 @@
     }
 
     #basketball-stroke {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 9vw;
         left: 0;
         -webkit-text-stroke: 2px #EDB12C;
         ;
@@ -150,9 +150,9 @@
     }
 
     #basketball-stroke-2 {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 9vw;
         left: 0;
         -webkit-text-stroke: 2px #EDB12C;
         text-stroke: 1px #EDB12C;
@@ -165,9 +165,9 @@
     }
 
     #basketball-stroke-3 {
-        font-size: 15vh;
+        font-size: 9vw;
         letter-spacing: 1.5vh;
-        line-height: 12vh;
+        line-height: 9vw;
         left: 0;
         -webkit-text-stroke: 1px white;
         text-stroke: 1px white;

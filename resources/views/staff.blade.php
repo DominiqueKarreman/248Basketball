@@ -387,7 +387,7 @@
 
     if (video.paused) {
         // Video is paused
-        console.log('Video is paused');
+        console.log('Video is paused', video.paused);
         document.getElementById('welcome').textContent = 'paused';
     } else {
         // Video is playing

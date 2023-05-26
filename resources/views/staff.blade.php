@@ -12,10 +12,17 @@
 
 <script>
     //PLAYS VIDEO IN LOW POWER MODE
-    $('body').on('click touchstart', function() {
-        var videoElement = document.getElementsByClassName('inlinevideo');
-        if (videoElement.playing) {} else {
-            $('.inlinevideo').trigger('play');
+    let welcome = document.getElementById('welcome');
+
+    navigator.getBattery().then(function(battery) {
+        if (battery.charging === false && battery.level <= 0.2) {
+            // Device is in low power mode
+            console.log('Device is in low power mode');
+            document.getElementById('welcome').textContent = 'low power mode';
+        } else {
+            // Device is not in low power mode
+            console.log('Device is not in low power mode');
+            document.getElementById('welcome').textContent = '248Basketball';
         }
     });
 </script>

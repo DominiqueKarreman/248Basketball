@@ -9,8 +9,19 @@
     <title>248Basketball</title>
 </head>
 
+
+<script>
+    //PLAYS VIDEO IN LOW POWER MODE
+    $('body').on('click touchstart', function() {
+        var videoElement = document.getElementsByClassName('inlinevideo');
+        if (videoElement.playing) {} else {
+            $('.inlinevideo').trigger('play');
+        }
+    });
+</script>
+
 <body class="bg-black flex flex-col place-items-center h-full w-full">
-    <video autoplay muted loop id="hero-video" playsinline>
+    <video autoplay muted loop class="inlinevideo" id="hero-video" playsinline>
         <source src="/storage/staff/jorg.mp4" type="video/mp4">
     </video>
 
@@ -378,8 +389,6 @@
     }
 </style>
 <script>
-    var videoElement = document.getElementById('hero-video');
-    videoElement.play();
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");
     const firstCardWidth = carousel.querySelector(".card").offsetWidth;

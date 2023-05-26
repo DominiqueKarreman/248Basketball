@@ -13,7 +13,7 @@
 
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop id="hero-video" playsinline>
-        <source src="/videos/C0576.MP4" type="video/mp4">
+        <source src="/storage/staff/jorg.mp4" type="video/mp4">
     </video>
 
     <x-infoNavbar class="my-custom-class" />

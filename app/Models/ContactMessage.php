@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ChatMessage extends Model
+class ContactMessage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'name',
+        'email',
         'message',
-        'from_user',
-        'to_user',
-        'is_read',
-        'read_at',
-        'sent_at',
     ];
-
 }

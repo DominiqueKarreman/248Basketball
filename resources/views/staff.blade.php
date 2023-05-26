@@ -9,8 +9,6 @@
     <title>248Basketball</title>
 </head>
 
-
-
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop id="hero-video" playsinline>
         <source src="/storage/staff/jorg.mp4" type="video/mp4">
@@ -18,14 +16,12 @@
 
     <x-infoNavbar class="my-custom-class" />
 
-
     <div id="hero-landing">
         <div id="herotext">
             <h1 id="welcome" class="text-white font-semibold uppercase">248Basketball</h1>
-            <h1 id="basketball" class="text-white font-semibold uppercase">Ontmoet het TEAM</h1>
-            <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">Ontmoet het TEAM</h1>
-            <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">Ontmoet het TEAM</h1>
-
+            <h1 id="basketball" class="text-white font-semibold uppercase">ontmoet het team</h1>
+            <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">ontmoet het team</h1>
+            <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">ontmoet het team</h1>
         </div>
     </div>
     <div class="wrapper">

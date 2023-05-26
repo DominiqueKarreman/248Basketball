@@ -47,8 +47,17 @@ class UserSeeder extends Seeder
             'geboorte_datum' => '1999-15-02',
             'phone_number' => '+31630035212'
         ]);
+  
+        $carlito = User::create([     
+            'name' => 'Carlito Antonio',
+            'email' => 'carlitoantonio@outlook.com',
+            'password' => Hash::make('12345678'),
+            'geboorte_datum' => '1999-15-02',
+            'phone_number' => '+31630035212'
+        ]);
         $user_standard->assignRole('user');
         $jorg->assignRole('admin');
         $denzel->assignRole('admin');
+        $carlito->assignRole('Moderator');
     }
 }

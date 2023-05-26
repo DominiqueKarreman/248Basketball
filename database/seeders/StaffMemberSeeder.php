@@ -42,6 +42,19 @@ class StaffMemberSeeder extends Seeder
             "facebook" => "https://www.facebook.com/jorg.janssens.3",
             "user_id" => 3
         ]);
+        StaffMember::create([
+            "name" => "Carlito Antonio",
+            "role" => "Strength & conditioning trainer", 
+            "image" => "storage/staff/carlito.png", 
+            "video" => "storage/staff/carlito.mp4",
+            "description" => 'Sinds mijn veertiende is mijn passie voor basketbal ontstaan. Ik begon buiten op een pleintje en heb uiteindelijk op hoog niveau gebasketbald in mijn jeugd. Daarnaast ben ik begin 2022 afgestudeerd als fysiotherapeut. Met mijn passie en expertise hoop ik andere basketballers te helpen in hun ontwikkeling.',
+            "email" => "carlitoantonio@outlook.com",
+            "phone" => "+31 6 23 33 55 89",
+            "instagram" => "https://www.instagram.com/the.lito/",
+            "linkedin" => "",
+            "facebook" => "",
+            "user_id" => 5
+        ]);
 
     }
 }

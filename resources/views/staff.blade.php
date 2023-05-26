@@ -9,11 +9,8 @@
     <title>248Basketball</title>
 </head>
 
-
-
-
 <body class="bg-black flex flex-col place-items-center h-full w-full">
-    <video autoplay muted loop class="inlinevideo" id="hero-video" playsinline>
+    <video autoplay muted loop id="hero-video" playsinline>
         <source src="/storage/staff/jorg.mp4" type="video/mp4">
     </video>
 
@@ -380,21 +377,6 @@
         }
     }
 </style>
-<script>
-    //PLAYS VIDEO IN LOW POWER MODE
-    let welcome = document.getElementById('welcome');
-    const video = document.getElementById('hero-video');
-
-    if (video.paused) {
-        // Video is paused
-        console.log('Video is paused', video.paused);
-        document.getElementById('welcome').textContent = 'paused';
-    } else {
-        // Video is playing
-        console.log('Video is playing');
-        document.getElementById('welcome').textContent = 'playing';
-    }
-</script>
 <script>
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");

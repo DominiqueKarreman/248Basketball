@@ -10,22 +10,7 @@
 </head>
 
 
-<script>
-    //PLAYS VIDEO IN LOW POWER MODE
-    let welcome = document.getElementById('welcome');
 
-    navigator.getBattery().then(function(battery) {
-        if (battery.charging === false && battery.level <= 0.2) {
-            // Device is in low power mode
-            console.log('Device is in low power mode');
-            document.getElementById('welcome').textContent = 'low power mode';
-        } else {
-            // Device is not in low power mode
-            console.log('Device is not in low power mode');
-            document.getElementById('welcome').textContent = 'normal mode';
-        }
-    });
-</script>
 
 <body class="bg-black flex flex-col place-items-center h-full w-full">
     <video autoplay muted loop class="inlinevideo" id="hero-video" playsinline>
@@ -395,6 +380,21 @@
         }
     }
 </style>
+<script>
+    //PLAYS VIDEO IN LOW POWER MODE
+    let welcome = document.getElementById('welcome');
+    const video = document.getElementById('hero-video');
+
+    if (video.paused) {
+        // Video is paused
+        console.log('Video is paused');
+        document.getElementById('welcome').textContent = 'paused';
+    } else {
+        // Video is playing
+        console.log('Video is playing');
+        document.getElementById('welcome').textContent = 'playing';
+    }
+</script>
 <script>
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");

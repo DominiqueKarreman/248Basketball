@@ -40,7 +40,7 @@
                     </li>
                 </a>
             @endforeach
-            <li class="card">
+            {{-- <li class="card">
                 <div class="img"><img src="/images/denzel.png" alt="img" draggable="false"></div>
                 <h2>Denzel Vaneer</h2>
 
@@ -58,7 +58,7 @@
             <li class="card">
                 <div class="img"><img src="/images/dave.png" alt="img" draggable="false"></div>
                 <h2>Dave laterveer</h2>
-            </li>
+            </li> --}}
         </ul>
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>

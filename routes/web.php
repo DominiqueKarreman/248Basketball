@@ -33,8 +33,9 @@ Route::get('/staff', function (Request $request) {
     $url = $request->url();
     //split the string untill the last / and then return the last part
     $url = substr($url, strrpos($url, '/') + 1);
+    $staffMembers = StaffMember::all();
     // dd($url);
-    return view('staff', ['url' => $url]);
+    return view('staff', ['url' => $url, 'staffMembers' => $staffMembers]);
 })->name('staff');
 Route::get('/staff/{id}', function (Request $request, $id) {
     $url = $request->url();

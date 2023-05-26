@@ -16,6 +16,19 @@ class StaffMemberSeeder extends Seeder
         //
         //generate 4 staffmembers
         StaffMember::create([
+            "name" => "Denzel Vaneer",
+            "role" => "Co-founder / Skills trainer",
+            "image" => "storage/staff/denzel.png",
+            "video" => "storage/staff/denzel.mp4",
+            "description" => 'Voor langer dan 10 jaar ben ik actief als basketbalspeler en ik ben daarnaast al een paar jaren coach/trainer. Voor mij is basketbal een sport waarbij ik veel word uitgedaagd “on the court”, maar daarnaast lessen kan meenemen voor “off the court”. Deze samenhang zorgt ervoor dat basketbal een belangrijk deel in mijn leven is en ik dit graag met een ieder wil delen. Het heeft mij bijvoorbeeld geleerd dat je moet doen waar je passie ligt en daar elke dag hard voor willen werken. Vanuit daar kan je, naar mijn mening, elke dag met een glimlach opstaan en elkaar helpen het beste uit elkaar te halen, net als je team genoten “on the court”!',
+            "email" => "denzelvaneer@outlook.com",
+            "phone" => "+31630035212",
+            "instagram" => "https://www.instagram.com/denzel_vaneer/",
+            "linkedin" => "https://www.linkedin.com/in/denzel-vaneer-0251911bb/",
+            "facebook" => "https://www.facebook.com/denzel.vaneer",
+            "user_id" => 4
+        ]);
+        StaffMember::create([
             "name" => "Jorg Janssens",
             "role" => "Co-founder / Skills trainer",
             "image" => "storage/staff/jorg.png",

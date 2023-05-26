@@ -378,12 +378,8 @@
     }
 </style>
 <script>
-    $('body').on('click touchstart', function() {
-        var videoElement = document.getElementById('hero-video');
-        if (videoElement.playing) {} else {
-            $('#hero-video').trigger('play');
-        }
-    });
+    var videoElement = document.getElementById('hero-video');
+    videoElement.play();
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");
     const firstCardWidth = carousel.querySelector(".card").offsetWidth;

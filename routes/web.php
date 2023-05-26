@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\ChatMessage;
-use App\Models\StaffMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +10,8 @@ use App\Http\Controllers\VeldController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\LocatieController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\StaffMemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,29 +24,17 @@ use App\Http\Controllers\StaffMemberController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', function () {return view('staff');})->name('home');
 Route::get('/staff', function (Request $request) {
     $url = $request->url();
     //split the string untill the last / and then return the last part
     $url = substr($url, strrpos($url, '/') + 1);
     // dd($url);
-    $staffMembers = StaffMember::all();
-    return view('staff', ['url' => $url, 'staffMembers' => $staffMembers]);
+    return view('staff', ['url' => $url]);
 })->name('staff');
-Route::get('/staff/{id}', function (Request $request, $id) {
-    $url = $request->url();
-    //split the string untill the last / and then return the last part
-    $url = substr($url, strrpos($url, '/') + 1);
-    $member = StaffMember::find($id);
 
-    return view('staff.show', ['url' => $url, 'member' => $member]);
-})->name('staff.show');
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
-
+Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 Route::middleware([
     'auth:sanctum',
@@ -111,10 +98,6 @@ Route::middleware([
 
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
 
-    Route::get('/staffMembers', [StaffMemberController::class, 'index'])->name('staffMembers');
-    Route::get('/staffMembers/create', [StaffMemberController::class, 'create'])->name('staff.create');
-    Route::post('/staffMembers', [StaffMemberController::class, 'store'])->name('staff.store');
-
     Route::get('/noti', function () {
 
         $channelName = 'news';
@@ -134,4 +117,6 @@ Route::middleware([
         $expo->notify([$channelName], $notification);
         return view('welcome');
     });
+
+    // Route::post('contact/send', )
 });

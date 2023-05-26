@@ -28,6 +28,7 @@ use App\Http\Controllers\StaffMemberController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
 Route::get('/staff', function (Request $request) {
     $url = $request->url();
     //split the string untill the last / and then return the last part
@@ -48,6 +49,8 @@ Route::get('/news', function () {
     return view('news');
 })->name('news');
 
+Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 Route::middleware([
     'auth:sanctum',

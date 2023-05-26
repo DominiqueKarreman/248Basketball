@@ -378,6 +378,13 @@
     }
 </style>
 <script>
+    const video = document.getElementById('hero-video');
+
+    video.addEventListener('play', () => {
+        if (video.paused && window.innerWidth <= 768) {
+            video.play();
+        }
+    });
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");
     const firstCardWidth = carousel.querySelector(".card").offsetWidth;

@@ -31,7 +31,7 @@
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
                         </li>
-                        <li>        
+                        <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
                         </li>
@@ -83,15 +83,15 @@
                         <th scope="col" class="px-6 py-3">
                             Naam
                         </th>
+
                         <th scope="col" class="px-6 py-3">
                             Rol
+
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Status
+
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            Actie
-                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -109,52 +109,30 @@
                                 </td>
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-[#EDB12C] whitespace-nowrap dark:text-white">
-                                   
-                                        <img src="{{ $user->image }}" alt="{{ $user->name }}"
-                                            class="w-10 h-10 rounded-full object-cover">
-                                   
+
+                                    <img src="{{ $user->image }}" alt="{{ $user->name }}"
+                                        class="w-10 h-10 rounded-full object-cover">
+
                                     <div class="pl-3">
                                         <div class="text-base font-semibold">{{ $user->name }}</div>
                                         <div class="font-normal text-gray-300">{{ $user->email }}</div>
                                     </div>
                                 </th>
 
-                                <td class="px-6 py-4">
 
-                                    @if (Auth::user()->hasPermissionTo('assign roles'))
-                                        <form method="POST" action="{{ route('users.changeRoles', $user->id) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <select onchange="this.form.submit()" name="user_role" id="countries"
-                                                class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                {{-- @foreach ($roles as $role)
-                                                    <option
-                                                        {{ $user->roles->first()->name == $role->name ? 'selected' : '' }}
-                                                        value="{{ $role->name }}">{{ $role->name }}</option>
-                                                @endforeach --}}
-                                                {{-- <option selected>  {{ $user->roles->first()->name }}</option> --}}
-                                            </select>
-                                        </form>
-                                    @else
-                                        {{ $user->roles->first()->name }}
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        @if ($user->email_verified_at)
-                                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Geverifieerd
-                                        @else
-                                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Niet
-                                            geverifieerd
-                                        @endif
-                                    </div>
+                                <th scope="row"
+                                    class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                                    {{ $user->role }}
+                                </th>
 
-                                </td>
+
+
+
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('users.edit', $user->id) }}"
+                                    <a href="{{ route('staff.edit', $user->id) }}"
                                         class="font-medium
                                     text-[#EDB12C] dark:text-blue-500 hover:underline">Edit
-                                        user</a>
+                                        Medewerker</a>
                                 </td>
                             </tr>
                         @endif

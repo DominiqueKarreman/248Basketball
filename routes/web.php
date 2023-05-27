@@ -116,6 +116,8 @@ Route::middleware([
     Route::get('/staffMembers', [StaffMemberController::class, 'index'])->name('staffMembers');
     Route::get('/staffMembers/create', [StaffMemberController::class, 'create'])->name('staff.create');
     Route::post('/staffMembers', [StaffMemberController::class, 'store'])->name('staff.store');
+    Route::get('/staffMembers/{id}/edit', [StaffMemberController::class, 'edit'])->name('staff.edit');
+    Route::put('/staffMembers/{id}', [StaffMemberController::class, 'update'])->name('staff.update');
 
     Route::get('/noti', function () {
 

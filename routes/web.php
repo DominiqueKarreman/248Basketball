@@ -12,6 +12,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\StaffMemberController;
 use App\Http\Controllers\ContactMessageController;
 
 /*

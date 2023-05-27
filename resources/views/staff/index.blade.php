@@ -109,13 +109,10 @@
                                 </td>
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-[#EDB12C] whitespace-nowrap dark:text-white">
-                                    @if (!$user->profile_photo_path)
-                                        <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}"
+                                   
+                                        <img src="{{ $user->image }}" alt="{{ $user->name }}"
                                             class="w-10 h-10 rounded-full object-cover">
-                                    @else
-                                        <img class="w-10 h-10 rounded-full object-cover"
-                                            src="/storage/{{ $user->profile_photo_path }}" alt="{{ $user->name }}" />
-                                    @endif
+                                   
                                     <div class="pl-3">
                                         <div class="text-base font-semibold">{{ $user->name }}</div>
                                         <div class="font-normal text-gray-300">{{ $user->email }}</div>

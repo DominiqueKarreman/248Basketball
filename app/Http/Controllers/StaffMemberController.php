@@ -107,7 +107,7 @@ class StaffMemberController extends Controller
             
             $file = str_replace("/storage", "", $staffMember->image);
             File::delete($file);
-            dd(File::exists($file), $file);
+            // dd(File::exists($file), $file);
             if (is_file($staffMember->image)) {
                 // 1. possibility
                 Storage::delete($staffMember->image);

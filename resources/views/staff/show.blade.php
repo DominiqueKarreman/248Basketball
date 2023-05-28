@@ -28,15 +28,16 @@
             <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">{{ $member->name }}</h1>
         </div>
     </div>
-    <div class="flex flex-row bottom-[10vh] absolute gap-[18vh]">
-        <div class="card w-[18vw]  justify-center flex items-center bg-[#EDB12C] rounded-lg">
+    <div class="flex flex-col bottom-[10vh] top-[50vh] sm:flex-row relative gap-[-8vh] sm:gap-[18vh]">
+        <div
+            class="card bottom-[14vh] sm:bottom-[0vh] relative w-[80vw] sm:w-[18vw]  justify-center flex items-center bg-[#EDB12C] rounded-lg">
             <img src="/{{ $member->image }}" class="h-[30vh] " alt="denzel">
             <h1 class="name text-white text-center absolute max-w-fit w-[12vw] font-semibold uppercase">
                 {{ $member->name }}</h1>
             <h1 class="rol text-white font-semibold uppercase">{{ $member->rol }}</h1>
         </div>
-        <div class="text-white max-w-[35vw]">{{ $member->description }}</div>
-        <div class="text-white flex flex-col items-center gap-[1vh] ">
+        <div class="text-white max-w-[80vw] sm:max-w-[35vw]">{{ $member->description }}</div>
+        <div class="text-white flex flex-row sm:flex-col mt-[5vh] sm:mt-[0] gap-[3vh] items-center sm:gap-[1vh]">
             <h1>Socials
             </h1>
             @if ($member->instagram)

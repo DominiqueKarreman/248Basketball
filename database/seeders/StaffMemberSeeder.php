@@ -44,8 +44,8 @@ class StaffMemberSeeder extends Seeder
         ]);
         StaffMember::create([
             "name" => "Carlito Antonio",
-            "role" => "Strength & conditioning trainer", 
-            "image" => "storage/staff/carlito.png", 
+            "role" => "Strength & conditioning trainer",
+            "image" => "storage/staff/carlito.png",
             "video" => "storage/staff/carlito.mp4",
             "description" => 'Sinds mijn veertiende is mijn passie voor basketbal ontstaan. Ik begon buiten op een pleintje en heb uiteindelijk op hoog niveau gebasketbald in mijn jeugd. Daarnaast ben ik begin 2022 afgestudeerd als fysiotherapeut. Met mijn passie en expertise hoop ik andere basketballers te helpen in hun ontwikkeling.',
             "email" => "carlitoantonio@outlook.com",
@@ -55,6 +55,19 @@ class StaffMemberSeeder extends Seeder
             "facebook" => "",
             "user_id" => 5
         ]);
-
+        StaffMember::create([
+            "name" => "Mats Swiers",
+            "role" => "Breedtesport coördinator",
+            "image" => "storage/staff/mats.png",
+            "video" => "storage/staff/mats.mp4",
+            "description" => 'Ik heb basketbal een paar jaar geleden ontdekt en ben sindsdien verslaafd aan de sport. Ik wil mezelf en anderen beter blijven maken. Momenteel zit ik op het mbo waar ik sport en bewegen studeer. Bij 24/8 werk ik vooral in de breedtesport dus je komt mij vooral tegen bij de clinics en pickups
+            ',
+            "email" => "matsswiers@outlook.com",
+            "phone" => "+31637300779",
+            "instagram" => "https://www.instagram.com/mats_swiers/",
+            "linkedin" => "",
+            "facebook" => "",
+            "user_id" => 6
+        ]);
     }
 }

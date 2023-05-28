@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         //
         //get factory
-        
+
 
         $user = User::create([
             'name' => 'Dominique Karreman',
@@ -47,17 +47,25 @@ class UserSeeder extends Seeder
             'geboorte_datum' => '1999-15-02',
             'phone_number' => '+31630035212'
         ]);
-  
-        $carlito = User::create([     
+
+        $carlito = User::create([
             'name' => 'Carlito Antonio',
             'email' => 'carlitoantonio@outlook.com',
             'password' => Hash::make('12345678'),
             'geboorte_datum' => '1999-15-02',
             'phone_number' => '+31630035212'
         ]);
+        $mats = User::create([
+            'name' => 'Mats Swiers',
+            'email' => 'matsswiers@outlook.com',
+            'password' => Hash::make('12345678'),
+            'geboorte_datum' => '1999-15-02',
+            'phone_number' => '+31637300779'
+        ]);
         $user_standard->assignRole('user');
         $jorg->assignRole('admin');
         $denzel->assignRole('admin');
         $carlito->assignRole('Moderator');
+        $mats->assignRole('Moderator');
     }
 }

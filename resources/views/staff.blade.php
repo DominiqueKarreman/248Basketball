@@ -374,9 +374,9 @@
         #herotext {
             position: absolute;
             top: 50%;
-            width: 100vw;
+            width: 80%;
             left: 50%;
-            transform: translate(-40%, -180%);
+            transform: translate(-50%, -180%);
         }
 
         .wrapper {

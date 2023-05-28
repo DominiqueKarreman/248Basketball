@@ -89,7 +89,7 @@ class StaffMemberController extends Controller
     public function edit($id)
     {
         $staffMember = StaffMember::find($id);
-        dd($staffMember->image);
+        // dd($staffMember->image);
         return response(view('staff.edit', ["staffMember" => $staffMember, "users"=> User::all()]));
     }
 

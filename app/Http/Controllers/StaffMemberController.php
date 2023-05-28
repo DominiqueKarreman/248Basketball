@@ -20,6 +20,7 @@ class StaffMemberController extends Controller
     {
         //
         $users = StaffMember::all();
+        
         return view('staff.index', ['users' => $users]);
     }
 
@@ -88,6 +89,7 @@ class StaffMemberController extends Controller
     public function edit($id)
     {
         $staffMember = StaffMember::find($id);
+        dd($staffMember->image);
         return response(view('staff.edit', ["staffMember" => $staffMember, "users"=> User::all()]));
     }
 

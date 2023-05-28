@@ -102,6 +102,7 @@ class StaffMemberController extends Controller
         if ($request->hasFile('img_url')) {
             //remove old photo from storage folder
             File::delete(public_path($staffMember->image));
+            dd(File::exists(public_path($staffMember->image)));
             if (is_file($staffMember->image)) {
                 // 1. possibility
                 Storage::delete($staffMember->image);

@@ -274,14 +274,14 @@
             font-size: 6vh;
             letter-spacing: 1.5vw;
             line-height: 12vw;
-            transform: translate(0vh, 12);
+            transform: translate(0vh, 5vh);
         }
 
         #basketball-stroke-2 {
             font-size: 6vh;
             letter-spacing: 1.5vw;
             line-height: 12vw;
-            transform: translate(0vh, 9vh);
+            transform: translate(0vh, 8vh);
         }
 
 

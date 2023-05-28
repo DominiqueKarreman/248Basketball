@@ -346,6 +346,7 @@
             letter-spacing: 1.5vw;
             position: relative;
             margin-bottom: 0vh;
+            width: 100%;
             /* line-height: 12vw; */
         }
 
@@ -359,22 +360,31 @@
             font-size: 6vh;
             letter-spacing: 1.5vw;
             line-height: 12vw;
-            transform: translate(0vh, 12);
+            transform: translate(0vh, 8vh);
         }
 
         #basketball-stroke-2 {
             font-size: 6vh;
             letter-spacing: 1.5vw;
             line-height: 12vw;
-            transform: translate(0vh, 9vh);
+            transform: translate(0vh, 5vh);
         }
 
 
         #herotext {
             position: absolute;
             top: 50%;
+            width: 100vw;
             left: 50%;
-            transform: translate(-50%, -180%);
+            transform: translate(-40%, -180%);
+        }
+
+        .wrapper {
+            top: 35vh;
+        }
+
+        body {
+            overflow-x: hidden;
         }
     }
 </style>

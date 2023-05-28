@@ -34,7 +34,7 @@
             <img src="/{{ $member->image }}" class="h-[30vh] " alt="denzel">
             <h1 class="name text-white text-center absolute max-w-fit w-[12vw] font-semibold uppercase">
                 {{ $member->name }}</h1>
-            <h1 class="rol text-white font-semibold uppercase">{{ $member->rol }}</h1>
+            <h1 class="rol text-white font-semibold uppercase">{{ $member->role }}</h1>
         </div>
         <div class="text-white max-w-[80vw] sm:max-w-[35vw]">{{ $member->description }}</div>
         <div class="text-white flex flex-row sm:flex-col mt-[5vh] sm:mt-[0] gap-[3vh] items-center sm:gap-[1vh]">
@@ -157,11 +157,11 @@
     .rol {
         letter-spacing: 1vh;
         /* bottom: -4vh */
-        color: #EDB12C;
+        color: #ffffff;
         z-index: 10;
         position: absolute;
-        font-size: 50vh;
-        /* bottom: 7vw */
+        font-size: 2vh;
+        bottom: -9vh;
     }
 
     #basketball-stroke {

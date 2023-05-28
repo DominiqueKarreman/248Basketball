@@ -33,6 +33,8 @@
                         <div class="img"><img src="/{{ $staffMember->image }}" alt="img" draggable="false">
                         </div>
                         <h2>{{ $staffMember->name }}</h2>
+                        <h1 class="rolnaam">{{ $staffMember->role }}</h1>
+                        {{-- <h1 class="rolnaam text-white font-semibold uppercase">{{ $staffMember->role }}asd</h1> --}}
                     </li>
                 </a>
             @endforeach
@@ -93,6 +95,11 @@
     html {
         scroll-behavior: smooth;
         margin: none;
+    }
+
+    .nameRole {
+        font-weight: bold;
+        font-size: 21vh;
     }
 
     svg {
@@ -290,27 +297,57 @@
 
     .carousel .card .img {}
 
+    .rol {
+        letter-spacing: 1vh;
+        /* bottom: -4vh */
+        color: #ffffff;
+        z-index: 10;
+        position: relative;
+        font-size: 2vh;
+
+        bottom: -8vh;
+    }
+
     .card .img img {
 
         height: 30vh;
         position: relative;
-        bottom: -12vh
+        bottom: -7vh
     }
 
     .carousel .card h2 {
-        font-weight: 500;
+        font-weight: bold;
         font-size: 2vh;
         z-index: 1;
 
         text-transform: uppercase;
         color: #fff;
         letter-spacing: 1.5vh;
+        bottom: 6vh;
         align-self: center;
-        margin-bottom: 15vh;
+        /* margin-bottom: 15vh; */
+        position: relative;
         /* margin: auto; */
         width: 100%;
         text-align: center;
         /* margin: 30px 0 5px; */
+    }
+
+    .rolnaam {
+        font-weight: 500;
+        font-size: 2vh;
+        z-index: 1;
+
+        text-transform: uppercase;
+        color: #fff;
+        /* letter-spacing: 1.5vh; */
+        bottom: 5vh;
+        position: relative;
+        align-self: center;
+        /* margin-bottom: 15vh; */
+        /* margin: auto; */
+        width: 100%;
+        text-align: center;
     }
 
     .carousel .card span {
@@ -341,6 +378,59 @@
     }
 
     @media (max-width: 640px) {
+        .rol {
+            letter-spacing: 1vh;
+            /* bottom: -4vh */
+            color: #ffffff;
+            z-index: 10;
+            position: relative;
+            font-size: 2vh;
+
+            bottom: -8vh;
+        }
+
+        .card .img img {
+
+            height: 30vh;
+            position: relative;
+            bottom: -5vh
+        }
+
+        .carousel .card h2 {
+            font-weight: bold;
+            font-size: 2vh;
+            z-index: 1;
+
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1.5vh;
+            align-self: center;
+
+            bottom: 5vh;
+            position: relative;
+            /* margin: auto; */
+            width: 100%;
+            text-align: center;
+            /* margin: 30px 0 5px; */
+        }
+
+        .rolnaam {
+            font-weight: 500;
+            font-size: 2vh;
+            z-index: 1;
+
+            text-transform: uppercase;
+            color: #fff;
+            /* letter-spacing: 1.5vh; */
+            bottom: 4vh;
+            position: relative;
+            align-self: center;
+            /* margin-bottom: 10vh; */
+            /* margin: auto; */
+            width: 100%;
+            text-align: center;
+        }
+
         #welcome {
             font-size: 2vh;
             letter-spacing: 1.5vw;

@@ -104,8 +104,8 @@ class StaffMemberController extends Controller
             //replace "/storage" with "" to get the path
             
             $file = str_replace("/storage", "", $staffMember->image);
-            dd(File::exists(storage_path($file)), storage_path($file));
-            File::delete(storage_path($file));
+            // dd(File::exists($file), $file);
+            File::delete($file);
             if (is_file($staffMember->image)) {
                 // 1. possibility
                 Storage::delete($staffMember->image);

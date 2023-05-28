@@ -116,8 +116,8 @@ class StaffMemberController extends Controller
             } else {
                 echo "File does not exist";
             }
-            $img_url = "storage/staff/" . $request->file('img_url')->getClientOriginalName();
-            $request->file('img_url')->storeAs('public/staff', $request->file('img_url')->getClientOriginalName());
+            $img_url = "storage/staff/" . $request->file('img_url')->getClientOriginalName() . "v=" . time();
+            $request->file('img_url')->storeAs('public/staff', $request->file('img_url')->getClientOriginalName() . "v=" . time());
         } else {
             $img_url = $staffMember->image;
         }
@@ -134,8 +134,8 @@ class StaffMemberController extends Controller
             } else {
                 echo "File does not exist";
             }
-            $video_url = "storage/staff/" . $request->file('video')->getClientOriginalName();
-            $request->file('video')->storeAs('public/staff', $request->file('video')->getClientOriginalName());
+            $video_url = "storage/staff/" . $request->file('video')->getClientOriginalName() . "v=" . time();
+            $request->file('video')->storeAs('public/staff', $request->file('video')->getClientOriginalName() . "v=" . time());
         } else {
             $video_url = $staffMember->video;
         }

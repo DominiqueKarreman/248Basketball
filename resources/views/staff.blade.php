@@ -249,6 +249,7 @@
         border-radius: 8px;
         scroll-behavior: smooth;
         scrollbar-width: none;
+        overflow-y: hidden;
     }
 
     .carousel::-webkit-scrollbar {

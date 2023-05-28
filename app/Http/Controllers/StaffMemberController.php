@@ -101,8 +101,8 @@ class StaffMemberController extends Controller
         $staffMember = StaffMember::find($id);
         if ($request->hasFile('img_url')) {
             //remove old photo from storage folder
-            dd(File::exists(public_path($staffMember->image)), public_path($staffMember->image));
-            File::delete(public_path($staffMember->image));
+            // dd(File::exists(storage_path($staffMember->image)), storage_path($staffMember->image));
+            File::delete(storage_path($staffMember->image));
             if (is_file($staffMember->image)) {
                 // 1. possibility
                 Storage::delete($staffMember->image);
@@ -119,7 +119,7 @@ class StaffMemberController extends Controller
 
         if ($request->hasFile('video')) {
             //remove old video fro storage first
-            File::delete(public_path($staffMember->video));
+            File::delete(storage_path($staffMember->video));
             if (is_file($staffMember->video)) {
                 // 1. possibility
                 Storage::delete($staffMember->image);

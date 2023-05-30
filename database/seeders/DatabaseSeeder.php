@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             VeldSeeder::class,
             EventSeeder::class,
+            StaffMemberSeeder::class
 
         ]);
         // \App\Models\User::factory(10)->create();

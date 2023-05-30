@@ -37,6 +37,11 @@
                             {{ __('Rechten') }}
                         </x-nav-link>
                     @endcan
+                    @can('viewAny', App\Models\NewsArticle::class)
+                      <x-nav-link href="{{ route('news.index') }}" :active="request()->routeIs('news.index')">
+                            {{ __('News') }}
+                        </x-nav-link>
+                    @endcan
 
                 </div>
             </div>
@@ -149,6 +154,11 @@
                     {{ __('Rechten') }}
                 </x-responsive-nav-link>
             @endcan
+            @can('viewAny', App\Models\NewsArticle::class)
+                      <x-nav-link href="{{ route('news.index') }}" :active="request()->routeIs('news.index')">
+                            {{ __('News') }}
+                        </x-nav-link>
+                    @endcan
         </div>
 
         <!-- Responsive Settings Options -->

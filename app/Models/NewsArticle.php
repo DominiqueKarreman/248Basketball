@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Models;
+use Illuminate\Database\Eloquent\Model;;
 
 class NewsArticle extends Model
 {
@@ -13,5 +13,4 @@ class NewsArticle extends Model
         'content',
         'image',
     ];
-
 }

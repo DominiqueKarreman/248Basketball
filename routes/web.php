@@ -37,6 +37,14 @@ Route::get('/news', function () {
     return view('news');
 })->name('news');
 
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+Route::put('news/{id}', [NewsController::class], 'update')->name('news.update');
+Route::delete('news/{id}', [NewsController::class], 'destroy')->name('news.destroy');
+
 
 Route::middleware([
     'auth:sanctum',
@@ -97,8 +105,9 @@ Route::middleware([
     Route::get('/locaties/{id}/edit', [LocatieController::class, 'edit'])->name('locaties.edit');
     Route::post('/locaties', [LocatieController::class, 'store'])->name('locaties.store');
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
-
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
+
+
 
     Route::get('/noti', function () {
 

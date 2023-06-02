@@ -161,6 +161,7 @@
         position: relative;
         top: 5vh;
         width: 100vw;
+        background-color: red;
     }
 
     .stat {

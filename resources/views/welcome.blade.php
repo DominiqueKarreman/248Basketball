@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div id="statDiv" style="opacity: 0; transition: 2s; animation-delay: 2s;"
-                class="statsDiv  flex w-[100vw] h-[20vh] justify-around items-end flex-row">
+                class="statsDiv  flex h-[20vh] justify-around items-end flex-row">
                 <div class="stat">
                     <h2 class="text-white text-lg ">Clinics gegeven</h2>
                     <h1 id="stat1" class="text-white text-center numberStat text-lg">66</h1>
@@ -197,7 +197,7 @@
     #programmeDiv {
         opacity: 0;
         margin-top: 15vh;
-        width: 100vw;
+
         transform: translateX(-100%);
         transition: opacity 1s ease-out, transform 1s ease-out;
     }
@@ -210,7 +210,7 @@
         align-content: center;
         opacity: 0;
         height: 90vh;
-        width: 100vw;
+        width: 90vw;
         animation: fade-in 1s ease-out forwards;
         animation-delay: 0.7s;
         position: relative;

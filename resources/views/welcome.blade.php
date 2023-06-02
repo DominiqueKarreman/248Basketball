@@ -41,7 +41,7 @@
                     <h1 id="stat3" class="text-white text-center numberStat text-lg">45</h1>
                 </div>
             </div>
-            <div id="programmeDiv">
+            {{-- <div id="programmeDiv">
                 <div id="programme-overlay"></div>
                 <div id="programme-overlay-bottom"></div>
                 <div class="programme-content">
@@ -52,7 +52,7 @@
                         world?</p>
                     <a href="{{ route('programme.join') }}" id="button2" class="text-[#EDB12C]">WORDT LID</a>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
@@ -60,62 +60,62 @@
 
 
     <script>
-        const element = document.querySelector('#programmeDiv');
-        const statDiv = document.querySelector('#statDiv');
-        const observer = new IntersectionObserver(entries => {
-            console.log(entries, "entries")
-            if (entries[0].isIntersecting) {
-                console.log("test")
-                element.classList.add('animate');
-            } else {
-                // element.classList.remove('animate');
-            }
-        })
-        observer.observe(element)
+        // const element = document.querySelector('#programmeDiv');
+        // const statDiv = document.querySelector('#statDiv');
+        // const observer = new IntersectionObserver(entries => {
+        //     console.log(entries, "entries")
+        //     if (entries[0].isIntersecting) {
+        //         console.log("test")
+        //         element.classList.add('animate');
+        //     } else {
+        //         // element.classList.remove('animate');
+        //     }
+        // })
+        // observer.observe(element)
 
 
-        const observer2 = new IntersectionObserver(entries => {
+        // const observer2 = new IntersectionObserver(entries => {
 
-            if (entries[0].isIntersecting) {
-                let stat1 = document.getElementById("stat1")
-                let stat2 = document.getElementById("stat2")
-                let stat3 = document.getElementById("stat3")
+        //     if (entries[0].isIntersecting) {
+        //         let stat1 = document.getElementById("stat1")
+        //         let stat2 = document.getElementById("stat2")
+        //         let stat3 = document.getElementById("stat3")
 
 
 
-                animateNumber(stat1, 45)
-                animateNumber(stat2, 155)
-                animateNumber(stat3, 452)
-                observer2.unobserve(statDiv)
+        //         animateNumber(stat1, 45)
+        //         animateNumber(stat2, 155)
+        //         animateNumber(stat3, 452)
+        //         observer2.unobserve(statDiv)
 
-                statDiv.style.opacity = 1;
-                console.log("statdiv: intersecting: ", entries[0].isIntersecting)
-            } else {
-                // statDiv.style.opacity = 0;
-                console.log("statDiv: intersecting: ", entries[0].isIntersecting)
-            }
-        }, {
-            threshold: 0.9
-        });
+        //         statDiv.style.opacity = 1;
+        //         console.log("statdiv: intersecting: ", entries[0].isIntersecting)
+        //     } else {
+        //         // statDiv.style.opacity = 0;
+        //         console.log("statDiv: intersecting: ", entries[0].isIntersecting)
+        //     }
+        // }, {
+        //     threshold: 0.9
+        // });
 
-        observer2.observe(statDiv);
+        // observer2.observe(statDiv);
 
-        observer.observe(statDiv);
+        // observer.observe(statDiv);
 
-        function animateNumber(element, finalNumber) {
-            let currentNumber = 0;
-            const duration = 1750; // 2 seconds
-            const step = finalNumber / (duration / 10); // increment by 10ms
+        // function animateNumber(element, finalNumber) {
+        //     let currentNumber = 0;
+        //     const duration = 1750; // 2 seconds
+        //     const step = finalNumber / (duration / 10); // increment by 10ms
 
-            const intervalId = setInterval(() => {
-                currentNumber += step;
-                if (currentNumber >= finalNumber) {
-                    clearInterval(intervalId);
-                    currentNumber = finalNumber;
-                }
-                element.textContent = Math.round(currentNumber);
-            }, 10);
-        }
+        //     const intervalId = setInterval(() => {
+        //         currentNumber += step;
+        //         if (currentNumber >= finalNumber) {
+        //             clearInterval(intervalId);
+        //             currentNumber = finalNumber;
+        //         }
+        //         element.textContent = Math.round(currentNumber);
+        //     }, 10);
+        // }
     </script>
 
 </body>

@@ -162,7 +162,8 @@
     #statDiv {
         position: relative;
         top: 5vh;
-        width: 100vw;
+        width: 90vw;
+        align-self: center;
 
     }
 

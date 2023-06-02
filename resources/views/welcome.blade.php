@@ -9,7 +9,7 @@
     <title>248Basketball</title>
 </head>
 
-<body class="bg-black flex flex-col h-full w-[100vw]">
+<body class="bg-red-100 flex flex-col h-full w-[100vw]">
     <x-infoNavbar class="my-custom-class" />
     <div class="flex flex-col relative h-[1000vh]">
         <div id="gradient-overlay"></div>

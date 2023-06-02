@@ -191,6 +191,7 @@
     #programmeDiv {
         opacity: 0;
         margin-top: 15vh;
+        width: 100vw;
         transform: translateX(-100%);
         transition: opacity 1s ease-out, transform 1s ease-out;
     }

@@ -266,6 +266,11 @@
     * {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
+
+    }
+
+    html {
+        overflow-x: hidden;
     }
 
     #hero-landing {

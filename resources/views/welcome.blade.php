@@ -160,6 +160,7 @@
     #statDiv {
         position: relative;
         top: 5vh;
+        width: 100vw;
     }
 
     .stat {
@@ -267,10 +268,6 @@
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
 
-    }
-
-    html {
-        overflow-x: hidden;
     }
 
     #hero-landing {

@@ -140,6 +140,8 @@
 
     }
 
+
+
     .programme-content {
         position: relative;
         bottom: 5vh;
@@ -161,7 +163,7 @@
         position: relative;
         top: 5vh;
         width: 100vw;
-        background-color: red;
+
     }
 
     .stat {
@@ -173,6 +175,7 @@
         margin: 0 auto;
         max-width: 800px;
         padding: 2rem;
+        max-width: 20vw;
 
         border-radius: 0.5rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);

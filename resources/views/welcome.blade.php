@@ -22,8 +22,8 @@
                 <h1 id="basketball" class="text-white font-semibold uppercase">24/8 Basketball</h1>
                 <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
                 <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
-                <a href="#programmeDiv" id="button"
-                    class="bg-white hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Zie meer ↓
+                <a href="" id="button" class="bg-white hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Zie
+                    meer ↓
                 </a>
             </div>
             <div id="statDiv" style="opacity: 0; transition: 2s; animation-delay: 2s;"

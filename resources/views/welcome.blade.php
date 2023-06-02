@@ -9,7 +9,7 @@
     <title>248Basketball</title>
 </head>
 
-<body class="bg-red-100 flex flex-col h-full w-[100vw]">
+<body class="bg-black flex flex-col h-full w-full">
     <x-infoNavbar class="my-custom-class" />
     <div class="flex flex-col relative h-[1000vh]">
         <div id="gradient-overlay"></div>
@@ -210,7 +210,7 @@
         align-content: center;
         opacity: 0;
         height: 90vh;
-        width: 90vw;
+        width: 100vw;
         animation: fade-in 1s ease-out forwards;
         animation-delay: 0.7s;
         position: relative;

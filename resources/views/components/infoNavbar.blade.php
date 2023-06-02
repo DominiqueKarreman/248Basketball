@@ -8,7 +8,7 @@
         <div class="flex md:order-2">
             <a href="{{ route('login') }}">
                 <button type="button"
-                    class="text-white bg-[#EDB12C] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('Login') }}
+                    class="text-black bg-[#EDB12C] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ __('Login') }}
                 </button>
             </a>
             <button data-collapse-toggle="navbar-cta" type="button"
@@ -52,7 +52,7 @@
 <style>
     nav {
         width: 100vw;
-
+        z-index: 5;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     }
 

@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index(): Response
     {
         //
-        
+
         if (!auth()->user()->hasPermissionTo('view events')) {
             abort('403');
         }
@@ -28,7 +28,7 @@ class EventController extends Controller
         $events = Event::query()
             ->select('events.*', 'users.name as verantwoordelijke')
             ->leftJoin('users', 'events.verantwoordelijke', '=', 'users.id')->get();
-     
+
         return response(view('events.index', [
             'events' => $events,
         ]), 200);
@@ -48,7 +48,6 @@ class EventController extends Controller
             'velden' => $velden,
             'locaties' => $locaties,
         ]), 200);
-
     }
 
     /**
@@ -58,7 +57,7 @@ class EventController extends Controller
     {
         //
         // dd($request->all());
-        if($request->locatie_id == "new"){
+        if ($request->locatie_id == "new") {
             $locatieModel = new Locatie();
             $locatieModel->naam = $request->naam;
             $locatieModel->adres = $request->locatie_naam;
@@ -68,7 +67,6 @@ class EventController extends Controller
             $locatieModel->latitude = $request->latitude;
             $locatieModel->save();
             $locatie_id = $locatieModel->id;
-            
         } else {
             $locatie_id = $request->locatie_id;
         }
@@ -117,7 +115,9 @@ class EventController extends Controller
             'eventT' => $eventT,
         ]), 200);
     }
-
+    public function show2(Event $event): Response
+    {
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -141,5 +141,4 @@ class EventController extends Controller
     {
         //
     }
-    
 }

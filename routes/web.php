@@ -49,8 +49,9 @@ Route::get('/staff/{id}', function (Request $request, $id) {
 Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
-Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::get('/programme/join', function () {
+    return view("programme.join");
+})->name("programme.join");
 
 Route::middleware([
     'auth:sanctum',

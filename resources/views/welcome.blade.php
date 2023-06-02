@@ -257,6 +257,7 @@
     html {
         scroll-behavior: smooth;
         margin: none;
+        max-width: 100vw;
     }
 
     .nameRole {

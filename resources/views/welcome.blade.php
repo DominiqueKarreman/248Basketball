@@ -209,6 +209,7 @@
         align-content: center;
         opacity: 0;
         height: 90vh;
+        width: 100vw;
         animation: fade-in 1s ease-out forwards;
         animation-delay: 0.7s;
         position: relative;

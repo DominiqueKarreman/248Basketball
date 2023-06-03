@@ -16,7 +16,7 @@ class NewsController extends Controller
             ->union(NewsArticle::where('is_cover', false)->latest()->take(5))
             ->get();
 
-        return view('news', compact('news'));
+        return view('news.index', compact('news'));
     }
 
     public function store(Request $request)

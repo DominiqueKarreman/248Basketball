@@ -1,8 +1,6 @@
 <x-app-layout>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <x-slot name="header">
         <div class="flex flex-row ">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-800 leading-tight">
@@ -21,9 +19,9 @@
                     Posts
                     @can('create', App\Models\Post::class)
                     <a href="{{ route('posts.create') }}"
-                    class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
-                    @endcan
-                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+                class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
+                @endcan
+                <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
                 </caption> --}}
                 <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -57,42 +55,29 @@
 
                     <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                            <input type="text" name="naam" id="naam" required
-                                class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                            <input type="text" name="naam" id="naam" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
                         </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                            <input type="text" name="adres" id="adres"
-                                class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <th scope="row" class="">
+                            <input type="text" name="adres" id="adres" class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
                         </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                        <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                            <input type="text" name="plaats" id="plaats" required
-                                class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                            <input type="text" name="plaats" id="plaats" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                         </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1" 
-                                class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1" class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
-                        <th scope="row"
-                            class="py-4 w-full px-6 font-medium text-[#EDB12C] whitespace-nowrap flex dark:text-white">
+                        <th scope="row" class="py-4 w-full px-6 font-medium text-[#EDB12C] whitespace-nowrap flex dark:text-white">
 
-                            <input type="time" name="openingstijden" id="openingstijden" required
-                                class="block  p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
-                            <input type="time" name="sluitingstijden" id="sluitingstijden" required
-                                class="block  p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                            <input type="time" name="openingstijden" id="openingstijden" required class="block  p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                            <input type="time" name="sluitingstijden" id="sluitingstijden" required class="block  p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                         </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                        <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                            <select name="conditie" id="conditie"
-                                class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-[#EDB12C] focus:border-[#EDB12C] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                            <select name="conditie" id="conditie" class="bg-zinc-800 border border-black text-[#EDB12C] text-sm rounded-lg focus:ring-[#EDB12C] focus:border-[#EDB12C] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
                                 <option value="Slecht">Slecht
                                 </option>
                                 <option value="Voldoende">
@@ -107,42 +92,34 @@
                         {{-- <td class="py-4 px-6 text-right">
                             @can('update', $post)
                             <a href="{{ route('posts.edit', $post->id) }}"
-                                class="mx-1 font-medium text-[#EDB12C] dark:text-blue-500 hover:underline">Edit</a>
-                                @endcan
-                                
-                                @can('delete', $post)
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                    class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                </form>
-                                @endcan
-                            </td> --}}
+                        class="mx-1 font-medium text-[#EDB12C] dark:text-blue-500 hover:underline">Edit</a>
+                        @endcan
+
+                        @can('delete', $post)
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                        </form>
+                        @endcan
+                        </td> --}}
                     </tr>
                     <tr class="bg-zinc-700  dark:bg-gray-800 border-b border-t border-zinc-900 dark:border-gray-700">
-                        <th colspan="6" scope="row"
-                            class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
+                        <th colspan="6" scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
                             <div class="imgdiv">
                                 <div class="flex items-center justify-center w-full">
-                                    <label for="dropzone-file"
-                                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-black border-dashed rounded-lg cursor-pointer bg-zinc-800 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-zinc-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-zinc-500">
+                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-black border-dashed rounded-lg cursor-pointer bg-zinc-800 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-zinc-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-zinc-500">
                                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-[#EDB12C]" fill="none"
-                                                stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                                            <svg aria-hidden="true" class="w-10 h-10 mb-3 text-[#EDB12C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
                                                 </path>
                                             </svg>
-                                            <p class="mb-2 text-sm text-[#EDB12C] dark:text-gray-400"><span
-                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="mb-2 text-sm text-[#EDB12C] dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                             <p class="text-xs text-[#EDB12C] dark:text-gray-400">SVG, PNG, JPG or GIF
                                                 (MAX.
                                                 800x400px)</p>
                                         </div>
-                                        <input id="dropzone-file" name="img_url" type="file" class="hidden"
-                                            required />
+                                        <input id="dropzone-file" name="img_url" type="file" class="hidden" required />
                                     </label>
                                 </div>
                                 <img src="" class="img_preview hidden" id="img_preview" alt="asdasd">
@@ -159,10 +136,10 @@
                         Posts
                         @can('create', App\Models\Post::class)
                         <a href="{{ route('posts.create') }}"
-                        class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
-                        @endcan
-                        <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                    </caption> --}}
+            class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
+            @endcan
+            <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+            </caption> --}}
             <thead class="text-xs text-[#EDB12C] uppercase bg-zinc-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">
@@ -191,38 +168,32 @@
 
                 <tr class="bg-zinc-700 border-zinc-800 border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                        <input type="text" name="longitude" id="longitude" required
-                            class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <input type="text" name="longitude" id="longitude" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="latitude" id="latitude" required
-                            class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <input type="text" name="latitude" id="latitude" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                     </th>
 
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="postcode" id="postcode" required
-                            class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <input type="text" name="postcode" id="postcode" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                     </th>
 
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="capaciteit" id="capaciteit" required
-                            class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <input type="text" name="capaciteit" id="capaciteit" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
 
-                        <input type="text" name="aantal_baskets" id="aantal_baskets" required
-                            class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                        <input type="text" name="aantal_baskets" id="aantal_baskets" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
 
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting" 
-                            class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting" class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                 </tr>
                 <tr class="bg-zinc-700 border-zinc-800 w-full border-b dark:bg-gray-800 dark:border-gray-700">
@@ -231,11 +202,8 @@
 
                         <div class="searchbarinput ">
 
-                            <input onkeydown="return event.key != 'Enter';" type="text" name="search"
-                                id="seaplaceholder-[#EDB12C] rch" placeholder="Zoek naar een plek"
-                                class="bg-zinc-800 border border-black w-full text-[#EDB12C] text-sm rounded-lg focus:ring-[#EDB12C] focus:border-[#EDB12C] block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
-                            <button type="button" id="searchbutton"
-                                class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
+                            <input onkeydown="return event.key != 'Enter';" type="text" name="search" id="seaplaceholder-[#EDB12C] rch" placeholder="Zoek naar een plek" class="bg-zinc-800 border border-black w-full text-[#EDB12C] text-sm rounded-lg focus:ring-[#EDB12C] focus:border-[#EDB12C] block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
+                            <button type="button" id="searchbutton" class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
                         </div>
 
                     </td>
@@ -249,10 +217,10 @@
                                     Posts
                                     @can('create', App\Models\Post::class)
                                     <a href="{{ route('posts.create') }}"
-                                    class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
-                                    @endcan
-                                    <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
-                                </caption> --}}
+            class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
+            @endcan
+            <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
+            </caption> --}}
 
             <tbody>
 
@@ -266,8 +234,7 @@
                 <tr class="bg-zinc-700 border-zinc-800 test border-b dark:bg-gray-800 dark:border-gray-700">
 
                     <td class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
-                        <button id="submit" type="submit"
-                            class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak veld aan</button>
+                        <button id="submit" type="submit" class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak veld aan</button>
                     </td>
                 </tr>
             </tbody>
@@ -281,7 +248,7 @@
         }
 
         #submit {
-          
+
             padding: 2vh 15vh 2vh 15vh;
             align-self: center;
             justify-self: center;
@@ -306,9 +273,11 @@
             object-position: center;
             border-radius: 0.5rem;
         }
-        .imgdiv{
+
+        .imgdiv {
             display: flex;
         }
+
         .searchbarinput {
 
             justify-content: space-between;
@@ -363,7 +332,7 @@
             document.getElementById('plaats').value = data[0].address.city || data[0].address.town || data[0].address
                 .state || '';
             let oldName = document.getElementById('naam').value;
-            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office  || data[0].address.leisure || data[0].address.tourism || oldName;
+            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
             document.getElementById('postcode').value = data[0].address.postcode || '';
             document.getElementById('adres').value =
                 `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;

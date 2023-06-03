@@ -8,44 +8,39 @@
     </x-slot>
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg w-full sm:w-3/4 mx-auto mt-6">
-        <form action="{{ route('newsarticles.store') }}" method="POST">
+        <form action="{{ route('news.store') }}" method="POST">
             @csrf
 
             <div class="p-6">
-                <label for="title" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                <label for="title" class="py-4 px-6 font-medium text-[#EDB12C] uppercase whitespace-nowrap dark:text-white">
                     Title
                 </label>
-                <input type="text" name="title" id="title" required
-                    class="block w-full p-2 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400">
+                <input type="text" name="title" id="title" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
             </div>
 
             <div class="p-6">
-                <label for="title" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                <label for="title" class="py-4 px-6 font-medium text-[#EDB12C] uppercase whitespace-nowrap dark:text-white">
                     Short description
                 </label>
-                <input type="text" name="short_description" id="short_description" required
-                    class="block w-full p-2 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400">
+                <input type="text" name="short_description" id="short_description" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
             </div>
 
             <div class="p-6">
-                <label for="content" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                <label for="content" class="py-4 px-6 font-medium text-[#EDB12C] uppercase whitespace-nowrap dark:text-white">
                     Content
                 </label>
-                <textarea name="content" id="content" rows="8" required
-                    class="block w-full p-2 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400"></textarea>
+                <textarea name="content" id="content" rows="8" required class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500"></textarea>
             </div>
 
             <div class="p-6">
-                <label for="image" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                <label for="image" class="py-4 px-6 font-medium text-[#EDB12C] uppercase whitespace-nowrap dark:text-white">
                     Image
                 </label>
-                <input type="file" name="image" id="image" accept="image/*"
-                    class="block w-full p-2 text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400">
+                <input type="file" name="image" id="image" accept="image/*" class="block w-full p-2 text-[#EDB12C] border border-black rounded-lg bg-zinc-800 sm:text-xs focus:ring-[#EDB12C] focus:border-[#EDB12C] dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
             </div>
 
             <div class="p-6">
-                <button type="submit"
-                    class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:bg-blue-700">
+                <button type="submit" class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">
                     Create
                 </button>
             </div>

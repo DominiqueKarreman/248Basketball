@@ -13,6 +13,7 @@ use App\Http\Controllers\PickupController;
 use App\Http\Controllers\LocatieController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\StaffMemberController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,17 +45,14 @@ Route::get('/staff/{id}', function (Request $request, $id) {
 
     return view('staff.show', ['url' => $url, 'member' => $member]);
 })->name('staff.show');
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
-Route::put('news/{id}', [NewsController::class], 'update')->name('news.update');
-Route::delete('news/{id}', [NewsController::class], 'destroy')->name('news.destroy');
+Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
+Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
 
 
 Route::middleware([
@@ -118,13 +116,9 @@ Route::middleware([
     Route::put('/locaties/{id}', [LocatieController::class, 'update'])->name('locaties.update');
     Route::delete('/locaties/{id}', [LocatieController::class, 'destroy'])->name('locaties.destroy');
 
-<<<<<<< HEAD
-
-=======
     Route::get('/staffMembers', [StaffMemberController::class, 'index'])->name('staffMembers');
     Route::get('/staffMembers/create', [StaffMemberController::class, 'create'])->name('staff.create');
     Route::post('/staffMembers', [StaffMemberController::class, 'store'])->name('staff.store');
->>>>>>> 806ee7341b3294091dcc3e616fc815a0078b3f38
 
     Route::get('/noti', function () {
 

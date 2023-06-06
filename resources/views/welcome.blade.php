@@ -9,7 +9,7 @@
     <title>248Basketball</title>
 </head>
 
-<body class="bg-black flex flex-col h-full w-full">
+<body class="bg-white flex flex-col h-full w-full">
     <x-infoNavbar class="my-custom-class" />
     <div class="flex flex-col relative h-[1000vh]">
         <div id="gradient-overlay"></div>
@@ -221,7 +221,7 @@
         position: absolute;
         top: -9vh;
         left: 0;
-        width: 100vw;
+        width: 90vw;
         height: 100vh;
         background: linear-gradient(to bottom, black 0%, black 10%, transparent 30%, transparent 100%, black 80%, black 100%);
         z-index: 0;
@@ -231,7 +231,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 100vw;
+        width: 90vw;
         height: 20%;
         background: linear-gradient(to top, black 0%, black 10%, transparent 30%, transparent 100%, rgba(0, 0, 0, 0.612) 80%, black 100%);
     }

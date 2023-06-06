@@ -14,6 +14,7 @@ class ContactMessagePolicy
     public function viewAny(User $user): bool
     {
         //
+        return $user->hasPermissionTo('view contactMessages');
     }
 
     /**
@@ -27,10 +28,10 @@ class ContactMessagePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
-    {
-        //
-    }
+    // public function create(User $user): bool
+    // {
+    //     return $user->hasPermissionTo('create contactMessages.viewAny');
+    // }
 
     /**
      * Determine whether the user can update the model.

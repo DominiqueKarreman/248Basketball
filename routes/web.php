@@ -46,12 +46,16 @@ Route::get('/staff/{id}', function (Request $request, $id) {
 
     return view('staff.show', ['url' => $url, 'member' => $member]);
 })->name('staff.show');
-Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 Route::get('/programme/join', function () {
     return view("programme.join");
 })->name("programme.join");
+
+Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+
+route::get('/feedback', [ContactMessageController::class, 'feedbackIndex'])->name('contact.feedback');
+route::get('/feedback/{id}', [ContactMessageController::class, 'show'])->name('contact.show');
 
 Route::middleware([
     'auth:sanctum',
@@ -139,6 +143,4 @@ Route::middleware([
         $expo->notify([$channelName], $notification);
         return view('welcome');
     });
-
-    // Route::post('contact/send', )
 });

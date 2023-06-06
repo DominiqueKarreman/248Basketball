@@ -37,7 +37,11 @@
                             {{ __('Rechten') }}
                         </x-nav-link>
                     @endcan
-
+                    @can('viewAny', App\Models\ContactMessage::class)
+                        <x-nav-link href="{{ route('contact.feedback') }}" :active="request()->routeIs('contact.feedback')">
+                            {{ __('Feedback') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -147,6 +151,11 @@
             @can('viewAny', Spatie\Permission\Models\Role::class)
                 <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
                     {{ __('Rechten') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\ContactMessage::class)
+                <x-responsive-nav-link href="{{ route('contact.feedback') }}" :active="request()->routeIs('contact.feedback')">
+                    {{ __('Feedback') }}
                 </x-responsive-nav-link>
             @endcan
         </div>

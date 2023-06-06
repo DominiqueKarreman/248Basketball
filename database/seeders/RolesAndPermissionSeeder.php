@@ -69,6 +69,13 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'view pickups']);
         $permission = Permission::create(['name' => 'edit pickups']);
         $permission = Permission::create(['name' => 'delete pickups']);
+
+        //contactMessages permissions
+
+        $permission = Permission::create(['name' => 'create contactMessages']);
+        $permission = Permission::create(['name' => 'view contactMessages']);
+        $permission = Permission::create(['name' => 'edit contactMessages']);
+        $permission = Permission::create(['name' => 'delete contactMessages']);
         
         $role->givePermissionTo(Permission::all());
         $role_moderator->givePermissionTo(Permission::all());

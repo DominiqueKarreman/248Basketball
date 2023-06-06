@@ -13,7 +13,13 @@ class ContactMessageController extends Controller
      */
     public function index()
     {
-        return view('contact');
+        return view('contact.contact');
+    }
+
+    public function feedbackIndex()
+    {
+        $contactMessages = ContactMessage::all();
+        return view('contact.feedback', ["contacts" => $contactMessages]);
     }
 
     /**
@@ -29,10 +35,13 @@ class ContactMessageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ContactMessage $contactMessage)
+    public function show($id)
     {
-        //
+        $contactMessages = ContactMessage::find($id);
+        return view('contact.show', ["contact" => $contactMessages]);
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.

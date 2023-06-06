@@ -68,8 +68,8 @@
         /* width: 10vh; */
         height: 6vh;
         /* margin-top: 2vh; */
-        margin-left: 4vh;
-        margin-right: -4vh;
+        /* margin-left: 4vh;
+        margin-right: -4vh; */
 
     }
 </style>

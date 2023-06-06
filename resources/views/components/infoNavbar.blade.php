@@ -58,6 +58,7 @@
 
     html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
         margin: none;
     }
 

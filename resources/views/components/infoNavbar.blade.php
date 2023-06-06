@@ -1,7 +1,7 @@
 @props(['class' => ''])
 
 <nav class=" border-gray-200 dark:bg-gray-900 {{ $class }}">
-    <div class="flex w-full bg-transparent flex-wrap items-center justify-between sm:w-[90vw] mx-auto p-4">
+    <div class="flex w-100vw bg-transparent flex-wrap items-center justify-between sm:w-[90vw] mx-auto p-4">
         <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" id="logo" alt="">
         </a>

@@ -162,7 +162,7 @@
     #statDiv {
         position: relative;
         top: 5vh;
-        width: 90vw;
+        width: 100vw;
         align-self: center;
 
     }
@@ -197,7 +197,7 @@
     #programmeDiv {
         opacity: 0;
         margin-top: 15vh;
-
+        width: 90vw;
         transform: translateX(-100%);
         transition: opacity 1s ease-out, transform 1s ease-out;
     }
@@ -210,7 +210,7 @@
         align-content: center;
         opacity: 0;
         height: 90vh;
-        width: 100vw;
+        width: 90vw;
         animation: fade-in 1s ease-out forwards;
         animation-delay: 0.7s;
         position: relative;

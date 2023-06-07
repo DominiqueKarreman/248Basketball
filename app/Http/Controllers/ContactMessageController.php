@@ -29,7 +29,7 @@ class ContactMessageController extends Controller
     {
         ContactMessage::create($request->all());
 
-        return redirect()->route('contact')->banner('Bedankt voor uw bericht, zo nodig, nemen wij zo snel mogelijk contact met u op.');        
+        return redirect()->route('home')->banner('Bedankt voor uw bericht, zo nodig, nemen wij zo snel mogelijk contact met u op.');        
     }
 
     /**

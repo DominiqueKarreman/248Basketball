@@ -45,7 +45,7 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ Str::limit($contact->message, 100) }}
+                            {{ Str::limit($contact->message, 80) }}
                         </th>
                         <th scope="row">
                         <button class="bg-[#EDB12C] -700 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded-full">

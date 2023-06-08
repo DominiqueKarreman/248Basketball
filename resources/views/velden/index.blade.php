@@ -12,8 +12,7 @@
             <caption class="p-5 text-lg font-semibold text-left text-[#EDB12C] bg-zinc-700 dark:text-white dark:bg-gray-800">
                 Velden
                 @can('create', App\Models\Veld::class)
-                    <a href="{{ route('velden.create') }}"
-                        class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
+                <a href="{{ route('velden.create') }}" class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
                 @endcan
                 <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
@@ -50,75 +49,65 @@
             </thead>
             <tbody>
                 @foreach ($velden as $veld)
-                    <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
 
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $veld->naam }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $veld->adres }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            {{ $veld->plaats }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                        {{ $veld->naam }}
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                        {{ $veld->adres }}
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                        {{ $veld->plaats }}
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->competitie ? 'Ja' : 'Nee' }}
+                        {{ $veld->competitie ? 'Ja' : 'Nee' }}
 
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->openingstijden }}{{ $veld->sluitingstijden }}
+                        {{ $veld->openingstijden }}{{ $veld->sluitingstijden }}
 
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->veld_leider }}
+                        {{ $veld->veld_leider }}
 
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->aantal_bezoekers }}
+                        {{ $veld->aantal_bezoekers }}
 
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
 
-                            {{ $veld->conditie }}
+                        {{ $veld->conditie }}
 
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                            @can('update', $veld)
-                                <a class="text-[#EDB12C]" href="{{ route('velden.edit', $veld->id) }}">Edit</a>
-                            @endcan
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
+                        @can('update', $veld)
+                        <a class="text-[#EDB12C]" href="{{ route('velden.edit', $veld->id) }}">Edit</a>
+                        @endcan
 
-                        </th>
+                    </th>
 
 
-                        {{-- <td class="py-4 px-6 text-right">
+                    {{-- <td class="py-4 px-6 text-right">
                             @can('update', $post)
                                 <a href="{{ route('posts.edit', $post->id) }}"
-                                    class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            @endcan
+                    class="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    @endcan
 
-                            @can('delete', $post)
-                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                                </form>
-                            @endcan
-                        </td> --}}
-                    </tr>
+                    @can('delete', $post)
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="mx-1 font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                    </form>
+                    @endcan
+                    </td> --}}
+                </tr>
                 @endforeach
             </tbody>
         </table>

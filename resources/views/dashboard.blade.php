@@ -12,8 +12,7 @@
 
                 <div class="flex bg-black gap-[5vh] ">
 
-                    <div id="evenementen"
-                        class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-1 overflow-hidden">
+                    <div id="evenementen" class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-1 overflow-hidden">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/eventIcon.svg">
@@ -21,8 +20,7 @@
                                 <h1 class="z-10 absolute self-center centereddd text-white">Evenementen</h1>
                         </div>
                     </div>
-                    <div id="velden"
-                        class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-2 overflow-hidden">
+                    <div id="velden" class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-2 overflow-hidden">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/courtIcon.svg">
@@ -30,8 +28,7 @@
                                 <h1 class="z-10 absolute self-center centereddd text-white">Velden</h1>
                         </div>
                     </div>
-                    <div id="pickups"
-                        class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center ease-in duration-300 background-3 overflow-hidden">
+                    <div id="pickups" class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center ease-in duration-300 background-3 overflow-hidden">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/playerIcon.svg">
@@ -39,8 +36,7 @@
                                 <h1 class="z-10 absolute self-center centereddd text-white">Pick-ups</h1>
                         </div>
                     </div>
-                    <div id="users"
-                        class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-4 overflow-hidden">
+                    <div id="users" class="h-[20vh] w-[55vh] bg-white rounded-2xl flex align-center justify-center grid place-content-center background-4 overflow-hidden">
                         <div class="content-div flex row align-center ">
 
                             <image class="h-[4vh] mr-1" src="images/usersIcon.svg">
@@ -48,6 +44,8 @@
 
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -58,25 +56,25 @@
         activeWidget = activeWidget.replace(`${fullLink}?`, "")
         console.log(activeWidget, "asdasd")
         let evenementen = document.getElementById("evenementen")
-        switch(activeWidget){
+        switch (activeWidget) {
             case "evenementen":
-            evenementen.classList.toggle("background-1-active")
-            break
+                evenementen.classList.toggle("background-1-active")
+                break
             case "velden":
-            let velden = document.getElementById("velden")
-            velden.classList.toggle("background-2-active")
-            break
-            case "pickups": 
-            let pickups = document.getElementById("pickups")
-            pickups.classList.toggle("background-3-active")
-            break
+                let velden = document.getElementById("velden")
+                velden.classList.toggle("background-2-active")
+                break
+            case "pickups":
+                let pickups = document.getElementById("pickups")
+                pickups.classList.toggle("background-3-active")
+                break
             case "users":
-            let users = document.getElementById("users")
-            users.classList.toggle("background-4-active") 
-            break
+                let users = document.getElementById("users")
+                users.classList.toggle("background-4-active")
+                break
             case "http://127.0.0.1:8000/dashboard":
-            evenementen.classList.toggle("background-1-active")
-            break
+                evenementen.classList.toggle("background-1-active")
+                break
         }
     </script>
     <style>

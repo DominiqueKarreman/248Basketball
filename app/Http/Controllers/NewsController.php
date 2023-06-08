@@ -16,31 +16,38 @@ class NewsController extends Controller
             ->union(NewsArticle::where('is_cover', false)->latest()->take(5))
             ->get();
 
+
         return view('news.index', compact('news'));
     }
 
     public function store(Request $request)
     {
+        //prevent default 
+
+
         // Authorize the request
         $this->authorize('create', NewsArticle::class);
 
+        // Validate the form data
         $validatedData = $request->validate([
             'title' => 'required',
-            'is_cover' => 'boolean',
             'short_description' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Handle the file upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $validatedData['image'] = $imagePath;
+            $image = "storage/news/" . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/news', $request->file('image')->getClientOriginalName());
+        } else {
+            $image = 'null';
         }
+        $validatedData['image'] = $image;
 
         // Create the news article
         NewsArticle::create($validatedData);
-
-        return redirect()->back()->with('success', 'News article created successfully.');
+        return redirect()->route("news.index")->with('success', 'News article created successfully.');
     }
 
     public function create()

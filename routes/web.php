@@ -63,6 +63,8 @@ Route::middleware([
     )->name('dashboard');
     // Route::resource('users', UserController::class);
     Route::resource('pickups', PickupController::class);
+
+
     Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
     Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
     Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');

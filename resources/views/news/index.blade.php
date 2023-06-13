@@ -14,7 +14,6 @@
                 @can('create', App\Models\NewsArticle::class)
                 <a href="{{ route('news.create') }}" class="float-right font-medium text-[#EDB12C] dark:text-blue-500">+</a>
                 @endcan
-                <!-- <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of users.</p> -->
             </caption>
             <thead class="text-xs bg-zinc-800 text-[#EDB12C] uppercase dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -45,7 +44,12 @@
                 @foreach ($news as $newsArticle)
                 <tr class="bg-zinc-700 border-b border-zinc-800 dark:bg-gray-800 dark:border-gray-700">
                     <td class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                        <img src="/{{$newsArticle->image}}" alt="News Image" width="100">
+                        @if ($newsArticle->image)
+                        <img src="/{{ $newsArticle->image }}" alt="News Image" width="100">
+                        @else
+                        No image
+                        @endif
+
                     </td>
                     <td class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
                         {{$newsArticle->title}}
@@ -59,10 +63,11 @@
 
                     </td>
                     <td class="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white">
-                        {{$newsArticle->isCover ? "Yes" : "No"}}
+
+                        {{$newsArticle->is_cover == "1" ? "Yes" : "No"}}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('news.edit', $news->id) }}" class="text-[#EDB12C] hover:text-white dark:text-white dark:hover:text-[#EDB12C]">Edit</a>
+                        <a href="{{ route('news.edit', $newsArticle->id) }}" class="text-[#EDB12C] hover:text-white dark:text-white dark:hover:text-[#EDB12C]">Edit</a>
                     </td>
 
                 </tr>

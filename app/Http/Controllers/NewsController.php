@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NewsArticle;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -32,6 +33,7 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'short_description' => 'required',
+            'is_cover' => 'boolean',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -61,7 +63,7 @@ class NewsController extends Controller
     public function show($id)
     {
         // Find the news article by ID
-        $news = NewsArticle::findOrFail($id);
+        $news = NewsArticle::find($id);
 
         return view('news.show', compact('news'));
     }
@@ -69,10 +71,12 @@ class NewsController extends Controller
     public function edit($id)
     {
         // Find the news article by ID
-        $news = NewsArticle::findOrFail($id);
+        $news = NewsArticle::find($id);
+
 
         // Authorize the request
-        $this->authorize('update', $news);
+        Auth()->user()->hasPermissionTo("edit news");
+
 
         return view('news.edit', compact('news'));
     }
@@ -83,25 +87,40 @@ class NewsController extends Controller
         $news = NewsArticle::findOrFail($id);
 
         // Authorize the request
-        $this->authorize('update', $news);
+
+        Auth()->user()->hasPermissionTo("edit news");
+
+        // Authorize the request
+        if (!Auth()->user()->hasPermissionTo("edit news")) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+
 
         $validatedData = $request->validate([
             'title' => 'required',
-            'is_cover' => 'boolean',
             'short_description' => 'required',
+            'is_cover' => 'integer',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Handle the file upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $validatedData['image'] = $imagePath;
+            $image = "storage/news/" . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/news', $request->file('image')->getClientOriginalName());
+        } else {
+            // If no image is uploaded, use the old image
+            $image = $news->image;
         }
+        $validatedData['image'] = $image;
 
+        dd($validatedData);
         // Update the news article
         $news->update($validatedData);
 
-        return redirect()->back()->with('success', 'News article updated successfully.');
+        $news->save();
+        return redirect()->route("news.index")->banner("Nieuws artikel succesvol gewijzigd");
     }
 
     public function destroy($id)

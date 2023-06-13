@@ -2,6 +2,7 @@
 
 use App\Models\ChatMessage;
 use App\Models\StaffMember;
+use App\Models\NewsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +47,14 @@ Route::get('/staff/{id}', function (Request $request, $id) {
     return view('staff.show', ['url' => $url, 'member' => $member]);
 })->name('staff.show');
 
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+
+Route::get('/nieuws', function (Request $request) {
+    $url = $request->url();
+    //split the string untill the last / and then return the last part
+    $url = substr($url, strrpos($url, '/') + 1);
+    $news = NewsArticle::all();
+    return view('news', ['url' => $url, 'news' => $news]);
+})->name('news.getTopNews');
 
 
 Route::middleware([
@@ -64,7 +71,8 @@ Route::middleware([
     // Route::resource('users', UserController::class);
     Route::resource('pickups', PickupController::class);
 
-
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
     Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
     Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
     Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');

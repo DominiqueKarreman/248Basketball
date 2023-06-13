@@ -12,20 +12,23 @@ class NewsController extends Controller
 {
     public function index()
     {
+        $news = NewsArticle::all();
+        return view('news.index', ['news' => $news]);
+    }
+
+    public function getTopNews()
+    {
         // Return one news article with isCover = true and five articles with isCover = false, ordered by the latest
-        $news = NewsArticle::where('is_cover', true)->latest()->take(1)
-            ->union(NewsArticle::where('is_cover', false)->latest()->take(5))
+        $news = NewsArticle::where('is_cover', 1)->latest()->take(1)
+            ->union(NewsArticle::where('is_cover', 0)->latest()->take(5))
             ->get();
 
 
-        return view('news.index', compact('news'));
+        return view('news', compact('news'));
     }
 
     public function store(Request $request)
     {
-        //prevent default 
-
-
         // Authorize the request
         $this->authorize('create', NewsArticle::class);
 

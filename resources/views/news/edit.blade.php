@@ -47,7 +47,7 @@
                     Image
                 </label>
 
-                <div class="mx-7">
+                <div class="ml-7 my-8">
                     @if ($news->image)
                     <img src="/{{ $news->image }}" alt="News Image" width="100">
                     @else

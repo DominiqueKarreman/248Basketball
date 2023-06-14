@@ -19,10 +19,20 @@
             <h1 id="basketball" class="text-white font-semibold uppercase">Nieuws</h1>
             <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">Nieuws</h1>
             <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">Nieuws</h1>
-
         </div>
     </div>
 
+    <!-- Here we make  a div for the first cover news article -->
+    <div id="cover-image">
+        <img src="{{ $cover[0]->image }}" alt="Cover image">
+        <div class="image-text">
+            <h2>{{$cover[0]->title}}</h2>
+            <p>{{$cover[0]->short_description}}</p>
+            <!-- <a>Lees meer ...</a> -->
+        </div>
+    </div>
+
+    <!-- Here we make  a div for the other newsarticles -->
 
 </body>
 <style>
@@ -37,13 +47,60 @@
         font-family: 'Inter', sans-serif;
     }
 
+    #cover-image {
+        position: relative;
+        margin-bottom: 10%;
+    }
+
+    #cover-image::before,
+    #cover-image::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        /* Adjust the height of the gradient as needed */
+        z-index: 2;
+    }
+
+    #cover-image::before {
+        top: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
+    #cover-image::after {
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
+    .image-text {
+        position: absolute;
+        top: 80%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        text-align: left;
+        color: white;
+        padding: 1vh;
+        border-radius: 1vh;
+        background: rgba(57, 57, 52, 0.6)
+    }
+
+    .image-text h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .image-text p {
+        font-size: 20px;
+    }
+
     #hero-landing {
         /* background-image: url('images/DSC00929-min.jpg'); */
         /* background-color: black; */
-        /* background-size: cover; */
+
         background-position: 0 40%;
         background-repeat: no-repeat;
-
+        padding-bottom: 17%;
     }
 
     #welcome {

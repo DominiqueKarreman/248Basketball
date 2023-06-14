@@ -48,13 +48,7 @@ Route::get('/staff/{id}', function (Request $request, $id) {
 })->name('staff.show');
 
 
-Route::get('/nieuws', function (Request $request) {
-    $url = $request->url();
-    //split the string untill the last / and then return the last part
-    $url = substr($url, strrpos($url, '/') + 1);
-    $news = NewsArticle::all();
-    return view('news', ['url' => $url, 'news' => $news]);
-})->name('news.getTopNews');
+Route::get('/nieuws', [NewsController::class, 'getTopNews'])->name('news.getTopNews');
 
 
 Route::middleware([

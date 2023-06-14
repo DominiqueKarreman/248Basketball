@@ -75,7 +75,7 @@
         line-height: 12vh;
         left: 0;
         -webkit-text-stroke: 2px #EDB12C;
-        ;
+
         text-stroke: 1px #EDB12C;
         position: absolute;
         top: 0;

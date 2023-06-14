@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\NewsArticle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class NewsController extends Controller
 {
@@ -19,14 +21,11 @@ class NewsController extends Controller
     public function getTopNews()
     {
         // Return one news article with isCover = true and five articles with isCover = false, ordered by the latest
-        $news = NewsArticle::where('is_cover', 1)->latest()->take(1)
-            ->union(NewsArticle::where('is_cover', 0)->latest()->take(5))
-            ->get();
+        $coverNewsArticle = NewsArticle::where('is_cover', 1)->latest()->take(1)->get();
+        $newsArticles = NewsArticle::where('is_cover', 0)->latest()->take(5)->get();
 
-
-        return view('news', compact('news'));
+        return view('news', ['cover' => $coverNewsArticle, 'news' => $newsArticles]);
     }
-
     public function store(Request $request)
     {
         // Authorize the request
@@ -118,7 +117,6 @@ class NewsController extends Controller
         }
         $validatedData['image'] = $image;
 
-        dd($validatedData);
         // Update the news article
         $news->update($validatedData);
 

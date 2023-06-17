@@ -51,6 +51,8 @@
 
 <style>
     nav {
+        position: sticky;
+        top: 0;
         width: 100vw;
         z-index: 5;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));

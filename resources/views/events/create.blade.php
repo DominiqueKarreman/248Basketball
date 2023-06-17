@@ -380,7 +380,7 @@
             document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address
                 .building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
             document.getElementById('postcode').value = data[0].address.postcode || '';
-            document.getElementById('adres').value =
+            document.getElementById('locatie').value =
                 `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;
             document.getElementById('latitude').value = lat;
             document.getElementById('longitude').value = lon;

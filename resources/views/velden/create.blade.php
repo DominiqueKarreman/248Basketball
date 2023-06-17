@@ -76,7 +76,7 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1" 
+                            <input name="competitie" id="checked-checkbox" type="checkbox" value="1"
                                 class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
                         <th scope="row"
@@ -109,7 +109,7 @@
                             <a href="{{ route('posts.edit', $post->id) }}"
                                 class="mx-1 font-medium text-[#EDB12C] dark:text-blue-500 hover:underline">Edit</a>
                                 @endcan
-                                
+
                                 @can('delete', $post)
                                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
                                     @csrf
@@ -221,18 +221,19 @@
 
                     </th>
                     <th scope="row" class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap dark:text-white">
-                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting" 
+                        <input id="checked-checkbox" type="checkbox" value="1" name="verlichting"
                             class="w-4 h-4 text-[#EDB12C] bg-gray-100 border-black rounded focus:ring-[#EDB12C] dark:focustexEDB12C]-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                 </tr>
                 <tr class="bg-zinc-700 border-zinc-800 w-full border-b dark:bg-gray-800 dark:border-gray-700">
 
-                    <td colspan="6" class="py-2 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
+                    <td colspan="6"
+                        class="py-2 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
 
                         <div class="searchbarinput ">
 
                             <input onkeydown="return event.key != 'Enter';" type="text" name="search"
-                                id="seaplaceholder-[#EDB12C] rch" placeholder="Zoek naar een plek"
+                                id="search" placeholder="Zoek naar een plek"
                                 class="bg-zinc-800 border border-black w-full text-[#EDB12C] text-sm rounded-lg focus:ring-[#EDB12C] focus:border-[#EDB12C] block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-[#EDB12C] dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#EDB12C] dark:focustexEDB12C]-500">
                             <button type="button" id="searchbutton"
                                 class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2  dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Search</button>
@@ -267,7 +268,8 @@
 
                     <td class="py-4 px-6 font-medium text-[#EDB12C] whitespace-nowrap  dark:text-white">
                         <button id="submit" type="submit"
-                            class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak veld aan</button>
+                            class="text-white bg-[#EDB12C] hover:bg-[#DCA01B] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-200 focus:outline-none dark:focus:ring-blue-800">Maak
+                            veld aan</button>
                     </td>
                 </tr>
             </tbody>
@@ -281,7 +283,7 @@
         }
 
         #submit {
-          
+
             padding: 2vh 15vh 2vh 15vh;
             align-self: center;
             justify-self: center;
@@ -306,9 +308,11 @@
             object-position: center;
             border-radius: 0.5rem;
         }
-        .imgdiv{
+
+        .imgdiv {
             display: flex;
         }
+
         .searchbarinput {
 
             justify-content: space-between;
@@ -363,7 +367,8 @@
             document.getElementById('plaats').value = data[0].address.city || data[0].address.town || data[0].address
                 .state || '';
             let oldName = document.getElementById('naam').value;
-            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address.building || data[0].address.office  || data[0].address.leisure || data[0].address.tourism || oldName;
+            document.getElementById('naam').value = data[0].address.amenity || data[0].address.shop || data[0].address
+                .building || data[0].address.office || data[0].address.leisure || data[0].address.tourism || oldName;
             document.getElementById('postcode').value = data[0].address.postcode || '';
             document.getElementById('adres').value =
                 `${data[0].address.road || ''} ${data[0].address.house_number || ''}`;
@@ -383,7 +388,9 @@
                     document.getElementById('plaats').value = data.address.city || data.address.town || data.address
                         .state || '';
                     let oldName = document.getElementById('naam').value
-                    document.getElementById('naam').value = data.address.amenity || data.address.shop || data.address.building || data.address.office || data.address.leisure || data.address.tourism || oldName;
+                    document.getElementById('naam').value = data.address.amenity || data.address.shop || data
+                        .address.building || data.address.office || data.address.leisure || data.address.tourism ||
+                        oldName;
                     document.getElementById('postcode').value = data.address.postcode || '';
                     document.getElementById('adres').value =
                         `${data.address.road || ''} ${data.address.house_number || ''}`;

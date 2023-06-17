@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Models\ChatMessage;
 use App\Models\StaffMember;
 use Illuminate\Http\Request;
@@ -27,7 +28,12 @@ use App\Http\Controllers\ContactMessageController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $nextEvent = Event::where('datumTijd', '>=', date('Y-m-d H:i:s'))
+        ->orderBy('datumTijd', 'asc')
+        ->first();
+
+    // dd($nextEvent);
+    return view('welcome', ["event" => $nextEvent]);
 })->name('home');
 
 Route::get('/staff', function (Request $request) {

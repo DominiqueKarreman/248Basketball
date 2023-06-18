@@ -24,12 +24,13 @@
                 <h1 id="basketball" class="text-white font-semibold uppercase">24/8 Basketball</h1>
                 <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
                 <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
-                <a href="" id="button"
-                    class="bg-white hover:bg-blue-700 hidden sm:inline-block font-bold py-2 px-4 rounded-full">Zie
-                    meer ↓
+                <a href="https://youtu.be/lTxQk9a3qEo" id="button"
+                    class="bg-white hover:bg-blue-700 hidden sm:inline-block font-bold py-2 px-4 rounded-full">Bekijk
+                    hele video
+
                 </a>
                 <div class="flex justify-center items-center align-center w-[80vw]">
-                    <a href="" id="button2"
+                    <a href="https://youtu.be/lTxQk9a3qEo" id="button2"
                         class="bg-white hover:bg-blue-700 w-full  font-bold py-2 px-4 rounded-full">Bekijk hele video
                     </a>
                 </div>
@@ -146,7 +147,7 @@
 
 
     <script src="/js/welcome.js"></script>
-    <script>
+    {{-- <script>
         // Get the target element
         const target = document.querySelector('#programmeDiv');
 
@@ -186,7 +187,7 @@
             event.preventDefault();
             requestAnimationFrame(animateScroll);
         });
-    </script>
+    </script> --}}
 
 
 </body>

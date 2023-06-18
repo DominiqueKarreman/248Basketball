@@ -19,7 +19,10 @@
     <div id="loginBox" class="flex bg-zinc-800 h-[70vh] w-[60vw] flex-row">
         <img src="/images/loginPhoto.png" id="loginFoto" class="w-1/2 drop-shadow-2xl object-cover" alt="">
         <div id="normalLogin" class="w-1/2 justify-center align-center items-center p-[5vh]">
-            <img src="/images/logo.png" class="w-[15vh] mx-auto self-center" alt="">
+            <a href="/">
+                <img src="/images/logo.png" class="w-[15vh] mx-auto self-center" alt="">
+            </a>
+
             <h1 class="text-white text-center text-3xl font-black ">Login</h1>
             <hr class="w-[80%] h-1 mx-auto bg-zinc-600 border-0 rounded my-[2vh] dark:bg-gray-700">
             <form method="POST" action="{{ route('login') }}">
@@ -73,7 +76,10 @@
     </div>
     <div id="gradient-overlay"></div>
     <div id="responsiveDiv" class="w-1/2 justify-center align-center items-center p-[5vh] relative">
-        <img src="/images/logo.png" class="w-[15vh] mx-auto self-center z-10" alt="">
+        <a href="/">
+            <img src="/images/logo.png" class="w-[15vh] mx-auto self-center z-10" alt="">
+        </a>
+
         <h1 class="text-white text-center text-3xl font-black z-10">Login</h1>
         <hr class="w-[80%] h-1 mx-auto bg-zinc-600 border-0 rounded my-[2vh] dark:bg-gray-700 z-10">
         <form method="POST" action="{{ route('login') }}">

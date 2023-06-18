@@ -24,9 +24,15 @@
                 <h1 id="basketball" class="text-white font-semibold uppercase">24/8 Basketball</h1>
                 <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
                 <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
-                <a href="" id="button" class="bg-white hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Zie
+                <a href="" id="button"
+                    class="bg-white hover:bg-blue-700 hidden sm:inline-block font-bold py-2 px-4 rounded-full">Zie
                     meer ↓
                 </a>
+                <div class="flex justify-center items-center align-center w-[80vw]">
+                    <a href="" id="button2"
+                        class="bg-white hover:bg-blue-700 w-full  font-bold py-2 px-4 rounded-full">Bekijk hele video
+                    </a>
+                </div>
             </div>
 
 
@@ -53,7 +59,7 @@
                     <p id="subtext" class="text-white ">Binnen The programme draait het om de ontwikkeling van de
                         getalenteerde basketballers. Wij organiseren trainingen rondom de trainingen van jouw eigen club
                         waarin jouw ontwikkeling centraal staat. Binnen </p>
-                    <a href="{{ route('programme.join') }}" id="button2" class="text-[#EDB12C]">WORDT LID</a>
+                    <a href="{{ route('programme.join') }}" id="button3" class="text-[#EDB12C]">WORDT LID</a>
                 </div>
             </div>
             <div id="watDoetDiv" class="align-center flex flex-col items-center justify-center">
@@ -140,6 +146,47 @@
 
 
     <script src="/js/welcome.js"></script>
+    <script>
+        // Get the target element
+        const target = document.querySelector('#programmeDiv');
+
+        // Get the current scroll position
+        const currentPosition = window.pageYOffset;
+
+        // Calculate the distance to scroll
+        const distance = target.getBoundingClientRect().top - currentPosition;
+
+        // Set the duration of the animation (in milliseconds)
+        const duration = 1000;
+
+        // Define the easing function
+        const easing = t => t * (2 - t);
+
+        // Define the start time of the animation
+        let startTime = null;
+
+        // Define the animation function
+        const animateScroll = currentTime => {
+            if (startTime === null) {
+                startTime = currentTime;
+            }
+
+            const timeElapsed = currentTime - startTime;
+            const scrollPosition = currentPosition + (distance * easing(timeElapsed / duration));
+
+            window.scrollTo(0, scrollPosition);
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animateScroll);
+            }
+        };
+
+        // Add an event listener to the link
+        document.getElementById('button2').addEventListener('click', event => {
+            event.preventDefault();
+            requestAnimationFrame(animateScroll);
+        });
+    </script>
 
 
 </body>

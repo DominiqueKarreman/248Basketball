@@ -1,6 +1,6 @@
 @props(['class' => ''])
 
-<nav class=" border-gray-200 dark:bg-gray-900 {{ $class }}">
+<nav class=" border-gray-200 z-50 dark:bg-gray-900 {{ $class }}">
     <div class="flex w-100vw bg-transparent flex-wrap items-center justify-between sm:w-[90vw] mx-auto p-4">
         <a href="{{ url('/') }}" class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" id="logo" alt="">
@@ -25,9 +25,10 @@
             </button>
 
         </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+        <div class="items-center z-30 justify-between hidden w-full md:flex md:w-auto md:order-1 left-0 top-[8vh] md:top-[0] absolute md:relative "
+            id="navbar-cta">
             <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-zinc-800 md:flex-row md:space-x-8 md:mt-0  md:border-0  md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                     <a href="{{ url('/') }}"
                         class="block py-2 text-[2vh] pl-3 pr-4 {{ request()->routeIs('home') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Home') }}</a>
@@ -48,6 +49,7 @@
         </div>
     </div>
 </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
 <style>
     nav {

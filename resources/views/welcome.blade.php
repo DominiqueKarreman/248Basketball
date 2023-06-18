@@ -18,8 +18,9 @@
             <source src="/videos/onsteambackground.mp4" type="video/mp4">
         </video>
         <div id="hero-landing">
+
             <div id="herotext">
-                <h1 id="welcome" class="text-white font-semibold uppercase">Welcome To</h1>
+                <h1 id="welcome" class="text-white font-semibold uppercase">welcome to</h1>
                 <h1 id="basketball" class="text-white font-semibold uppercase">24/8 Basketball</h1>
                 <h1 id="basketball-stroke" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
                 <h1 id="basketball-stroke-2" class="text-white font-semibold uppercase stroke">24/8 Basketball</h1>
@@ -27,6 +28,8 @@
                     meer ↓
                 </a>
             </div>
+
+
             <div id="statDiv" style="opacity: 0; transition: 2s; animation-delay: 2s;"
                 class="statsDiv  flex h-[20vh] justify-around items-end flex-row">
                 <div class="stat">
@@ -47,30 +50,39 @@
                 <div id="programme-overlay-bottom"></div>
                 <div class="programme-content">
                     <h1 id="joindeprogramma" class="text-[#EDB12C]"><span>JOIN THE</span><span>PROGRAMME</span></h1>
-                    <p id="subtext" class="text-white ">Verbeter je skills in the programme</p>
+                    <p id="subtext" class="text-white ">Binnen The programme draait het om de ontwikkeling van de
+                        getalenteerde basketballers. Wij organiseren trainingen rondom de trainingen van jouw eigen club
+                        waarin jouw ontwikkeling centraal staat. Binnen </p>
                     <a href="{{ route('programme.join') }}" id="button2" class="text-[#EDB12C]">WORDT LID</a>
                 </div>
             </div>
-            <div id="watDoetDiv">
+            <div id="watDoetDiv" class="align-center flex flex-col items-center justify-center">
                 <div id="watDoetDiv-overlay"></div>
                 <div id="watDoetDiv-overlay-bottom"></div>
-                <div class="watDoetDiv-content">
-                    <h1 id="watDoet" class="text-[#EDB12C]"><span>Wat Doet</span><span>24/8?</span></h1>
-                    <div class="textYtDiv flex justify-around flex-row w-[100vw]">
-                        <p id="watDoetSub" class="text-white ">24/8 zet zich in voor zowel de breedtesport als topsport
-                            binnen Almere. We organiseren trainingen, clinics, toernooien en pickups voor verschillende
-                            niveaus. We zijn er voor de beginnend basketballer die kennis wil maken met de sport, tot
-                            aan de
-                            ervaren topsporter die zijn skills scherp wil houden.
-                            Wil je te weten komen wat we voor jouw kunnen betekenen? Neem contact met ons op. </p>
-                        <iframe width="40%" src="https://www.youtube.com/embed/lTxQk9a3qEo"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                    </div>
+                {{-- <div class="watDoetDiv-content items-center align-center justify-center"> --}}
 
-
+                <h1 id="watDoet" class="text-center  w-[80vw] self-center text-[#EDB12C]"><span>Wat
+                        Doet</span> <span> 24/8?</span>
+                </h1>
+                <div class="textYtDiv flex justify-around flex-row my-[5vh] flex-col md:flex-row w-[100vw]">
+                    <p id="watDoetSub" class="text-white text-center md:text-left self-center">24/8 zet zich in voor
+                        zowel de
+                        breedtesport als
+                        topsport
+                        binnen Almere. We organiseren trainingen, clinics, toernooien en pickups voor verschillende
+                        niveaus. We zijn er voor de beginnend basketballer die kennis wil maken met de sport, tot
+                        aan de
+                        ervaren topsporter die zijn skills scherp wil houden.
+                        Wil je te weten komen wat we voor jouw kunnen betekenen? Neem contact met ons op. </p>
+                    <iframe class="self-center md:self-auto w-[80vw] aspect-video mt-[10vh] md:mt-0 md:w-[40%]"
+                        width="40%" src="https://www.youtube.com/embed/lTxQk9a3qEo" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
                 </div>
+
+
+                {{-- </div> --}}
             </div>
             @if ($event)
                 <div id="events"
@@ -82,23 +94,25 @@
                         class="flex flex-row  items-center justify-center">
             @endif
 
-            <div class="flex flex-col ">
+            <div class="flex self-center jusitfy-center items-center flex-col ">
 
 
                 @if ($event)
-                    <h1 id="eventTitel" class="text-[4vh] text-white self-center z-20 font-black">Volgende Evenement
+                    <h1 id="eventTitel"
+                        class="text-[4vh] max-w-[80vw] text-center text-white self-center z-20 font-black">Volgende
+                        Evenement
                     </h1>
                     <div class="flex flex-row text-white justify-around w-[80vw] h-[40vh]">
                         <img id="eventImg" class="w-[40vw] relative" src="/{{ $event->img_url }}" />
                         <div class="flex flex-col z-20">
-                            <h1 class="text-[3vh] font-black">{{ $event->naam }} -
+                            <h1 id="nameDate" class="text-[3vh] font-black">{{ $event->naam }} -
                                 {{ date('d-m-Y H:i', strtotime($event->datumTijd)) }}
                             </h1>
-                            <p class="max-w-[30vw] h-[30vh] w-[30vw]">
+                            <p id="eventText" class="max-w-[80vw] max-h-[40vh] h-[30vh] w-[30vw]">
                                 {{ Str::limit($event->beschrijving, 450) }}
                             </p>
                             <a href="" id="button"
-                                class="bg-white hover:bg-blue-700 relative top-[-15vh] font-bold py-2 px-4 rounded-full">Zie
+                                class="bg-white button2 hover:bg-blue-700 relative top-[-15vh] font-bold py-2 px-4 rounded-full">Zie
                                 meer ↓
                             </a>
                         </div>

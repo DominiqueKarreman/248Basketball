@@ -130,7 +130,7 @@ a:hover {
 
 
 #watDoetDiv {
-    background-image: url('/images/logo.png');
+    /* background-image: url('/images/logo.png'); */
     background-size: 50vh;
     background-position: 90%;
     background-repeat: no-repeat;
@@ -250,15 +250,7 @@ svg {
 
 }
 
-#gradient-overlay {
-    position: absolute;
-    top: -9vh;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to bottom, transparent 50%, black);
-    z-index: 0;
-}
+
 
 #welcome {
     font-size: 2vw;
@@ -335,14 +327,14 @@ svg {
 
 #watDoet {
     font-size: 7vw;
-    width: 60vw;
+
     font-weight: 900;
-    letter-spacing: 1.5vh;
+    letter-spacing: 1vh;
     line-height: 6vw;
-    margin-top: 5vh;
-    left: 10vw;
+    /* margin-top: 5vh; */
+    /* left: 10vw; */
     z-index: 10;
-    position: relative;
+    /* position: relative; */
     color: #EDB12C;
     animation-delay: 1.5s;
     animation: slide-in 2s ease-out forwards;
@@ -367,7 +359,7 @@ svg {
     z-index: 10;
     /* position: relative; */
     font-size: 3vw;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
     opacity: 0;
     animation: slide-in 0.8s ease-out forwards;
     animation-delay: 0.7s;
@@ -449,7 +441,7 @@ svg {
     letter-spacing: 0.5vh;
     line-height: 2vw;
     width: 40vw;
-    left: 6vw;
+    /* left: 6vw; */
     z-index: 10;
     position: relative;
     color: white;
@@ -556,61 +548,320 @@ svg {
 
 
 }
+#gradient-overlay {
+    position: absolute;
+    top: -9vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent 50%, black);
+    z-index: 0;
+}
 
-@media (max-width: 640px) {
-    .rol {
-        letter-spacing: 1vh;
-        /* bottom: -4vh */
-        color: #ffffff;
+
+
+
+
+
+@media (max-width: 970px) {
+#eventImg{
+    display: none;
+}
+#eventText {
+    width: 80vw;
+text-align: center;
+}
+#nameDate {
+    text-align: center;
+}
+
+    #joindeprogramma {
+        font-size: 7vw;
+        width: 60vw;
+        font-weight: 900;
+        letter-spacing: 1.5vh;
+        line-height: 6vw;
+        margin-top: 25vh;
+        left: 10vw;
         z-index: 10;
         position: relative;
-        font-size: 2vh;
-
-        bottom: -8vh;
+        color: #EDB12C;
+        animation-delay: 1.5s;
+        animation: slide-in 2s ease-out forwards;
     }
 
-    .card .img img {
+    #joindeprogramma span {
+        display: inline-block;
+        animation: slide-in 1s ease-out forwards;
+    }
 
-        height: 30vh;
+    #subtext {
+        z-index: 10;
+        /* position: relative; */
+        font-size: 2vw;
+        margin-top: 5vh;
+        line-height: 3vw;
+        opacity: 0;
+        animation: slide-in 0.8s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+    #hero-video {
         position: relative;
-        bottom: -5vh
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 80vh;
+        margin-top: -10vh;
+        object-fit: cover;
+        z-index: -1;
+
+
+    }
+    #gradient-overlay {
+        position: absolute;
+        top: -9vh;
+        left: 0;
+        width: 100%;
+        height: 80vh;
+        background: linear-gradient(to bottom, transparent 50%, black);
+        z-index: 0;
+    }
+    #welcome {
+        font-size: 2vh;
+        letter-spacing: 1.5vw;
+        position: relative;
+        margin-bottom: 0vh;
+        width: 100%;
+        /* line-height: 12vw; */
     }
 
-    .carousel .card h2 {
-        font-weight: bold;
-        font-size: 2vh;
-        z-index: 1;
+    #basketball {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+    }
 
-        text-transform: uppercase;
-        color: #fff;
+    #basketball-stroke {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+        transform: translate(0vh, 8vh);
+    }
+
+    #basketball-stroke-2 {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+        transform: translate(0vh, 5vh);
+    }
+    #button {
+        top: -10vh;
+    }
+
+}
+@media (max-width: 768px) {
+
+#watDoetSub {
+    z-index: 10;
+    /* position: relative; */
+    font-size: 3vw;
+    line-height: 4vw;
+    width: 80%;
+    /* margin-top: 5vh; */
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+    #joindeprogramma {
+        font-size: 7vw;
+        width: 60vw;
+        font-weight: 900;
         letter-spacing: 1.5vh;
-        align-self: center;
-
-        bottom: 5vh;
+        line-height: 6vw;
+        margin-top: 25vh;
+        left: 10vw;
+        z-index: 10;
         position: relative;
-        /* margin: auto; */
-        width: 100%;
-        text-align: center;
-        /* margin: 30px 0 5px; */
+        color: #EDB12C;
+        animation-delay: 1.5s;
+        animation: slide-in 2s ease-out forwards;
     }
 
-    .rolnaam {
-        font-weight: 500;
+    #joindeprogramma span {
+        display: inline-block;
+        animation: slide-in 1s ease-out forwards;
+    }
+
+    #subtext {
+        z-index: 10;
+        /* position: relative; */
+        font-size: 2.5vw;
+        margin-top: 5vh;
+        width: 80%;
+        line-height: 3vw;
+        opacity: 0;
+        animation: slide-in 0.8s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+    #welcome {
         font-size: 2vh;
-        z-index: 1;
-
-        text-transform: uppercase;
-        color: #fff;
-        /* letter-spacing: 1.5vh; */
-        bottom: 4vh;
+        letter-spacing: 1.5vw;
         position: relative;
-        align-self: center;
-        /* margin-bottom: 10vh; */
-        /* margin: auto; */
+        margin-bottom: 0vh;
         width: 100%;
-        text-align: center;
+        /* line-height: 12vw; */
     }
 
+    #basketball {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 12vw;
+    }
+
+    #basketball-stroke {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 12vw;
+
+    }
+
+    #basketball-stroke-2 {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 12vw;
+
+    }
+    #button {
+        top: -10vh;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    #joindeprogramma {
+        font-size: 7vw;
+        width: 60vw;
+        font-weight: 900;
+        letter-spacing: 1.5vh;
+        line-height: 6vw;
+        margin-top: 25vh;
+        left: 10vw;
+        z-index: 10;
+        position: relative;
+        color: #EDB12C;
+        animation-delay: 1.5s;
+        animation: slide-in 2s ease-out forwards;
+    }
+
+    #joindeprogramma span {
+        display: inline-block;
+        animation: slide-in 1s ease-out forwards;
+    }
+
+    #subtext {
+        z-index: 10;
+        /* position: relative; */
+        font-size: 3vw;
+        margin-top: 5vh;
+        line-height: 3vw;
+        opacity: 0;
+        animation: slide-in 0.8s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+
+    #herotext {
+        margin-left: 10vw;
+        width: 80%;
+    }
+    #hero-video {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 80vh;
+        margin-top: -10vh;
+        object-fit: cover;
+        z-index: -1;
+
+
+    }
+    #gradient-overlay {
+        position: absolute;
+        top: -9vh;
+        left: 0;
+        width: 100%;
+        height: 80vh;
+        background: linear-gradient(to bottom, transparent 50%, black);
+        z-index: 0;
+    }
+    #welcome {
+        font-size: 2vh;
+        letter-spacing: 1.5vw;
+        position: relative;
+        margin-bottom: 0vh;
+        width: 100%;
+        /* line-height: 12vw; */
+    }
+
+    #basketball {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+    }
+
+    #basketball-stroke {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+        transform: translate(0vh, 8vh);
+    }
+
+    #basketball-stroke-2 {
+        font-size: 8vh;
+        letter-spacing: 1.5vw;
+        line-height: 8vw;
+        transform: translate(0vh, 5vh);
+    }
+    #button {
+        top: -15vh;
+    }
+
+}
+@media (max-width: 571px) {
+    #subtext {
+        z-index: 10;
+        /* position: relative; */
+        font-size: 3vw;
+        margin-top: 5vh;
+        width: 70%;
+
+        line-height: 4vw;
+        opacity: 0;
+        animation: slide-in 0.8s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+    #hero-video {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 60vh;
+        margin-top: -10vh;
+        object-fit: cover;
+        z-index: -1;
+
+
+    }
+    #gradient-overlay {
+        position: absolute;
+        top: -9vh;
+        left: 0;
+        width: 100%;
+        height: 60vh;
+        background: linear-gradient(to bottom, transparent 50%, black);
+        z-index: 0;
+    }
     #welcome {
         font-size: 2vh;
         letter-spacing: 1.5vw;
@@ -623,37 +874,81 @@ svg {
     #basketball {
         font-size: 6vh;
         letter-spacing: 1.5vw;
-        line-height: 12vw;
+        line-height: 11vw;
     }
 
     #basketball-stroke {
         font-size: 6vh;
         letter-spacing: 1.5vw;
-        line-height: 12vw;
+        line-height: 11vw;
         transform: translate(0vh, 8vh);
     }
 
     #basketball-stroke-2 {
         font-size: 6vh;
         letter-spacing: 1.5vw;
+        line-height: 11vw;
+        transform: translate(0vh, 5vh);
+    }
+    #button {
+        top: -10vh;
+    }
+
+
+}
+@media (max-width: 443px) {
+    #subtext {
+        z-index: 10;
+        /* position: relative; */
+        font-size: 3.8vw;
+        margin-top: 5vh;
+        width: 70%;
+
+        line-height: 5vw;
+        opacity: 0;
+        animation: slide-in 0.8s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+    #welcome {
+        font-size: 2vh;
+        letter-spacing: 1.5vw;
+        position: relative;
+        margin-bottom: 0vh;
+
+        width: 100%;
+        /* line-height: 12vw; */
+    }
+    #heroDiv {
+        height: 50vh;
+    }
+    #basketball {
+        font-size: 4vh;
+        letter-spacing: 1.5vw;
+        line-height: 12vw;
+    }
+
+    #basketball-stroke {
+        font-size: 4vh;
+        letter-spacing: 1.5vw;
+        line-height: 12vw;
+        transform: translate(0vh, 8vh);
+
+    }
+    #herotext{
+
+        width: 80%;
+        left: 50%;
+
+
+    }
+
+    #basketball-stroke-2 {
+        font-size: 4vh;
+        letter-spacing: 1.5vw;
         line-height: 12vw;
         transform: translate(0vh, 5vh);
     }
-
-
-    #herotext {
-        position: absolute;
-        top: 50%;
-        width: 80%;
-        left: 50%;
-        transform: translate(-50%, -180%);
-    }
-
-    .wrapper {
-        top: 35vh;
-    }
-
-    body {
-        overflow-x: hidden;
+    #button {
+        top: -0vh;
     }
 }

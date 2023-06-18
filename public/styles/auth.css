@@ -1,0 +1,82 @@
+
+
+
+
+
+#responsiveDiv {
+    display: none;
+}
+#gradient-overlay {
+    position: absolute;
+
+    left: 0;
+    width: 100vw;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent 50%, black);
+    z-index: 0;
+}
+@keyframes wiggle {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+  .input-error {
+    border: 1px solid red;
+    animation: wiggle 0.5s ease-in-out;
+  }
+#normalLogin {
+    z-index: 1;
+}
+@media (max-width: 970px) {
+#loginBox {
+    width: 80vw;
+}
+#remember {
+    font-size: 1.5vh !important;
+}
+p {
+    font-size: 2vh !important;
+}
+}
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 640px) {
+    #loginBox {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 571px) {
+    body {
+        max-height: 80vh;
+    }
+    #loginBox {
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+
+    }
+    #responsiveDiv {
+        display: block;
+        position: absolute;
+        width: 80vw;
+    }
+    #normalLogin {
+        display: none;
+        width: 0;
+
+    }
+    #loginFoto {
+        width: 100vw;
+    }
+
+}
+@media (max-width: 443px) {
+
+}

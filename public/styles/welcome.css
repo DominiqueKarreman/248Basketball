@@ -94,13 +94,14 @@ a:hover {
 }
 
 .stat h1 {
-    font-size: 3rem;
+    font-size: 8vh;
     font-weight: 900;
     color: #EDB12C;
     margin: 0;
 }
 
 .stat p {
+    text-align: center;
     font-size: 1.5rem;
     margin: 0;
 }
@@ -564,6 +565,18 @@ svg {
 
 
 @media (max-width: 970px) {
+    .stat h1 {
+        font-size: 6vh;
+        font-weight: 900;
+        color: #EDB12C;
+        margin: 0;
+    }
+
+    .stat p {
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0;
+    }
 #eventImg{
     display: none;
 }
@@ -738,7 +751,18 @@ text-align: center;
 }
 
 @media (max-width: 640px) {
+    .stat h1 {
+        font-size: 5vh;
+        font-weight: 900;
+        color: #EDB12C;
+        margin: 0;
+    }
 
+    .stat p {
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0;
+    }
     #joindeprogramma {
         font-size: 7vw;
         width: 60vw;
@@ -897,17 +921,39 @@ text-align: center;
 
 }
 @media (max-width: 443px) {
+    .stat h1 {
+        font-size: 4vh;
+        font-weight: 900;
+        color: #EDB12C;
+        margin: 0;
+    }
+
+    .stat p {
+        text-align: center;
+        font-size: 1rem;
+        margin: 0;
+    }
+    .programme-content {
+        position: relative;
+        bottom: 5vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+    }
     #subtext {
         z-index: 10;
         /* position: relative; */
-        font-size: 3.8vw;
+        font-size: 4vw;
+        /* make dropshadow */
         margin-top: 5vh;
-        width: 70%;
-
+        width: 100%;
+        text-align: center;
+        align-self: center;
         line-height: 5vw;
         opacity: 0;
         animation: slide-in 0.8s ease-out forwards;
         animation-delay: 0.7s;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     #welcome {
         font-size: 2vh;

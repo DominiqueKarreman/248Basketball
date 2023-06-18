@@ -33,16 +33,16 @@
             <div id="statDiv" style="opacity: 0; transition: 2s; animation-delay: 2s;"
                 class="statsDiv  flex h-[20vh] justify-around items-end flex-row">
                 <div class="stat">
-                    <h2 class="text-white text-lg ">Clinics gegeven</h2>
-                    <h1 id="stat1" class="text-white text-center numberStat text-lg">66</h1>
+                    <h2 class="text-white text-center text-lg ">Clinics gegeven</h2>
+                    <h1 id="stat1" class="text-white text-center numberStat text-[3vh]">66</h1>
                 </div>
                 <div class="stat">
-                    <h2 class="text-white text-lg ">Clinics gegeven</h2>
-                    <h1 id="stat2" class="text-white text-center numberStat text-lg">45</h1>
+                    <h2 class="text-white text-center text-lg ">Clinics gegeven</h2>
+                    <h1 id="stat2" class="text-white text-center numberStat text-[3vh]">45</h1>
                 </div>
                 <div class="stat">
-                    <h2 class="text-white text-lg ">Clinics gegeven</h2>
-                    <h1 id="stat3" class="text-white text-center numberStat text-lg">45</h1>
+                    <h2 class="text-white text-center text-lg ">Clinics gegeven</h2>
+                    <h1 id="stat3" class="text-white text-center numberStat text-[1vh]">45</h1>
                 </div>
             </div>
             <div id="programmeDiv">

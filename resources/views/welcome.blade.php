@@ -29,11 +29,11 @@
                     hele video
 
                 </a>
-                {{-- <div class="flex justify-center items-center align-center w-[80vw]">
+                <div class="flex justify-center items-center align-center w-[80vw]">
                     <a href="https://youtu.be/lTxQk9a3qEo" id="button2"
                         class="bg-white hover:bg-blue-700 w-full  font-bold py-2 px-4 rounded-full">Bekijk hele video
                     </a>
-                </div> --}}
+                </div>
             </div>
 
 

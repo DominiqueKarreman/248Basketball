@@ -93,11 +93,11 @@
             </div>
             @if ($event)
                 <div id="events"
-                    style="background: #EDB12C; background-image: url('{{ $event->img_url }}'); background-size: cover; backdrop-filter: blur(60px);"
+                    style="background: #EDB12C; background-image: url('{{ $event->img_url }}'); background-position: center; background-size: cover; backdrop-filter: blur(60px);"
                     class="flex flex-row  items-center justify-center">
                 @else
                     <div id="events"
-                        style="background: #EDB12C;  background-size: cover; backdrop-filter: blur(60px);"
+                        style="background: #EDB12C;  background-position: center; background-size: cover; backdrop-filter: blur(60px);"
                         class="flex flex-row  items-center justify-center">
             @endif
 

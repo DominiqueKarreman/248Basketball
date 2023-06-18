@@ -101,7 +101,7 @@
                         class="flex flex-row  items-center justify-center">
             @endif
 
-            <div class="flex self-center jusitfy-center items-center flex-col ">
+            <div class="flex self-center relative top-[-10vh] jusitfy-center items-center flex-col ">
 
 
                 @if ($event)

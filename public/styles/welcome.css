@@ -13,6 +13,38 @@
     }
 }
 
+#pickupSection {
+    background-image: url("/images/DSC00929-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#pickupSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.368), rgba(0, 0, 0, 0));
+}
+
+#skillsSection {
+    background-image: url("/images/IMG_0031-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#skillsSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.368), rgba(0, 0, 0, 0));
+}
+
 #events {
 
     width: 100vw;
@@ -54,6 +86,10 @@
 }
 
 .watDoetDiv-content {
+    position: relative;
+    bottom: 5vh;
+}
+.weeklyDiv-content {
     position: relative;
     bottom: 5vh;
 }
@@ -149,6 +185,25 @@ a:hover {
     /* animation-delay: 0.7s; */
     position: relative;
 }
+#weeklyDiv {
+    /* background-image: url('/images/logo.png'); */
+    background-size: 50vh;
+    background-position: 90%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    opacity: 0;
+    height: 90vh;
+    width: 100vw;
+    transition: 2s;
+    margin-top: 5vh;
+    width: 100vw;
+    transform: translateY(20%);
+    transition: 1s ease-in;
+    /* animation: fade-in 2s ease-in; */
+    /* animation-delay: 0.7s; */
+    position: relative;
+}
 
 
 #programme-overlay {
@@ -196,6 +251,14 @@ a:hover {
 } */
 
 #watDoetDiv-overlay-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 20%;
+    background: linear-gradient(to top, black 0%, black 10%, transparent 30%, transparent 100%, rgba(0, 0, 0, 0.612) 80%, black 100%);
+}
+#weeklyDiv-overlay-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -259,7 +322,21 @@ svg {
     position: relative;
     margin-bottom: 0vh;
 }
+#buttonLeesMeer {
+    position: relative;
 
+    background-color: #EDB12C;
+    color: black;
+    border: none;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 2vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+}
 #button {
     position: relative;
     margin-top: 20vh;
@@ -361,6 +438,25 @@ svg {
     display: inline-block;
     animation: slide-in 1s ease-out forwards;
 }
+#weekly {
+    font-size: 5vw;
+
+    font-weight: 900;
+    letter-spacing: 1vh;
+    line-height: 6vw;
+    /* margin-top: 5vh; */
+    /* left: 10vw; */
+    z-index: 10;
+    /* position: relative; */
+    color: #EDB12C;
+    animation-delay: 1.5s;
+    animation: slide-in 2s ease-out forwards;
+}
+
+#weekly span {
+    display: inline-block;
+    animation: slide-in 1s ease-out forwards;
+}
 
 #subtext {
     z-index: 10;
@@ -373,6 +469,15 @@ svg {
 }
 
 #watDoetSub {
+    z-index: 10;
+    /* position: relative; */
+    font-size: 3vw;
+    /* margin-top: 5vh; */
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+#weeklySub {
     z-index: 10;
     /* position: relative; */
     font-size: 3vw;
@@ -441,6 +546,25 @@ svg {
 #watDoet span:nth-child(5) {
     /* animation-delay: 0.8s; */
 }
+#weekly span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+#weekly span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+#weekly span:nth-child(3) {
+    /* animation-delay: 0.4s; */
+}
+
+#weekly span:nth-child(4) {
+    /* animation-delay: 0.6s;    */
+}
+
+#weekly span:nth-child(5) {
+    /* animation-delay: 0.8s; */
+}
 
 #subtext {
     font-size: 1.5vw;
@@ -454,6 +578,16 @@ svg {
 }
 
 #watDoetSub {
+    font-size: 1.5vw;
+    letter-spacing: 0.5vh;
+    line-height: 2vw;
+    width: 40vw;
+    /* left: 6vw; */
+    z-index: 10;
+    position: relative;
+    color: white;
+}
+#weeklySub {
     font-size: 1.5vw;
     letter-spacing: 0.5vh;
     line-height: 2vw;
@@ -691,6 +825,17 @@ text-align: center;
 @media (max-width: 768px) {
 
 #watDoetSub {
+    z-index: 10;
+    /* position: relative; */
+    font-size: 3vw;
+    line-height: 4vw;
+    width: 80%;
+    /* margin-top: 5vh; */
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+#weeklySub {
     z-index: 10;
     /* position: relative; */
     font-size: 3vw;
@@ -1038,6 +1183,17 @@ text-align: center;
         line-height: 12vw;
     }
     #watDoetSub {
+        font-size: 2.5vh;
+        line-height: 5vw;
+        letter-spacing: 0.5vw;
+    }
+    #weekly {
+        margin-top: 20vh;
+
+        /* font-size: 12vw;
+        line-height: 12vw; */
+    }
+    #weeklySub {
         font-size: 2.5vh;
         line-height: 5vw;
         letter-spacing: 0.5vw;

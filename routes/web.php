@@ -54,8 +54,17 @@ Route::get('/staff/{id}', function (Request $request, $id) {
 })->name('staff.show');
 
 Route::get('/programme/join', function () {
-    return view("programme.join");
+    return view("guestViews.programme");
 })->name("programme.join");
+Route::get('/skillsTrainingen', function () {
+    return view("guestViews.skills");
+})->name("programme.skills");
+Route::get('/about', function () {
+    return view("guestViews.about");
+})->name("guestViews.about");
+Route::get('/stage', function () {
+    return view("guestViews.stage");
+})->name("guestViews.stage");
 
 Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');

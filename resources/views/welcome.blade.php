@@ -12,7 +12,7 @@
 
 <body class="bg-black flex flex-col h-full w-full">
     <x-infoNavbar class="my-custom-class" />
-    <div class="flex flex-col relative h-[1000vh]">
+    <div class="flex flex-col relative h-auto">
         <div id="gradient-overlay"></div>
         <video autoplay muted loop id="hero-video" playsinline>
             <source src="/videos/onsteambackground.mp4" type="video/mp4">
@@ -142,6 +142,63 @@
         </div>
 
     </div>
+    <div id="weeklyDiv" class="align-center mb-[10vh] sm:mt-0 flex flex-col items-center justify-center">
+        <div id="weeklyDiv-overlay"></div>
+        <div id="weeklyDiv-overlay-bottom"></div>
+        {{-- <div class="weeklyDiv-content items-center align-center justify-center"> --}}
+
+        <h1 id="weekly" class="text-center  w-[80vw] self-center text-[#EDB12C]"><span>Wekelijkse
+                evenementen</span>
+        </h1>
+        <div class="textYtDiv flex justify-around  my-[5vh] flex-row w-[100vw]">
+            <div id="weeklySections" class="flex gap-[3vh] justify-center items-center  w-[80vw] flex-col">
+                <div id="pickupSection"
+                    class="flex align-center gap-[3vw] items-center p-[5vh] justify-around flex-col sm:flex-row w-[70vw] bg-white h-[40%]">
+                    <h1 class="font-black text-white z-20 font-[4vh]">Pickup Games</h1>
+                    <h1 class=" text-white z-20 font-[4vh]">alle leeftijden, elke dinsdag 17:00-18:30</h1>
+                    <a href="" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   inline-block md:hidden font-bold  rounded-full">→
+                    </a>
+                    <a href="" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   hidden md:inline-block font-bold  rounded-full">Lees
+                        meer →
+                    </a>
+                </div>
+                <div id="pickupSection"
+                    class="flex align-center gap-[3vw] items-center p-[5vh]  justify-around flex-col sm:flex-row w-[70vw] bg-white h-[40%]">
+                    <h1 class="font-black text-white z-20 font-[4vh]">Pickup Games</h1>
+                    <h1 class=" text-white z-20 font-[4vh]">alle leeftijden, elke woensdag 16:30-18:00</h1>
+                    <a href="" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   inline-block md:hidden font-bold  rounded-full">→
+                    </a>
+                    <a href="" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   hidden md:inline-block font-bold  rounded-full">Lees
+                        meer →
+                    </a>
+                </div>
+                <div id="skillsSection"
+                    class="flex align-center gap-[3vw] items-center p-[5vh]  justify-around flex-col sm:flex-row w-[70vw] bg-white h-[40%]">
+                    <h1 class="font-black text-white z-20 font-[4vh]">Skills Trainingen</h1>
+                    <h1 class=" text-white z-20 font-[4vh]">Verschillende leeftijdscategorieën, elke zondag</h1>
+                    <a href="{{ route('programme.skills') }}" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   inline-block md:hidden font-bold  rounded-full">→
+                    </a>
+                    <a href="{{ route('programme.skills') }}" id="buttonLeesMeer"
+                        class="bg-white button2 hover:bg-blue-700   hidden md:inline-block font-bold  rounded-full">Lees
+                        meer →
+                    </a>
+                </div>
+            </div>
+
+            {{-- <iframe class="self-center md:self-auto w-[80vw] aspect-video mt-[10vh] md:mt-0 md:w-[40%]" width="40%"
+                src="https://www.youtube.com/embed/lTxQk9a3qEo" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe> --}}
+        </div>
+
+
+        {{-- </div> --}}
+    </div>
     </div>
 
 
@@ -188,8 +245,7 @@
             requestAnimationFrame(animateScroll);
         });
     </script> --}}
-
-
+    <x-footer class="my-custom-class" />
 </body>
 
 

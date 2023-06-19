@@ -6,7 +6,7 @@
 
 * {
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
+    /* font-weight: 300; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,6 +19,24 @@
     top: -10vh;
     position: relative;
     background-image: url('/images/programmeOverlay2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#skillsDiv {
+    height: 80vh;
+    width: 100vw;
+    top: -10vh;
+    position: relative;
+    background-image: url('/images/skillsBorder.png');
+    background-size: cover;
+    background-position: center;
+}
+#wieDiv {
+    height: 80vh;
+    width: 100vw;
+    top: -10vh;
+    position: relative;
+    background-image: url('/images/wiezijnwij.jpg');
     background-size: cover;
     background-position: center;
 }

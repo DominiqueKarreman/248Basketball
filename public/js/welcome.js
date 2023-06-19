@@ -91,6 +91,24 @@ const observer4 = new IntersectionObserver(entries => {
 }, options);
 
 observer4.observe(eventsDiv);
+const weeklyDiv = document.querySelector('#weeklyDiv');
+
+
+const observer5 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            weeklyDiv.style.transform = "translateY(0)"
+            weeklyDiv.style.transition = "1.5 ease-in"
+            weeklyDiv.style.opacity = 1
+        } else {
+            // eventsDiv.classList.remove('slide-in');
+        }
+    });
+}, options);
+
+observer5.observe(weeklyDiv);
 
 
 // const navbar = document.querySelector('nav');

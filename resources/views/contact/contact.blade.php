@@ -25,10 +25,10 @@
     <div id="bigContainer">
         <div id=containerLeft>
             <div id="container1">
-                <p> 
+                <p>
                     Heb je een vraag, opmerking of tips?
 
-                    Neem dan gerust contact met ons op. Wij 
+                    Neem dan gerust contact met ons op. Wij
                     zijn te bereiken via de mail en telefoon.
                 </p>
             </div>
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div id="containerRight">
-            <form name="ContactForm" method="post" action="{{route('contact.store')}}">
+            <form name="ContactForm" method="post" action="{{ route('contact.store') }}">
                 @csrf
                 <h1>
                     Naam:
@@ -63,10 +63,12 @@
                     Bericht:
                 </h1>
                 <textarea name="message" id="message" class="w-full min-h-[21vh] max-h-[21vh] mb-[1.5vh]"></textarea>
-                <button type="submit" class="bg-[#EDB12C] text-black font-semibold uppercase text-[1.5vh] px-[1.5vw] py-[1vh] float-right">Verstuur</button>
+                <button type="submit"
+                    class="bg-[#EDB12C] text-black font-semibold uppercase text-[1.5vh] px-[1.5vw] py-[1vh] float-right">Verstuur</button>
             </form>
         </div>
     </div>
+
 </body>
 
 <style>
@@ -114,6 +116,7 @@
         height: 50%;
         width: 50%;
     }
+
     #container2 {
         height: 50%;
         width: 50%;
@@ -171,4 +174,5 @@
         opacity: 0.2;
     }
 </style>
- </html>
+
+</html>

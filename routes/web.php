@@ -65,6 +65,9 @@ Route::get('/about', function () {
 Route::get('/stage', function () {
     return view("guestViews.stage");
 })->name("guestViews.stage");
+Route::get('/partners-sponsoren', function () {
+    return view("guestViews.partnerSponsor");
+})->name("guestViews.partners");
 
 Route::get('/contact', [ContactMessageController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');

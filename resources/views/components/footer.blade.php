@@ -19,7 +19,8 @@
                 href="{{ route('guestViews.about') }}">About us</a>
             <a class="text-white font-black text-[2vh] hover:text-[#EDB12C]"
                 href="{{ route('guestViews.stage') }}">Stage</a>
-            <a class="text-white font-black text-[2vh] hover:text-[#EDB12C]" href="">Partners &
+            <a class="text-white font-black text-[2vh] hover:text-[#EDB12C]"
+                href="{{ route('guestViews.partners') }}">Partners &
                 sponsors</a>
             <a class="text-white font-black text-[2vh] hover:text-[#EDB12C]" href="{{ route('contact') }}">Contact</a>
 

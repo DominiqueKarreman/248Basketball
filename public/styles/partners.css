@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* .stat {
+    opacity: 0;
+} */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#pickupSection {
+    background-image: url("/images/place2b.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#pickupSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.368), rgba(0, 0, 0, 0));
+}
+#deschoorSection {
+    background-image: url("/images/place2b.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#deschoorSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.368), rgba(0, 0, 0, 0));
+}
+
+#skillsSection {
+    background-image: url("/images/IMG_0031-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#skillsSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.368), rgba(0, 0, 0, 0));
+}
+
+
+
+
+a:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+#partnerDiv {
+    /* background-image: url('/images/logo.png'); */
+    background-size: 50vh;
+    background-position: 90%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    opacity: 0;
+    height: 90vh;
+    width: 100vw;
+    transition: 2s;
+    margin-top: 5vh;
+    width: 100vw;
+    transform: translateY(20%);
+    transition: 1s ease-in;
+    /* animation: fade-in 2s ease-in; */
+    /* animation-delay: 0.7s; */
+    position: relative;
+}
+
+
+
+#partnerDiv-overlay-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 20%;
+    background: linear-gradient(to top, black 0%, black 10%, transparent 30%, transparent 100%, rgba(0, 0, 0, 0.612) 80%, black 100%);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+html {
+    scroll-behavior: smooth;
+    margin: none;
+    max-width: 100vw;
+}
+svg {
+    cursor: pointer;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+
+}
+
+
+
+#buttonLeesMeer {
+    position: relative;
+
+    background-color: #EDB12C;
+    color: black;
+    border: none;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 2vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+#button {
+    position: relative;
+    margin-top: 20vh;
+    background-color: #EDB12C;
+    color: black;
+    border: none;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 2vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+#button3 {
+    position: relative;
+    margin-top: 5vh;
+    left: 10vw;
+    color: #EDB12C;
+    border: 0.4vh solid #EDB12C;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4vh;
+    cursor: pointer;
+    z-index: 11;
+}
+
+
+#button2 {
+    position: relative;
+    margin-top: 20vh;
+    background-color: #EDB12C;
+    color: black;
+    border: none;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+    font-size: 2vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#button2:hover {
+    transform: scale(1.5);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+
+#partner {
+    font-size: 5vw;
+
+    font-weight: 900;
+    letter-spacing: 1vh;
+    line-height: 6vw;
+    /* margin-top: 5vh; */
+    /* left: 10vw; */
+    z-index: 10;
+    /* position: relative; */
+    color: #EDB12C;
+    animation-delay: 1.5s;
+    animation: slide-in 2s ease-out forwards;
+}
+
+#partner span {
+    display: inline-block;
+    animation: slide-in 1s ease-out forwards;
+}
+
+
+#partnerSub {
+    z-index: 10;
+    /* position: relative; */
+    font-size: 3vw;
+    /* margin-top: 5vh; */
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+
+#button2 {
+    font-size: 3vw;
+    margin-top: 5vh;
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+#partner span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+#partner span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+
+#partnerSub {
+    font-size: 1.5vw;
+    letter-spacing: 0.5vh;
+    line-height: 2vw;
+    width: 40vw;
+    /* left: 6vw; */
+    z-index: 10;
+    position: relative;
+    color: white;
+}
+
+.name {
+    letter-spacing: 1vh;
+    bottom: 6vh
+}
+
+
+
+#logo {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    /* width: 10vh; */
+    height: 6vh;
+    /* margin-top: 2vh; */
+    margin-left: 4vh;
+    margin-right: -4vh;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+
+#gradient-overlay {
+    position: absolute;
+    top: -9vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent 50%, black);
+    z-index: 0;
+}
+
+@media (max-width: 970px) {
+    #button {
+        top: -10vh;
+    }
+
+}
+@media (max-width: 768px) {
+
+#partnerSub {
+    z-index: 10;
+    /* position: relative; */
+    font-size: 3vw;
+    line-height: 4vw;
+    width: 80%;
+    /* margin-top: 5vh; */
+    opacity: 0;
+    animation: slide-in 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+    #button {
+        top: -10vh;
+    }
+
+}
+
+@media (max-width: 640px) {
+}
+@media (max-width: 571px) {
+    #button {
+        top: -10vh;
+    }
+
+
+}
+@media (max-width: 443px) {
+    #button {
+        top: -0vh;
+    }
+    #partner {
+        margin-top: 20vh;
+
+        /* font-size: 12vw;
+        line-height: 12vw; */
+    }
+    #partnerSub {
+        font-size: 2.5vh;
+        line-height: 5vw;
+        letter-spacing: 0.5vw;
+    }
+    }

@@ -21,9 +21,9 @@ const observer2 = new IntersectionObserver(entries => {
 
 
 
-        animateNumber(stat1, 45)
-        animateNumber(stat2, 155)
-        animateNumber(stat3, 452)
+        animateNumber(stat1, 66)
+        animateNumber(stat2, 24)
+        animateNumber(stat3, 32)
         observer2.unobserve(statDiv)
 
         statDiv.style.opacity = 1;

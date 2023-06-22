@@ -44,12 +44,12 @@
                     <h1 id="stat1" class="text-white text-center numberStat text-[3vh]">66</h1>
                 </div>
                 <div class="stat">
-                    <h2 class="text-white text-center text-lg ">Clinics gegeven</h2>
-                    <h1 id="stat2" class="text-white text-center numberStat text-[3vh]">45</h1>
+                    <h2 class="text-white text-center text-lg ">Evenement gegeven</h2>
+                    <h1 id="stat2" class="text-white text-center numberStat text-[3vh]">24</h1>
                 </div>
                 <div class="stat">
-                    <h2 class="text-white text-center text-lg ">Clinics gegeven</h2>
-                    <h1 id="stat3" class="text-white text-center numberStat text-[1vh]">45</h1>
+                    <h2 class="text-white text-center text-lg ">Spelers opgeleid</h2>
+                    <h1 id="stat3" class="text-white text-center numberStat text-[1vh]">32</h1>
                 </div>
             </div>
             <div id="programmeDiv">
@@ -204,47 +204,6 @@
 
 
     <script src="/js/welcome.js"></script>
-    {{-- <script>
-        // Get the target element
-        const target = document.querySelector('#programmeDiv');
-
-        // Get the current scroll position
-        const currentPosition = window.pageYOffset;
-
-        // Calculate the distance to scroll
-        const distance = target.getBoundingClientRect().top - currentPosition;
-
-        // Set the duration of the animation (in milliseconds)
-        const duration = 1000;
-
-        // Define the easing function
-        const easing = t => t * (2 - t);
-
-        // Define the start time of the animation
-        let startTime = null;
-
-        // Define the animation function
-        const animateScroll = currentTime => {
-            if (startTime === null) {
-                startTime = currentTime;
-            }
-
-            const timeElapsed = currentTime - startTime;
-            const scrollPosition = currentPosition + (distance * easing(timeElapsed / duration));
-
-            window.scrollTo(0, scrollPosition);
-
-            if (timeElapsed < duration) {
-                requestAnimationFrame(animateScroll);
-            }
-        };
-
-        // Add an event listener to the link
-        document.getElementById('button2').addEventListener('click', event => {
-            event.preventDefault();
-            requestAnimationFrame(animateScroll);
-        });
-    </script> --}}
     <x-footer class="my-custom-class" />
 </body>
 

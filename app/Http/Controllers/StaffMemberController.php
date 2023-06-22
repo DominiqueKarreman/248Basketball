@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use App\Models\StaffMember;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,8 +19,11 @@ class StaffMemberController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->hasPermissionTo('view staffMembers')) {
+            abort('403');
+        }
         $users = StaffMember::all();
-        
+
         return view('staff.index', ['users' => $users]);
     }
 
@@ -29,7 +32,10 @@ class StaffMemberController extends Controller
      */
     public function create()
     {
-        //
+        //check user permissions
+        if (!auth()->user()->hasPermissionTo('create staffMembers')) {
+            abort('403');
+        }
         $users = User::all();
 
         return view('staff.create', ['users' => $users]);
@@ -40,8 +46,10 @@ class StaffMemberController extends Controller
      */
     public function store(StoreStaffMemberRequest $request)
     {
-
-
+        //check permission
+        if (!auth()->user()->hasPermissionTo('create staffMembers')) {
+            abort('403');
+        }
         if ($request->hasFile('img_url')) {
             $img_url = "storage/staff/" . $request->file('img_url')->getClientOriginalName();
             $request->file('img_url')->storeAs('public/staff', $request->file('img_url')->getClientOriginalName());
@@ -88,9 +96,13 @@ class StaffMemberController extends Controller
      */
     public function edit($id)
     {
+        //check permission
+        if (!auth()->user()->hasPermissionTo('edit staffMembers')) {
+            abort('403');
+        }
         $staffMember = StaffMember::find($id);
         // dd($staffMember->image);
-        return response(view('staff.edit', ["staffMember" => $staffMember, "users"=> User::all()]));
+        return response(view('staff.edit', ["staffMember" => $staffMember, "users" => User::all()]));
     }
 
     /**
@@ -98,13 +110,17 @@ class StaffMemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        //create function for update 
+        //check permission
+        if (!auth()->user()->hasPermissionTo('edit staffMembers')) {
+            abort('403');
+        }
+
+        //create function for update
         $staffMember = StaffMember::find($id);
         if ($request->hasFile('img_url')) {
             //remove old photo from storage folder
             //replace "/storage" with "" to get the path
-            
+
             $file = str_replace("/storage", "", $staffMember->image);
             File::delete($file);
             // dd(File::exists($file), $file);
@@ -112,7 +128,7 @@ class StaffMemberController extends Controller
                 // 1. possibility
                 Storage::delete($staffMember->image);
                 // 2. possibility
-    
+
             } else {
                 echo "File does not exist";
             }
@@ -130,7 +146,7 @@ class StaffMemberController extends Controller
                 // 1. possibility
                 Storage::delete($staffMember->image);
                 // 2. possibility
-    
+
             } else {
                 echo "File does not exist";
             }
@@ -154,14 +170,28 @@ class StaffMemberController extends Controller
             'user_id' => $request->user_id,
         ]);
         return redirect()->route('staff')->banner('Veld is geupdate');
-        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StaffMember $staffMember)
+    public function destroy($id)
     {
-        //
+        //check rights
+        if (!auth()->user()->hasPermissionTo('delete staffMembers')) {
+            abort('403');
+        }
+        //find staff member
+        $staffMember = StaffMember::find($id);
+        //remove image from storage
+        $file = str_replace("/storage", "", $staffMember->image);
+        File::delete(storage_path($file));
+        //remove video from storage
+        $file = str_replace("/storage", "", $staffMember->video);
+        File::delete(storage_path($file));
+        //remove staff member from database
+
+        $staffMember->delete();
+        return redirect()->route('staffMembers')->banner('Veld is verwijderd');
     }
 }

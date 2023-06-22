@@ -110,7 +110,7 @@ class ApiPickupController extends Controller
             $group->delete();
             return response()->json([
                 'error' => 'er ging wat fout: ' . $e,
-            ], 404);
+            ], 500);
         }
         $playerIds = $request->player_ids;
         // dd($playerIds, $group);

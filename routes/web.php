@@ -141,6 +141,7 @@ Route::middleware([
     Route::post('/staffMembers', [StaffMemberController::class, 'store'])->name('staff.store');
     Route::get('/staffMembers/{id}/edit', [StaffMemberController::class, 'edit'])->name('staff.edit');
     Route::put('/staffMembers/{id}', [StaffMemberController::class, 'update'])->name('staff.update');
+    Route::delete('/staffMembers/{id}', [StaffMemberController::class, 'destroy'])->name('staff.destroy');
 
     Route::get('/noti', function () {
 

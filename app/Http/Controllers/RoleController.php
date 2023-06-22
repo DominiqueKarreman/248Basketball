@@ -20,7 +20,7 @@ class RoleController extends Controller
         //
         if (!auth()->user()->hasPermissionTo('view roles')) {
             abort('403');
-        } 
+        }
 
         $roles = Role::select('id', 'name')->withCount('permissions')->orderBy('name')->get();
         // dd($roles);
@@ -58,8 +58,8 @@ class RoleController extends Controller
         }
         // dd($request->all());
         $role = Role::create(['name' => $request->role_name, 'guard_name' => 'web']);
-        foreach($request->all() as $key => $permission){
-            if($permission == 'true'){
+        foreach ($request->all() as $key => $permission) {
+            if ($permission == 'true') {
                 // dd([$key => $permission]);
                 $explodedKey = explode('_', $key);
                 $correctKey = $explodedKey[0] . ' ' . $explodedKey[1];
@@ -85,18 +85,21 @@ class RoleController extends Controller
      */
     public function edit($role)
     {
-        
+
+        if (!auth()->user()->hasPermissionTo('edit roles')) {
+            abort('403');
+        }
         //find role with id and return view with role and permissions
         $role = Role::select('id', 'name')->withCount('permissions')->where('id', $role)->first();
-        
+
         $rolePermission = $role->permissions->pluck('name')->toArray();
         $array = [];
         foreach (Permission::all() as $permission) {
-            if($permission->name == 'assign roles'){
+            if ($permission->name == 'assign roles') {
                 continue;
             }
             if (!in_array($permission->name, $rolePermission)) {
-                
+
                 array_push($array, ['name' => $permission->name, 'checked' => '']);
             } else {
                 array_push($array, ['name' => $permission->name, 'checked' => 'checked']);
@@ -108,7 +111,6 @@ class RoleController extends Controller
             'permissions' => $rolePermission,
             'array' => $array,
         ]);
-
     }
 
     /**
@@ -117,9 +119,11 @@ class RoleController extends Controller
     public function update(Request $request, $role)
     {
         // Update the Veld model with the new data from the request
-       
-        
-    
+
+        if (!auth()->user()->hasPermissionTo('edit roles')) {
+            abort('403');
+        }
+
         // Redirect back to the index page
         return redirect()->route('velden.index')->banner('Veld updated successfully.');
     }
@@ -128,15 +132,15 @@ class RoleController extends Controller
     {
         if (!auth()->user()->hasPermissionTo('edit roles')) {
             abort('403');
-        } 
+        }
 
 
         // Update the Veld model with the new data from the request
         $role = Role::find($id);
-        // dd($request->all()); 
+        // dd($request->all());
         $role->revokePermissionTo(Permission::all());
-        foreach($request->all() as $key => $permission){
-            if($permission == 'true'){
+        foreach ($request->all() as $key => $permission) {
+            if ($permission == 'true') {
                 // dd([$key => $permission]);
                 $explodedKey = explode('_', $key);
                 $correctKey = $explodedKey[0] . ' ' . $explodedKey[1];
@@ -155,6 +159,9 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+        if (!auth()->user()->hasPermissionTo('delete roles')) {
+            abort('403');
+        }
         Role::destroy($id);
         return redirect()->route('roles.index')->banner('Role deleted successfully.');
     }

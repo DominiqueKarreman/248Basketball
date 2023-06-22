@@ -28,14 +28,14 @@ class RolesAndPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'Admin']);
         $role_moderator = Role::create(['name' => 'Moderator']);
         $role_user = Role::create(['name' => 'User']);
-        
+
         //velden permissions
-         
+
         $permission = Permission::create(['name' => 'create velden']);
         $permission = Permission::create(['name' => 'view velden']);
         $permission = Permission::create(['name' => 'edit velden']);
         $permission = Permission::create(['name' => 'delete velden']);
-        
+
         //users permissions
 
         $permission = Permission::create(['name' => 'create users']);
@@ -57,14 +57,14 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'view permissions']);
         $permission = Permission::create(['name' => 'edit permissions']);
         $permission = Permission::create(['name' => 'delete permissions']);
-        
+
         //events permissions
 
         $permission = Permission::create(['name' => 'create events']);
         $permission = Permission::create(['name' => 'view events']);
         $permission = Permission::create(['name' => 'edit events']);
         $permission = Permission::create(['name' => 'delete events']);
-        
+
         $permission = Permission::create(['name' => 'create pickups']);
         $permission = Permission::create(['name' => 'view pickups']);
         $permission = Permission::create(['name' => 'edit pickups']);
@@ -76,7 +76,16 @@ class RolesAndPermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'view contactMessages']);
         $permission = Permission::create(['name' => 'edit contactMessages']);
         $permission = Permission::create(['name' => 'delete contactMessages']);
-        
+
+        //staffMembers permissions
+        $permission = Permission::create(['name' => 'create staffMembers']);
+        $permission = Permission::create(['name' => 'view staffMembers']);
+        $permission = Permission::create(['name' => 'edit staffMembers']);
+        $permission = Permission::create(['name' => 'delete staffMembers']);
+
+
+        $permission = Permission::create(['name' => 'create api tokens']);
+
         $role->givePermissionTo(Permission::all());
         $role_moderator->givePermissionTo(Permission::all());
         $role_moderator->revokePermissionTo('assign roles');
@@ -84,7 +93,5 @@ class RolesAndPermissionSeeder extends Seeder
         Permission::all()->each(function ($permission) {
             $permission->assignRole('admin');
         });
-       
-
     }
 }

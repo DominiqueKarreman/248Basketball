@@ -176,13 +176,4 @@ class ApiUserController extends Controller
             'user' => $user
         ], 200);
     }
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user): RedirectResponse
-    {
-        //
-    }
 }

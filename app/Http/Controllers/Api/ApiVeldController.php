@@ -29,13 +29,7 @@ class ApiVeldController extends Controller
         $velden = $tempVeld->sortWithDistance($latitude, $longitude);
         return response($velden, 200);
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): Response
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -51,9 +45,7 @@ class ApiVeldController extends Controller
     public function show($id): Response
     {
         //
-        if (!auth()->user()->hasPermissionTo('view velden')) {
-            return Response(["message" => 'You are not authorized to view velden'], 403);
-        }
+
         $veld = veld::find($id);
         $pickups = Pickup::query()
             ->select('pickups.*', 'users.name as creator_name', 'users.profile_photo_path as creator_img_url')

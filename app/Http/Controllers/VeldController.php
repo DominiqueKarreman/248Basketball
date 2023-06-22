@@ -30,13 +30,12 @@ class VeldController extends Controller
                 $veld->veld_leider = $firstname . " " . $lastname;
             } else {
                 $veld->veld_leider = 'Geen';
-        }
-        $tijden = explode(":", $veld->openingstijden);
-        $veld->openingstijden = $tijden[0] . ":" . $tijden[1] . "-";
-        // sluitings tijden
-        $tijden = explode(":", $veld->sluitingstijden);
-        $veld->sluitingstijden = $tijden[0] . ":" . $tijden[1];
-        
+            }
+            $tijden = explode(":", $veld->openingstijden);
+            $veld->openingstijden = $tijden[0] . ":" . $tijden[1] . "-";
+            // sluitings tijden
+            $tijden = explode(":", $veld->sluitingstijden);
+            $veld->sluitingstijden = $tijden[0] . ":" . $tijden[1];
         }
         return view('velden.index', compact('velden'));
     }
@@ -47,7 +46,10 @@ class VeldController extends Controller
     public function create()
     {
         //
-
+        //check user permissions
+        if (!auth()->user()->hasPermissionTo('create velden')) {
+            abort('403');
+        }
         return view('velden.create');
     }
 
@@ -63,14 +65,14 @@ class VeldController extends Controller
         $inputs['competitie'] = $request->has('competitie');
 
         $veld = Veld::create($inputs);
-        
+
         if ($request->hasFile('img_url')) {
             $img_url = "storage/velden/" . $request->file('img_url')->getClientOriginalName();
             $request->file('img_url')->storeAs('public/velden', $request->file('img_url')->getClientOriginalName());
         } else {
             $img_url = 'null';
         }
-        
+
         $veld->img_url = $img_url;
         $veld->save();
         return redirect()->route('velden.index');
@@ -89,8 +91,11 @@ class VeldController extends Controller
      */
     public function edit($veld)
     {
+        if (!auth()->user()->hasPermissionTo('edit velden')) {
+            abort('403');
+        }
         $veld = Veld::find($veld);
-        
+
         return view('velden.edit', [
             'veld' => $veld
         ]);
@@ -133,6 +138,9 @@ class VeldController extends Controller
     public function destroy($veld)
     {
         //
+        if (!auth()->user()->hasPermissionTo('delete velden')) {
+            abort('403');
+        }
         Veld::destroy($veld);
         return redirect()->route('velden.index')->banner('Veld is verwijderd');
     }

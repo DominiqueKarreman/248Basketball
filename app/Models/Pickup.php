@@ -29,6 +29,7 @@ class Pickup extends Model
         return PickupPlayer::join('users', 'pickup_players.user', '=', 'users.id')
             ->select('pickup_players.*', 'users.name as player_name')
             ->where('pickup_players.pickup', $this->id)
+
             ->get();
     }
 }

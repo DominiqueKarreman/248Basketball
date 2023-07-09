@@ -34,17 +34,103 @@
                         class="block py-2 text-[2vh] pl-3 pr-4 {{ request()->routeIs('home') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Home') }}</a>
                 </li>
                 <li>
-                    <a href="{{ url('/staff') }}"
-                        class="block py-2 text-[2vh] pl-3 pr-4 {{ request()->routeIs('staff') || request()->routeIs('staff.show') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Ons team') }}</a>
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                        class="flex items-center justify-between w-full py-2 pl-3 pr-4 {{ request()->routeIs('programme.skills') || request()->routeIs('programme.join') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded  md:hover:bg-transparent md:hover:text-[#EDB12C]  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700  md:dark:hover:bg-transparent">24/8
+                        Academy
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar"
+                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                            <li>
+                                <a href="{{ route('programme.join') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">The
+                                    Programme</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('programme.skills') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Skills
+                                    trainingen</a>
+                            </li>
+
+                    </div>
                 </li>
+                <li>
+                    <button id="dropdownNavbarLinkEvent" data-dropdown-toggle="dropdownNavbarEvent"
+                        class="flex items-center justify-between w-full py-2 pl-3 pr-4 {{ request()->routeIs('home') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded  md:hover:bg-transparent md:hover:text-[#EDB12C]  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700  md:dark:hover:bg-transparent">
+                        Evenementen & Clinics
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbarEvent"
+                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                            aria-labelledby="dropdownLargeButtonEvent">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Evenementen
+                                    & Clinics</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Gallerij</a>
+                            </li>
+
+                    </div>
+                </li>
+                <li>
+                    <button id="dropdownNavbarLinkOns" data-dropdown-toggle="dropdownNavbarOns"
+                        class="flex items-center justify-between w-full py-2 pl-3 pr-4 {{ request()->routeIs('staff') || request()->routeIs('guestViews.about') || request()->routeIs('guestViews.stage') || request()->routeIs('contact') || request()->routeIs('guestViews.partners') || request()->routeIs('staff.show') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded  md:hover:bg-transparent md:hover:text-[#EDB12C]  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700  md:dark:hover:bg-transparent">
+                        Over ons
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbarOns"
+                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                            aria-labelledby="dropdownLargeButtonOns">
+                            <li>
+                                <a href="{{ route('guestViews.about') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About
+                                    us</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/staff') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ons
+                                    team</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('guestViews.partners') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Partners
+                                    & Sponsors</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('guestViews.stage') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Stage</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('contact') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Contact</a>
+                            </li>
+                    </div>
+                </li>
+
                 <li>
                     <a href="#"
                         class="block py-2 text-[2vh] pl-3 pr-4 text-gray-100 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Nieuws') }}</a>
                 </li>
-                <li>
-                    <a href="{{ route('contact') }}"
-                        class="block py-[0.2vh] text-[2vh]  pl-3 pr-4 {{ request()->routeIs('contact') ? 'text-[#EDB12C]' : 'text-gray-100' }} rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#EDB12C] md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">{{ __('Contact') }}</a>
-                </li>
+
             </ul>
         </div>
     </div>

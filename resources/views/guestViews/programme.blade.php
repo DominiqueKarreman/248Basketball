@@ -106,32 +106,22 @@
         <div class="grid gap-4">
             <div class="flex flex-row">
                 <div class="bg-zinc-800 p-[10vh] relative left-0 w-[60%] h-auto">
-                    <h1 class="text-white text-[6vh] uppercase font-black relative  z-20 ">Ayoub
+                    <h1 id="displayed-player-name" class="text-white text-[6vh] uppercase font-black relative  z-20 ">
+                        Ayoub
                     </h1>
-                    <p class="mt-[5vh] text-white ">Mijn ervaring met de 24/8 programme is fantastisch. Ik heb de kans
+                    <p id="displayed-player-description" class="mt-[5vh] text-white ">Mijn ervaring met de 24/8
+                        programme is fantastisch. Ik heb de kans
                         om elke dag
                         binnen te Basketballen en ik ben omringd met de leukste mensen. De trainingen zijn goed er wordt
                         meer dan voldoende aandacht gegeven aan de groep en individu. ⭐️⭐️⭐️⭐️⭐️</p>
 
                 </div>
-                <img class="h-[80vh] max-w-full w-[40%] rounded-lg object-cover" src="/images/DSC09967.jpg"
-                    alt="">
+                <img id="displayed-player-img" class="h-[80vh] max-w-full w-[40%] rounded-lg object-cover"
+                    src="/images/DSC09967.jpg" alt="">
             </div>
-            <div class="grid grid-cols-5 gap-4">
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Jarno</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09943.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Anu</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09928.jpg"
-                        alt="">
-                </div>
+            <div id="players-Div" class="grid grid-cols-5 gap-4">
+
+
             </div>
             <!-- Add the hover effect here -->
             <style>
@@ -154,59 +144,31 @@
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));">
                 </div>
                 <div class="absolute z-20 p-[5vh]">
-                    <h1 class="text-white text-[6vh] uppercase font-black relative  z-20 ">Ayoub
+                    <h1 id="displayed-player-name-sm"
+                        class="text-white text-[6vh] uppercase font-black relative  z-20 ">Ayoub
                     </h1>
-                    <p class="mt-[5vh] z-20 text-white ">Mijn ervaring met de 24/8 programme is fantastisch. Ik heb de
+                    <p id="displayed-player-description-sm" class="mt-[5vh] z-20 text-white ">Mijn ervaring met de 24/8
+                        programme is fantastisch. Ik heb de
                         kans
                         om elke dag
                         binnen te Basketballen en ik ben omringd met de leukste mensen. De trainingen zijn goed er wordt
                         meer dan voldoende aandacht gegeven aan de groep en individu. ⭐️⭐️⭐️⭐️⭐️</p>
                 </div>
-                <img class="h-[80vh]  w-[90vw] rounded-lg object-cover" src="/images/DSC09967.jpg" alt="">
+                <img id="displayed-player-img-sm" class="h-[80vh]  w-[90vw] rounded-lg object-cover"
+                    src="/images/DSC09967.jpg" alt="">
             </div>
-            <div class="grid grid-cols-2 gap-4 mt-[5vh]">
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Jarno</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09943.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Anu</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09928.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Jarno</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09943.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Anu</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09928.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Jarno</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09943.jpg"
-                        alt="">
-                </div>
-                <div class="grid-item relative">
-                    <h1
-                        class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        Anu</h1>
-                    <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="/images/DSC09928.jpg"
-                        alt="">
-                </div>
+            <div id="players-Div-sm" class="grid grid-cols-2 gap-4 mt-[5vh]">
+
+                {{-- @foreach ($spelers as $speler)
+                    <div class="grid-item relative">
+                        <h1
+                            class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            Romello</h1>
+                        <img class="w-full object-cover aspect-square max-w-full rounded-lg"
+                            src="/images/DSC09928.jpg" alt="">
+                    </div>
+                @endforeach --}}
+
             </div>
             <!-- Add the hover effect here -->
             <style>
@@ -221,6 +183,78 @@
             <!-- End of hover effect -->
         </div>
     </div>
+    <script src="/js/partners.js"></script>
+    <div id="players" data-players="{{ json_encode($spelers) }}"></div>
+
+    <script>
+        const players = JSON.parse(document.getElementById('players').dataset.players);
+        console.log(players);
+
+        const container = document.getElementById('players-Div');
+        const containerSm = document.getElementById('players-Div-sm');
+
+        let displayPlayerIndex = 0;
+        let displayedPlayerName = document.getElementById('displayed-player-name')
+        let displayedPlayerImg = document.getElementById('displayed-player-img')
+        let displayedPlayerDescription = document.getElementById('displayed-player-description')
+        let displayedPlayerNameSm = document.getElementById('displayed-player-name-sm')
+        let displayedPlayerImgSm = document.getElementById('displayed-player-img-sm')
+        let displayedPlayerDescriptionSm = document.getElementById('displayed-player-description-sm')
+
+        displayedPlayerName.textContent = players[displayPlayerIndex].name
+        displayedPlayerDescription.textContent = players[displayPlayerIndex].description
+        displayedPlayerImg.src = players[displayPlayerIndex].image
+
+        displayedPlayerNameSm.textContent = players[displayPlayerIndex].name
+        displayedPlayerDescriptionSm.textContent = players[displayPlayerIndex].description
+        displayedPlayerImgSm.src = players[displayPlayerIndex].image
+
+        players.forEach((player, index) => {
+            //skipp if displayedPlayer
+            console.log(player.name, displayedPlayerName.textContent)
+            // if (player.name == displayedPlayerName.textContent) return;
+
+            const div = document.createElement('div');
+            div.classList.add('grid-item');
+            div.innerHTML = `
+        <div  data-player-index="${index}" class="relative  smallGridItem">
+            <div class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                ${player.name}
+            </div>
+            <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="${player.image}" alt="">
+        </div>
+    `;
+            const divSm = document.createElement('divSm');
+            divSm.classList.add('grid-item');
+            divSm.innerHTML = `
+        <div  data-player-index="${index}" class="relative  smallGridItem">
+            <div class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                ${player.name}
+            </div>
+            <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="${player.image}" alt="">
+        </div>
+    `;
+            container.appendChild(div);
+            containerSm.appendChild(divSm);
+        });
+
+        const gridItems = document.getElementsByClassName('smallGridItem')
+        Array.from(gridItems).forEach(gridItem => {
+            gridItem.addEventListener('click', () => {
+                // Your event listener code here
+                displayPlayerIndex = gridItem.dataset.playerIndex;
+                console.log(`Grid item clicked! Player index: ${displayPlayerIndex}`);
+
+                displayedPlayerName.textContent = players[displayPlayerIndex].name
+                displayedPlayerDescription.textContent = players[displayPlayerIndex].description
+                displayedPlayerImg.src = players[displayPlayerIndex].image
+
+                displayedPlayerNameSm.textContent = players[displayPlayerIndex].name
+                displayedPlayerDescriptionSm.textContent = players[displayPlayerIndex].description
+                displayedPlayerImgSm.src = players[displayPlayerIndex].image
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <x-footer class="my-custom-class" />
 </body>

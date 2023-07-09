@@ -100,11 +100,14 @@
                 <div
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));">
                 </div>
-                <div class="absolute z-20 p-[5vh]">
+                <div class="absolute z-20 flex justify-center flex-col items-center p-[5vh]">
                     <h1 id="displayed-player-name-sm"
-                        class="text-white text-[6vh] uppercase font-black relative  z-20 ">Ayoub
+                        class="text-white text-[3vh] text-center max-w-[90%] uppercase font-black relative  z-20 ">Ayoub
                     </h1>
-                    <p id="displayed-player-description-sm" class="mt-[5vh] z-20 text-white ">Mijn ervaring met de 24/8
+                    <p id="displayed-player-description-sm"
+                        class="mt-[5vh] tracking-widest z-20 w-[90%] max-h-[60vh] text-center text-white ">Mijn
+                        ervaring met
+                        de 24/8
                         programme is fantastisch. Ik heb de
                         kans
                         om elke dag
@@ -129,6 +132,13 @@
             </div>
             <!-- Add the hover effect here -->
             <style>
+                #displayed-player-description-sm {
+                    height: 80vh;
+                    /* white-space: nowrap; */
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
                 .grid-item:hover {
                     transform: scale(1.2);
                     transition: transform 0.5s ease-in-out;
@@ -173,7 +183,7 @@
             const div = document.createElement('div');
             div.classList.add('grid-item');
             div.innerHTML = `
-        <div  data-player-index="${index}" class="relative  smallGridItem">
+        <div  data-player-index="${index}" class="relative  z-30 smallGridItem">
             <div class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 ${player.name}
             </div>
@@ -183,11 +193,11 @@
             const divSm = document.createElement('divSm');
             divSm.classList.add('grid-item');
             divSm.innerHTML = `
-        <div  data-player-index="${index}" class="relative  smallGridItem">
+        <div  data-player-index="${index}" class="relative z-30 smallGridItem">
             <div class="absolute text-white z-20 font-black tracking-widest uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 ${player.name}
             </div>
-            <img class="w-full object-cover aspect-square max-w-full rounded-lg" src="${player.image}" alt="">
+            <img class="w-full  object-cover aspect-square max-w-full rounded-lg" src="${player.image}" alt="">
         </div>
     `;
             container.appendChild(div);
@@ -206,7 +216,8 @@
                 displayedPlayerImg.src = stagairs[displayPlayerIndex].image
 
                 displayedPlayerNameSm.textContent = stagairs[displayPlayerIndex].name
-                displayedPlayerDescriptionSm.textContent = stagairs[displayPlayerIndex].description
+                displayedPlayerDescriptionSm.textContent = stagairs[displayPlayerIndex].description.slice(0,
+                    300) + "...";
                 displayedPlayerImgSm.src = stagairs[displayPlayerIndex].image
             });
         });

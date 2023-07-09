@@ -95,7 +95,36 @@ Route::get('/about', function () {
     return view("guestViews.about");
 })->name("guestViews.about");
 Route::get('/stage', function () {
-    return view("guestViews.stage");
+    $stagairs = [
+        [
+            "name" => "Tiziano Antonio
+            ",
+            "image" => "/images/tizi.jpg",
+            "description" => "Ik doe Sport en Bewegen op ROC Almere Poort. Binnen 248 help ik met trainingen geven en het opzetten van evenementen. Ik vind het een leuke en leerzame stage. Deze stageplek zou ik zeker aanraden voor mensen die van basketbal houden en die passie willen delen."
+        ],
+        [
+            "name" => "Alpy Wendwesan",
+            "image" => "/images/alpy.jpg",
+            "description" => " Hoi, ik ben Alperazim Wendwesan. Ik zit nu op het Baken Park Lyceum in Almere, ik doe havo 5 met een n/g profiel. Als stage help ik mee met toernooien onderhouden of helpen met clinics, trainingen geven. Ik train ook bij 24/8 Basketbal voor mij is het heel erg leuk om altijd omringd te zijn met een basketbal cultuur wat 24/8 heeft. 24/8 begint in mijn mening ook wel langzaam de kern van basketbal beginnen te worden in Almere. Het is ook leuk om iedereen te zien spelen en beïnvloed zijn met basketbal. Mijn favoriete evenement was het 3×3 toernooi in Almere Centrum. Het was als het ware dat een van mijn dromen uitkwam. "
+        ],
+        [
+            "name" => "Dayvinn Jansen",
+            "image" => "/images/dayvin.jpeg",
+            "description" => "Mijn naam is Dayvinn Jansen. Ik heb hier stage gelopen vanuit mijn school ROC Almere Poort. Opleiding: sport en bewegen.
+            De reden dat ik bij 24/8 Basketball mijn stage wilden lopen is omdat ik zelf een basketballer ben en het spel heel leuk en interessant vind zowel Theoretisch als praktisch.
+            Ik heb hier een hoop geleerd over het organiseren van verschillende evenementen, lesgeven aan verschillende leeftijdsgroepen en plannen.
+            Ik heb het echt naar me zin gehad met de hele 24/8 crew met een hele fijne begeleiding.
+            Heel professioneel.
+             Ik raad dit iedereen die van basketbal houd aan."
+        ],
+        [
+            "name" => "Ramon Klop",
+            "image" => "/images/ramon.jpeg",
+            "description" => " Ik ben Ramon Klop uit Lelystad. Ik doe de opleiding sport en bewegen en loop stage bij 24/8. Ik loop hier stage omdat ik de amerikaanse sporten altijd al leuk heb gevonden. Ik kom zelf uit de American football en wou me ook graag verdiepen in het basketball. Wat ik leuk vind aan het stage lopen bij 24/8 is dat iedereen die hier komt goed gemotiveerd is om beter te worden in de sport. verder hebben wij als stagaires veel vrijheid om zelf dingen te ondernemen."
+        ],
+
+    ];
+    return view("guestViews.stage", ["stagairs" => $stagairs]);
 })->name("guestViews.stage");
 Route::get('/partners-sponsoren', function () {
     return view("guestViews.partnerSponsor");
